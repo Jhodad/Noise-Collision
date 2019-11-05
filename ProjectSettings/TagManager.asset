@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Camera F
+  - Camera B
+  - item
+  - Front Background Manager
+  - Back Background Manager
+  - NPC
+  - isDamageMarker
+  - Ground
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - Middle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: World-Back
+    uniqueID: 1403167741
+    locked: 0
+  - name: World-Floor
+    uniqueID: 2974053137
+    locked: 0
+  - name: World-Middle
+    uniqueID: 156577367
+    locked: 0
+  - name: Characters
+    uniqueID: 1270711681
+    locked: 0
+  - name: World-Front
+    uniqueID: 1007926001
+    locked: 0

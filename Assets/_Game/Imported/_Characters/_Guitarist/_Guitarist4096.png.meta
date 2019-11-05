@@ -1,0 +1,488 @@
+fileFormatVersion: 2
+guid: 804581e8f33b294438c8f511c3d69c5c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: _Guitarist4097_0
+  - first:
+      213: 21300002
+    second: _Guitarist4097_1
+  - first:
+      213: 21300004
+    second: _Guitarist4097_2
+  - first:
+      213: 21300006
+    second: _Guitarist4097_3
+  - first:
+      213: 21300008
+    second: _Guitarist4097_4
+  - first:
+      213: 21300010
+    second: _Guitarist4097_5
+  - first:
+      213: 21300012
+    second: _Guitarist4097_6
+  - first:
+      213: 21300014
+    second: _Guitarist4097_7
+  - first:
+      213: 21300016
+    second: _Guitarist4097_8
+  - first:
+      213: 21300018
+    second: _Guitarist4097_9
+  - first:
+      213: 21300020
+    second: _Guitarist4097_10
+  - first:
+      213: 21300022
+    second: _Guitarist4097_11
+  - first:
+      213: 21300024
+    second: _Guitarist4097_12
+  - first:
+      213: 21300026
+    second: _Guitarist4097_13
+  - first:
+      213: 21300028
+    second: _Guitarist4097_14
+  - first:
+      213: 21300030
+    second: _Guitarist4096_0
+  - first:
+      213: 21300032
+    second: _Guitarist4096_ArmLeftInv
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: _Guitarist4097_0
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 2791
+        width: 1539
+        height: 1224
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ef2c912ba67b6489080880009c7b06
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_1
+      rect:
+        serializedVersion: 2
+        x: 2054
+        y: 3568
+        width: 386
+        height: 63
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cbb82eef101365498060e01e043b52e
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_2
+      rect:
+        serializedVersion: 2
+        x: 2647
+        y: 3562
+        width: 313
+        height: 74
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efba52a536a12164295863cbd3184071
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_3
+      rect:
+        serializedVersion: 2
+        x: 2071
+        y: 3164
+        width: 347
+        height: 346
+      alignment: 9
+      pivot: {x: 0.5, y: 0.50144506}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5c1e49d9cac8a44e97a73901fa5ec5c
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_4
+      rect:
+        serializedVersion: 2
+        x: 2498
+        y: 3314
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c43946827ebf4549abdf27ddbda00a7
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_5
+      rect:
+        serializedVersion: 2
+        x: 2634
+        y: 3164
+        width: 305
+        height: 325
+      alignment: 9
+      pivot: {x: 0.49836066, y: 0.49846154}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3e34153f69eaf54c84535e7c6e83395
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_6
+      rect:
+        serializedVersion: 2
+        x: 2996
+        y: 3312
+        width: 60
+        height: 60
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251dec3784b1d1d4d8a6b51d4c3d31b8
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_7
+      rect:
+        serializedVersion: 2
+        x: 2419
+        y: 2898
+        width: 221
+        height: 60
+      alignment: 9
+      pivot: {x: 0.4977376, y: 0.5083334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e860dbdc999f104d874b7a2cdef9260
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_8
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1271
+        width: 1218
+        height: 1319
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 972e0e86eece6da43a49019a64c8b8cd
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_9
+      rect:
+        serializedVersion: 2
+        x: 1853
+        y: 1379
+        width: 193
+        height: 1093
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b01e82e1f914f4da3934485d4b6ad7
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_10
+      rect:
+        serializedVersion: 2
+        x: 2442
+        y: 1353
+        width: 190
+        height: 1093
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67d6c96c271a8ef41b82c30c3a53ba67
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_11
+      rect:
+        serializedVersion: 2
+        x: 2971
+        y: 1513
+        width: 782
+        height: 1013
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6940ddf9612ea714ca277c9d58684b11
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_12
+      rect:
+        serializedVersion: 2
+        x: 1809
+        y: 802
+        width: 307
+        height: 228
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8b0b74f5a5c4634782acec00922daae
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4097_13
+      rect:
+        serializedVersion: 2
+        x: 2449
+        y: 808
+        width: 307
+        height: 228
+      alignment: 9
+      pivot: {x: 0.49999997, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef13d5ef3427ea44b4e0c8f32bf747d
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_0
+      rect:
+        serializedVersion: 2
+        x: 2982
+        y: 329
+        width: 738
+        height: 838
+      alignment: 9
+      pivot: {x: 0.49525747, y: 0.50298333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 710ccf65747de5d42acfaebf1b2b4810
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_ArmLeftInv
+      rect:
+        serializedVersion: 2
+        x: 2442
+        y: 1353
+        width: 186
+        height: 1093
+      alignment: 9
+      pivot: {x: 0.45967743, y: 0.4967978}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8a0c0a6b8f4f234f87cc70ed9bf5cdc
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 945a4db8b22f47944b662eba4d1e7b2b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 636922407546393076
+  assetBundleName: 
+  assetBundleVariant: 
