@@ -38,3 +38,13 @@ Bugs:
 =====================
 =====================
 == Version Dev_1.3 ==
+Added:
+
+Removed:
+
+Fixed:
+- Correct Mesh/bone relation weight for seamless animations
+
+Bugs:
+- Shoulder Bones/Meshes are offset
+- Changed names on an Arm Bone, so animations fail to find that old name
