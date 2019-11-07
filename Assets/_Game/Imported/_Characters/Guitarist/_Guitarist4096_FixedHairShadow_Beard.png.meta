@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 34f70314c7f341046b8f1ae1584a3710
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6193813028537773546
+    second: _Guitarist4096_FixedHairShadow_Beard_0
+  - first:
+      213: 8469290429985916559
+    second: _Guitarist4096_FixedHairShadow_Beard_1
+  - first:
+      213: 1824373848508749309
+    second: _Guitarist4096_FixedHairShadow_Beard_2
+  - first:
+      213: 4593839142363484465
+    second: _Guitarist4096_FixedHairShadow_Beard_3
+  - first:
+      213: 4878422562980385612
+    second: _Guitarist4096_FixedHairShadow_Beard_4
+  - first:
+      213: 5576603553697538196
+    second: _Guitarist4096_FixedHairShadow_Beard_5
+  - first:
+      213: -1863847739981115118
+    second: _Guitarist4096_FixedHairShadow_Beard_6
+  - first:
+      213: -985912676968266278
+    second: _Guitarist4096_FixedHairShadow_Beard_7
+  - first:
+      213: 2964284633357076841
+    second: _Guitarist4096_FixedHairShadow_Beard_8
+  - first:
+      213: 641312843425040721
+    second: _Guitarist4096_FixedHairShadow_Beard_9
+  - first:
+      213: 188452437671004180
+    second: _Guitarist4096_FixedHairShadow_Beard_10
+  - first:
+      213: 2268501830406270489
+    second: _Guitarist4096_FixedHairShadow_Beard_11
+  - first:
+      213: 1030779471630899180
+    second: _Guitarist4096_FixedHairShadow_Beard_12
+  - first:
+      213: -7731351101771090051
+    second: _Guitarist4096_FixedHairShadow_Beard_13
+  - first:
+      213: 1829009005317722205
+    second: _Guitarist4096_FixedHairShadow_Beard_14
+  - first:
+      213: 6358423153124316167
+    second: _Guitarist4096_FixedHairShadow_Beard_15
+  - first:
+      213: 7629004385184964073
+    second: _Guitarist4096_FixedHairShadow_Beard_16
+  - first:
+      213: -8001654340316559594
+    second: _Guitarist4096_FixedHairShadow_Beard_17
+  - first:
+      213: 1219077952724213187
+    second: _Guitarist4096_FixedHairShadow_Beard_18
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_0
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 2798
+        width: 1525
+        height: 1210
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d5b1bd8cb3bc64b8cb584bdf455a17
+      internalID: 6193813028537773546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_1
+      rect:
+        serializedVersion: 2
+        x: 2089
+        y: 3649
+        width: 359
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cafd03541daa52943b33c03380323e15
+      internalID: 8469290429985916559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_2
+      rect:
+        serializedVersion: 2
+        x: 2601
+        y: 3643
+        width: 302
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c3cd8fc62de31747a50f20aa4905ac2
+      internalID: 1824373848508749309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_3
+      rect:
+        serializedVersion: 2
+        x: 2078
+        y: 3171
+        width: 333
+        height: 333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0414dacf1b2958f459b981c11dde928a
+      internalID: 4593839142363484465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_4
+      rect:
+        serializedVersion: 2
+        x: 2505
+        y: 3321
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60f465f79c3cd0242a68e1ef5a6f54d2
+      internalID: 4878422562980385612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_5
+      rect:
+        serializedVersion: 2
+        x: 2640
+        y: 3170
+        width: 292
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c9c5dfab419eec4cbf4c14e90041ab6
+      internalID: 5576603553697538196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_6
+      rect:
+        serializedVersion: 2
+        x: 3003
+        y: 3319
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89db2bc53cba65340af7150873d88f95
+      internalID: -1863847739981115118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_7
+      rect:
+        serializedVersion: 2
+        x: 2423
+        y: 2902
+        width: 214
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90095d160dbf53c4cab38368431fe11c
+      internalID: -985912676968266278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_8
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 1273
+        width: 1214
+        height: 1315
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bfeaf5ec63156a42bbfa6b4a18865f8
+      internalID: 2964284633357076841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_9
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 1387
+        width: 182
+        height: 1079
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e7acfda41eadc54cb7827784bac4fa3
+      internalID: 641312843425040721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_10
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 1385
+        width: 181
+        height: 1081
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d7c2271295522b4ba979b80496c5550
+      internalID: 188452437671004180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_11
+      rect:
+        serializedVersion: 2
+        x: 2010
+        y: 1409
+        width: 163
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1961661429461164c9bc3b1af7801edf
+      internalID: 2268501830406270489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_12
+      rect:
+        serializedVersion: 2
+        x: 2220
+        y: 1393
+        width: 207
+        height: 1048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb4e76ca20fa7b946bb4482068c5bbf7
+      internalID: 1030779471630899180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_13
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 1387
+        width: 189
+        height: 1054
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5a6fd7b7deaf6a4bbb8ec0dab952ad0
+      internalID: -7731351101771090051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_14
+      rect:
+        serializedVersion: 2
+        x: 2756
+        y: 1385
+        width: 178
+        height: 1056
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a8b41e33bff1c4ca6c655c0f0b501f
+      internalID: 1829009005317722205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_15
+      rect:
+        serializedVersion: 2
+        x: 3054
+        y: 1520
+        width: 768
+        height: 999
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f488063e0e645046ba486c51f100044
+      internalID: 6358423153124316167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_16
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 809
+        width: 293
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a467dcc532a2d494a866d3c479903046
+      internalID: 7629004385184964073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_17
+      rect:
+        serializedVersion: 2
+        x: 2456
+        y: 815
+        width: 293
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2450999a99dcbf4baa87c620bedee33
+      internalID: -8001654340316559594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: _Guitarist4096_FixedHairShadow_Beard_18
+      rect:
+        serializedVersion: 2
+        x: 2989
+        y: 335
+        width: 724
+        height: 825
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8abe7b2321ab5014cb7a4420878a8607
+      internalID: 1219077952724213187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 01b462c63787f614a86b34ad56534d24
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 637086953547431625
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,40 @@
+=====================
+== Version Dev_1.1 ==
+Added:
+- Camera Script
+- Sun Light
+- Sun Material
+
+Removed:
+- Duplicated Scenes
+
+Fixed:
+- FOV (temporary)
+
+Bugs:
+- None
+
+
+=====================
+=====================
+== Version Dev_1.2 ==
+Added:
+- New arm positions and meshes
+- Possible final textures (Guitarist)
+
+Removed:
+- Old Guitarist4096 textures
+- Old Guitarist 4096 split meshes
+
+Fixed:
+- Bone structure and color code
+- Body length got slightly stretched
+
+Bugs:
+- Shoulder Bones/Meshes are offset
+- Changed names on an Arm Bone, so animations fail to find that old name
+
+
+=====================
+=====================
+== Version Dev_1.3 ==
