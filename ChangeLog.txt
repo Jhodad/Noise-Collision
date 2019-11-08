@@ -1,5 +1,6 @@
 =====================
 == Version Dev_1.1 ==
+=====================
 Added:
 - Camera Script
 - Sun Light
@@ -16,8 +17,8 @@ Bugs:
 
 
 =====================
-=====================
 == Version Dev_1.2 ==
+=====================
 Added:
 - New arm positions and meshes
 - Possible final textures (Guitarist)
@@ -36,8 +37,8 @@ Bugs:
 
 
 =====================
-=====================
 == Version Dev_1.3 ==
+=====================
 Added:
 
 Removed:
