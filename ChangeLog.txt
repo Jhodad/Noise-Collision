@@ -49,3 +49,21 @@ Fixed:
 Bugs:
 - Shoulder Bones/Meshes are offset
 - Changed names on an Arm Bone, so animations fail to find that old name
+
+
+=====================
+== Version Dev_1.3 ==
+=====================
+Added:
+- New "flow" and other detailed animations to some basic attacks
+
+Removed:
+
+Fixed:
+- Half (in order) of the animations shoulder bones
+- Fixed names of old bones
+
+Bugs:
+
+Missing: 
+- Last half of animations need updates
