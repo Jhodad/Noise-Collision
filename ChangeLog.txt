@@ -52,7 +52,7 @@ Bugs:
 
 
 =====================
-== Version Dev_1.3 ==
+== Version Dev_1.4 ==
 =====================
 Added:
 - New "flow" and other detailed animations to some basic attacks
@@ -67,3 +67,23 @@ Bugs:
 
 Missing: 
 - Last half of animations need updates
+
+
+=====================
+== Version Dev_1.5 ==
+=====================
+Added:
+- New animations to replace old ones
+- Front camera's FOV and position (possibly not final)
+
+Removed:
+- Old clunky animations that were used as placeholders
+
+Fixed:
+- All animations were updated or replaced with new versions that are no longer placeholders
+- Timing in some animations so they're all normalized, as well as movement inside some of them
+
+Bugs:
+
+
+Missing: 
