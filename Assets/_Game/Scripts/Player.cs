@@ -234,7 +234,7 @@ public class Player : MonoBehaviour
         }
 
     }
-
+/*
     IEnumerator CheckIdle()
     {
         if (flag)
@@ -257,7 +257,7 @@ public class Player : MonoBehaviour
         
 
     }
-
+    */
     public bool IsPlaying(string stateName)
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName(stateName) &&
