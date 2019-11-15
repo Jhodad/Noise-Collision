@@ -99,7 +99,7 @@ public class AttackHandler : MonoBehaviour
         currentState = StateWatcher(atkCalled);
         Debug.Log("currentState = " + currentState + "=====================");
 
-        if (player.isGrounded && canAttack) // Actions on the floor
+        if (stats.isGrounded && canAttack) // Actions on the floor
         {
             switch (currentState)
             {
@@ -152,7 +152,7 @@ public class AttackHandler : MonoBehaviour
                     break;
             }
         }
-        else if(!player.isGrounded && canAttack) // Actions on the air
+        else if(!stats.isGrounded && canAttack) // Actions on the air
         {
             
             

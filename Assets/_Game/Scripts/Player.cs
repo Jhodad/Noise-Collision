@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -12,27 +13,20 @@ public class Player : MonoBehaviour
     public Stats stats;
 
 
+
     // Booleans
-    public bool isGrounded;
     public bool orientacionU = false;
     public bool onRangeForTrade;
 
     // Vectors
-    private Vector3 horiz;
-    private Vector3 verti;
-
-    // Floats
-    private float defaultAirModifierGround;
-    private float defaultAirModifierAir;
-
-    private float currentAirModifier;
-
-    private float speedModifier;
-    private float jumpModifier;
-    private float defaultSpeed;
-    private float defaultJump;
+    public Vector3 horiz;
+    public Vector3 verti;
 
     private float perspective; // -1 to use back camera
+
+    // Movement
+    public float x;
+    public float z;
 
     // Idle Check
     public bool flag;
@@ -50,37 +44,26 @@ public class Player : MonoBehaviour
 
         perspective = 1f;
 
-        speedModifier = stats.modifierSpeed;
-        jumpModifier = stats.modifierJump;
-
-        defaultSpeed = stats.defaultSpeed;
-        defaultJump = stats.defaultJump;
-
-        defaultAirModifierGround = stats.defaultAirModifierGround;
-        defaultAirModifierAir = stats.defaultAirModifierAir;
-        currentAirModifier = defaultAirModifierGround;
-
         anim.SetTrigger("isNeutral");
     }
 
     // Fixed for rigid body stuff
+    
     void FixedUpdate()
     {
-
+        CheckLanding();
+        CheckFalling();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
+
         perspective = gameObject.GetComponent<CameraSwitch>().perspectiveValue;
-        speedModifier = stats.modifierSpeed;
-        jumpModifier = stats.modifierJump;
 
-        defaultSpeed = stats.defaultSpeed;
-        defaultJump = stats.defaultJump;
 
-        defaultAirModifierGround = stats.defaultAirModifierGround;
-        defaultAirModifierAir = stats.defaultAirModifierAir;
 
         //Debug.Log("Normal" + IsPlaying("AttackPhase"));
         //Debug.Log("Name" + IsPlayingName("AttackPhase"));
@@ -95,6 +78,8 @@ public class Player : MonoBehaviour
         {
             flag = true;
         }
+
+
         /*
 
         if (IsPlaying("Neutral"))
@@ -102,16 +87,7 @@ public class Player : MonoBehaviour
             StartCoroutine(CheckIdle());
         }
         */
-        if (rb.velocity.y < 0 && !isGrounded)
-        {
-            //Debug.Log(rb.velocity.y);
 
-            Debug.Log("Supuestamente aqui: "+ rb.velocity.y);
-                anim.SetBool("isFalling", true);
-                
-            
-            
-        }
         //Debug.Log("Modifier: " + currentAirModifier);
     }
 
@@ -152,8 +128,8 @@ public class Player : MonoBehaviour
 
     public void Movement()
     {
-        float x = Input.GetAxis("Horizontal") * Time.deltaTime * defaultSpeed * speedModifier * currentAirModifier * perspective;
-        float z = Input.GetAxis("Vertical") * Time.deltaTime * defaultSpeed * speedModifier * currentAirModifier * perspective;
+        x = Input.GetAxis("Horizontal") * Time.deltaTime * stats.currentSpeed * stats.currentModifierSpeed * perspective;
+        z = Input.GetAxis("Vertical") * Time.deltaTime * stats.currentSpeed * stats.currentModifierSpeed * perspective;
         horiz = new Vector3(x, 0, 0);
         verti = new Vector3(0, 0, z);
 
@@ -161,33 +137,30 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("isRunning", true);
 
-
+            if (stats.isGrounded)
+            {
                 if (x > 0)
                 {
-                    if (isGrounded)
-                    {
-                        orientacionU = RotateRight(orientacionU);
-                    }
+                    orientacionU = RotateRight(orientacionU);
                 }
                 else if (x < 0)
                 {
-                    if (isGrounded)
-                    {
-                        orientacionU = RotateLeft(orientacionU);
-                    }
+                    orientacionU = RotateLeft(orientacionU);
                 }
+                else // x = 0
+                {
 
-                transform.Translate(horiz, Space.World);
-                transform.Translate(verti, Space.World);
+                }
             }
+            transform.Translate(horiz, Space.World);
+            transform.Translate(verti, Space.World);
+        }
         else if (x == 0 && z == 0)
         {
-            //StartCoroutine(CheckIdle());
             anim.SetBool("isRunning", false);
             anim.SetTrigger("isNeutral");
-            
-        }
 
+        }
     }
 
     public void Jump()
@@ -195,69 +168,64 @@ public class Player : MonoBehaviour
 
         if (IsPlayingName("Neutral") || IsPlayingName("Run") || IsPlayingName("Idle"))
         {
-            Debug.Log("Que segun si");
             anim.SetTrigger("isJumping");
-            rb.AddForce(Vector3.up * (defaultJump * jumpModifier), ForceMode.Impulse);
-            
+            rb.AddForce(Vector3.up * (stats.currentJump * stats.currentModifierJump), ForceMode.Impulse);
         }
-        
-        
-            
+    }
+
+    public void CheckFalling()
+    {
+        if (rb.velocity.y < 0 && !stats.isGrounded)
+        {
+            anim.SetBool("isFalling", true);
+        }
+    }
+
+    public void CheckLanding()
+    {
+        if (rb.velocity.y == 0 && anim.GetBool("isFalling"))
+        {
+            anim.SetBool("isFalling", false);
+            anim.SetTrigger("isLanding");
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-
-        // Returns air modifier to default when colliding with the ground
-        if (collision.gameObject.tag == "Ground")
-        {
-            anim.SetBool("isFalling", false);
-            anim.SetTrigger("isLanding");
-            currentAirModifier = defaultAirModifierGround;
-            isGrounded = true;
-           
-        }
-
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = false;
-            currentAirModifier = defaultAirModifierAir;
-        }
-
     }
-/*
-    IEnumerator CheckIdle()
-    {
-        if (flag)
+
+    /*
+        IEnumerator CheckIdle()
         {
-            yield return new WaitForSecondsRealtime(1);
-            seconds++;
-            Debug.Log("Han pasado: " + seconds);
+            if (flag)
+            {
+                yield return new WaitForSecondsRealtime(1);
+                seconds++;
+                Debug.Log("Han pasado: " + seconds);
 
-            if (seconds == 5 && flag)
-            {
-                Debug.Log("Si pasaron 5 segundos!");
-                anim.SetTrigger("isIdle");
+                if (seconds == 5 && flag)
+                {
+                    Debug.Log("Si pasaron 5 segundos!");
+                    anim.SetTrigger("isIdle");
+                }
+                else
+                {
+                    Debug.Log("NMo han pasado 5 segundso!");
+                    StartCoroutine(CheckIdle());
+                }
             }
-            else
-            {
-                Debug.Log("NMo han pasado 5 segundso!");
-                StartCoroutine(CheckIdle());
-            }
+
+
         }
-        
-
-    }
-    */
+        */
     public bool IsPlaying(string stateName)
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName(stateName) &&
@@ -269,7 +237,7 @@ public class Player : MonoBehaviour
 
     public bool IsPlayingName(string stateName)
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName(stateName)) 
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName(stateName))
             return true;
         else
             return false;

@@ -87,3 +87,35 @@ Bugs:
 
 
 Missing: 
+
+
+=====================
+== Version Dev_1.6 ==
+=====================
+Added:
+- (Script) CollisionHandler.cs
+	- RayCast funcionality to check collisions
+- Player now uses RayCast to check if it's grounded
+- Events section to Stats.cs, like isGrounded, isAlive
+- Correct startup of default values on Stats
+- Headers in the editor, to group Stats variables
+
+- Testing Scene for collab Dubu
+
+Removed:
+- 2D Colliders for movement and references
+- Spaghetti Code from Player.cs and PlayerMovement.cs while handling speed and movement values
+
+Fixed:
+- Player no longer bounces off in the floor when idle (changed Animator > Update Mode: Normal to Animate Physics)
+- Communication between Stats.cs, Player.cs and PlayerController.cs (stats now handles all events)
+- IsGrounded animation events
+- Duplicated responses to IsFalling and IsLanding on different scripts, now only Stats handles them
+- Landing and Falling anims had some issues
+
+Bugs:
+- RayCast collision, offset y doesn't automatically update distance between origin and end.
+
+Missing: 
+- Back(left/right) sprites for when axis Z < 0
+- Making camera not follow over Axis Y, so it's not clunky

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     Player player;
+    Stats stats;
     InventoryTabs inventory;
     AttackHandler attackHandler;
     bool stopInput;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Player>();
         inventory = GetComponent<InventoryTabs>();
         attackHandler = GetComponent<AttackHandler>();
+        stats = GetComponent<Stats>();
         stopInput = false;
     }
 
@@ -24,18 +26,25 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
 
-    // Actions if Alive
-    actionHandler();
+        // Actions if Alive
+        if (stats.isAlive)
+        {
+            // List of constant actions
+            actionHandler();
 
-    if (player.IsPlayingName("AttackPhase"))
-        {
-            stopInput = false;
-        }
-        else
-        {
-            stopInput = true;
+            // FIX/CHANGE action
+            if (player.IsPlayingName("AttackPhase"))
+            {
+                stopInput = false;
+            }
+            else
+            {
+                stopInput = true;
+            }
         }
     }
+    
+    
 
     private void actionHandler()
     {
@@ -66,10 +75,10 @@ public class PlayerController : MonoBehaviour
 
 
         // Player is grounded
-        if (player.isGrounded)
+        if (stats.isGrounded)
         {
             // if Space then Jump
-            if (Input.GetKeyDown(KeyCode.Space) && player.isGrounded)
+            if (Input.GetKeyDown(KeyCode.Space) && stats.isGrounded)
             {
                 player.Jump();
             }
@@ -77,7 +86,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Player is airborne
-        if (player.isGrounded == false)
+        if (stats.isGrounded == false)
         {
 
             // STUFF WHILE JUMPING

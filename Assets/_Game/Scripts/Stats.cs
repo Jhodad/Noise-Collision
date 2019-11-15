@@ -2,29 +2,19 @@
 
 public class Stats : MonoBehaviour {
 
+    [Header("Character")]
     public int characterID;
 
-    // Modifiers
-    [HideInInspector] public float modifierHealth;
-    [HideInInspector] public float modifierBattery;
-    [HideInInspector] public float modifierAtk;
-    [HideInInspector] public float modifierDef;
-                      public float modifierSpeed;
-                      public float modifierJump;
-    [HideInInspector] public float modifierBlockResist;
-    [HideInInspector] public float modifierEvadeStartup;
+    // Events
+    [Header("Events")]
+    public bool isAlive;
+    public bool isGrounded;
+    public bool isGroundedSlope;
 
-    // Current Stats
-    [HideInInspector] public float currentHealth;
-    [HideInInspector] public float currentBattery;
-    [HideInInspector] public float currentAtk;
-    [HideInInspector] public float currentDef;
-    [HideInInspector] public float currentSpeed;
-    [HideInInspector] public float currentJump;
-    [HideInInspector] public float currentBlockResist;
-    [HideInInspector] public float currentEvadeStartup;
+    // ====================================================================================================================== ||
 
-    // Default Stats, for resets and stuff
+    // Default Stats - Base
+    [Header("Default - Base")]
     public float defaultHealth;
     public float defaultBattery;
     public float defaultAtk;
@@ -33,8 +23,49 @@ public class Stats : MonoBehaviour {
     public float defaultJump;
     public float defaultBlockResist;
     public float defaultEvadeStartup;
-    public float defaultAirModifierGround;
-    public float defaultAirModifierAir;
+
+    // Default Stats - Modifiers / Multipliers
+    [Header("Default - Modifiers")]
+    public float defaultModifierHealth;
+    public float defaultModifierBattery;
+    public float defaultModifierAtk;
+    public float defaultModifierDef;
+    public float defaultModifierSpeed;
+    public float defaultModifierJump;
+    public float defaultModifierBlockResist;
+    public float defaultModifierEvadeStartup;
+    
+    public float defaultModifierAir;
+    public float defaultModifierGround;
+
+    [Header("Current - Base")]
+    // Current Stats - Base
+    public float currentHealth;
+    public float currentBattery;
+    public float currentAtk;
+    public float currentDef;
+    public float currentSpeed;
+    public float currentJump;
+    public float currentBlockResist;
+    public float currentEvadeStartup;
+
+    // Current Stats - Modifiers / Multipliers
+    [Header("Current - Modifiers")]
+    public float currentModifierHealth;
+    public float currentModifierBattery;
+    public float currentModifierAtk;
+    public float currentModifierDef;
+    public float currentModifierSpeed;
+    public float currentModifierJump;
+    public float currentModifierBlockResist;
+    public float currentModifierEvadeStartup;
+
+    public float currentModifierGround;
+    public float currentModifierAir;
+
+    // ====================================================================================================================== ||
+
+
 
     // Stat choices for level ups;
 
@@ -42,10 +73,11 @@ public class Stats : MonoBehaviour {
     [HideInInspector] public int secondStatSelector;
 
     // XP
+    [Header("Levels and XP")]
+    public float nextLevelXP;
 
     [HideInInspector] private float currentXP;
     // [HideInInspector] Hide nextLevelXP when done testing
-    public float nextLevelXP;
     [HideInInspector] private float currentLevelUpPoints;
     [HideInInspector] private float currentLevel;
 
@@ -110,38 +142,111 @@ public class Stats : MonoBehaviour {
     private float p5e10;
 
 
-    // =============================================================================== //
-    // =============================== Start & Update =============================== //
-    // ============================================================================= //
-    // ============================================================================ //
+    // ====================================================================================================================== ||
+
+    // =========================================================== ||
+    // =========================================================== ||
+    // == Start & Update
+    // =========================================================== ||
+    // =========================================================== ||
 
     // Use this for initialization
     void Start () {
 
+        // IF character is created for the first time
+        InitializeBaseStats();
+
+        // WHEN character is loaded from a save state
+
+
+        // Move stuff to where they belong
         uniqueEffectsMaxCapacity = 10;
         uniqueEffectsCurrentCapacity = 4;
         currentLevelUpPoints = 0;
         currentLevel = 0;
         uniqueEffects = new float[uniqueEffectsMaxCapacity];
 
-        currentHealth = defaultHealth;
+     
         
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        // Check for level ups
+
+        // Checks
+        CheckHealth();
+
+        // Check for level ups - FIX
         if (currentXP >= nextLevelXP)
         {
             levelUp(baseStatSelector, secondStatSelector);
         }
     }
 
-    // =============================================================================== //
-    // ============================= Leveling Up and XP ============================= //
-    // ============================================================================= //
-    // ============================================================================ //
+    // ====================================================================================================================== ||
 
+
+
+
+
+
+    // =========================================================== ||
+    // ==  Stats on First Creation 
+    // =========================================================== ||
+    // =========================================================== ||
+    private void InitializeBaseStats()
+    {
+        currentHealth = defaultHealth;
+        currentBattery = defaultBattery;
+            
+        currentAtk = defaultAtk;
+        currentDef = defaultDef;
+        currentSpeed = defaultSpeed;
+        currentJump = defaultJump;
+        currentBlockResist = defaultBlockResist;
+        currentEvadeStartup = defaultEvadeStartup;
+
+        currentModifierGround = defaultModifierGround;
+        currentModifierAir = defaultModifierAir;
+
+        currentModifierHealth = defaultModifierHealth;
+        currentModifierBattery = defaultModifierBattery;
+        currentModifierAtk = defaultModifierAtk;
+        currentModifierDef = defaultModifierDef;
+        currentModifierSpeed = defaultModifierSpeed;
+        currentModifierJump = defaultModifierJump;
+        currentModifierBlockResist = defaultModifierBlockResist;
+        currentModifierEvadeStartup = defaultModifierEvadeStartup;
+}
+
+// =========================================================== ||
+// =========================================================== ||
+// == Health
+// =========================================================== ||
+// =========================================================== ||
+
+private bool CheckHealth()
+    {
+        if (currentHealth > 0)
+        {
+            isAlive = true;
+        }
+        else
+        {
+            isAlive = false;
+        }
+
+        return isAlive;
+    }
+
+
+
+
+    // =========================================================== ||
+    // =========================================================== ||
+    // == Level Up
+    // =========================================================== ||
+    // =========================================================== ||
     private void levelUp(int baseStatDecision, int ifDefChoiceThenResistance)
     {
         Debug.Log(this.name + " has leveled up!");
@@ -155,15 +260,15 @@ public class Stats : MonoBehaviour {
         switch (baseStatDecision)
         {
             case 1: // Health Upgrade
-                currentHealth = currentHealth + modifierHealth;
+                currentHealth = currentHealth + currentModifierHealth;
                 break;
 
             case 2: // ATK Upgrade
-                currentAtk = currentAtk + modifierAtk;
+                currentAtk = currentAtk + currentModifierAtk;
                 break;
 
             case 3: // DEF Upgrade
-                currentDef = currentDef + modifierDef;
+                currentDef = currentDef + currentModifierDef;
                 switch (ifDefChoiceThenResistance)
                 {
                     case 1: // Resistance 1
@@ -180,11 +285,11 @@ public class Stats : MonoBehaviour {
                 break;
 
             case 4: // Speed Upgrade
-                currentSpeed = currentSpeed + modifierSpeed;
+                currentSpeed = currentSpeed + currentModifierSpeed;
                 break;
 
             case 5: // Battery Upgrade
-                currentBattery = currentBattery + modifierBattery;
+                currentBattery = currentBattery + currentModifierBattery;
                 break;
 
             case 6: // Block Upgrade
