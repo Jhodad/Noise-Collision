@@ -119,3 +119,5 @@ Bugs:
 Missing: 
 - Back(left/right) sprites for when axis Z < 0
 - Making camera not follow over Axis Y, so it's not clunky
+
+Dubu has joined the battle!
