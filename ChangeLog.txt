@@ -121,3 +121,22 @@ Missing:
 - Making camera not follow over Axis Y, so it's not clunky
 
 Dubu has joined the battle!
+
+
+=======================
+== Version Dev_1.6.1 ==
+=======================
+Added:
+- Camera for recording
+- 
+
+Removed:
+
+Fixed:
+- Left leg's mesh had a weird clip when twisting
+- Idle animation finally updated, all animations are up to date
+- Default_Horizontal 1 animation had a weird glitch in the left hand, it would stretch
+
+Bugs:
+
+Missing: 
