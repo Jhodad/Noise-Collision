@@ -65,84 +65,25 @@ public class Stats : MonoBehaviour {
 
     // ====================================================================================================================== ||
 
-
-
     // Stat choices for level ups;
-
     [HideInInspector] public int baseStatSelector;
     [HideInInspector] public int secondStatSelector;
 
     // XP
     [Header("Levels and XP")]
-    public float nextLevelXP;
+    private float currentXP;    //XP carried at the moment
+    private float leftoverXP;   //XP overflow after leveling up
+    private float needXP;       //XP Needed for next Level up
+    private float gainedXP;     //XP earned but not registered
 
-    [HideInInspector] private float currentXP;
-    // [HideInInspector] Hide nextLevelXP when done testing
-    [HideInInspector] private float currentLevelUpPoints;
-    [HideInInspector] private float currentLevel;
-
-    // Unique Effects
-    private float[] uniqueEffects;
-    private int uniqueEffectsMaxCapacity;
-    private int uniqueEffectsCurrentCapacity;
-
-    private float p1e1;
-    private float p1e2;
-    private float p1e3;
-    private float p1e4;
-    private float p1e5;
-    private float p1e6;
-    private float p1e7;
-    private float p1e8;
-    private float p1e9;
-    private float p1e10;
-
-    private float p2e1;
-    private float p2e2;
-    private float p2e3;
-    private float p2e4;
-    private float p2e5;
-    private float p2e6;
-    private float p2e7;
-    private float p2e8;
-    private float p2e9;
-    private float p2e10;
-
-    private float p3e1;
-    private float p3e2;
-    private float p3e3;
-    private float p3e4;
-    private float p3e5;
-    private float p3e6;
-    private float p3e7;
-    private float p3e8;
-    private float p3e9;
-    private float p3e10;
-
-    private float p4e1;
-    private float p4e2;
-    private float p4e3;
-    private float p4e4;
-    private float p4e5;
-    private float p4e6;
-    private float p4e7;
-    private float p4e8;
-    private float p4e9;
-    private float p4e10;
-
-    private float p5e1;
-    private float p5e2;
-    private float p5e3;
-    private float p5e4;
-    private float p5e5;
-    private float p5e6;
-    private float p5e7;
-    private float p5e8;
-    private float p5e9;
-    private float p5e10;
-
+    private float currentLevel; 
 
     // ====================================================================================================================== ||
+
+
+
+
+
 
     // =========================================================== ||
     // =========================================================== ||
@@ -150,37 +91,24 @@ public class Stats : MonoBehaviour {
     // =========================================================== ||
     // =========================================================== ||
 
+
+
     // Use this for initialization
     void Start () {
 
         // IF character is created for the first time
         InitializeBaseStats();
 
-        // WHEN character is loaded from a save state
-
-
-        // Move stuff to where they belong
-        uniqueEffectsMaxCapacity = 10;
-        uniqueEffectsCurrentCapacity = 4;
-        currentLevelUpPoints = 0;
-        currentLevel = 0;
-        uniqueEffects = new float[uniqueEffectsMaxCapacity];
-
-     
-        
+        // WHEN character is loaded from a save state        
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         // Checks
-        CheckHealth();
+        CheckHealth(); // Checks if player isAlive
 
-        // Check for level ups - FIX
-        if (currentXP >= nextLevelXP)
-        {
-            levelUp(baseStatSelector, secondStatSelector);
-        }
     }
 
     // ====================================================================================================================== ||
@@ -198,7 +126,7 @@ public class Stats : MonoBehaviour {
     {
         currentHealth = defaultHealth;
         currentBattery = defaultBattery;
-            
+
         currentAtk = defaultAtk;
         currentDef = defaultDef;
         currentSpeed = defaultSpeed;
@@ -217,15 +145,21 @@ public class Stats : MonoBehaviour {
         currentModifierJump = defaultModifierJump;
         currentModifierBlockResist = defaultModifierBlockResist;
         currentModifierEvadeStartup = defaultModifierEvadeStartup;
-}
 
-// =========================================================== ||
-// =========================================================== ||
-// == Health
-// =========================================================== ||
-// =========================================================== ||
+        currentXP = 0;
+        leftoverXP = 0;
+        needXP = CheckIfLevelUp();
+        currentLevel = 1;
 
-private bool CheckHealth()
+    }
+
+    // =========================================================== ||
+    // =========================================================== ||
+    // == Health
+    // =========================================================== ||
+    // =========================================================== ||
+        
+    private bool CheckHealth()
     {
         if (currentHealth > 0)
         {
@@ -235,140 +169,36 @@ private bool CheckHealth()
         {
             isAlive = false;
         }
-
         return isAlive;
     }
 
+    // =========================================================== ||
+    // =========================================================== ||
+    // == Level Up & Experience Points
+    // =========================================================== ||
+    // =========================================================== ||
 
-
-
-    // =========================================================== ||
-    // =========================================================== ||
-    // == Level Up
-    // =========================================================== ||
-    // =========================================================== ||
-    private void levelUp(int baseStatDecision, int ifDefChoiceThenResistance)
+    private void AddXP()
     {
-        Debug.Log(this.name + " has leveled up!");
 
-        currentXP = currentXP - nextLevelXP; // Leave CurrentXP at 0 to start the new level
-
-        nextLevelXP = (nextLevelXP * 0.2f) + nextLevelXP;
-
-        currentLevelUpPoints = currentLevelUpPoints + 1;
-
-        switch (baseStatDecision)
-        {
-            case 1: // Health Upgrade
-                currentHealth = currentHealth + currentModifierHealth;
-                break;
-
-            case 2: // ATK Upgrade
-                currentAtk = currentAtk + currentModifierAtk;
-                break;
-
-            case 3: // DEF Upgrade
-                currentDef = currentDef + currentModifierDef;
-                switch (ifDefChoiceThenResistance)
-                {
-                    case 1: // Resistance 1
-
-                        break;
-
-                    case 2: // Resistance 2
-
-                        break;
-
-                    default: // Random resistance option?
-                        break;
-                }
-                break;
-
-            case 4: // Speed Upgrade
-                currentSpeed = currentSpeed + currentModifierSpeed;
-                break;
-
-            case 5: // Battery Upgrade
-                currentBattery = currentBattery + currentModifierBattery;
-                break;
-
-            case 6: // Block Upgrade
-
-                break;
-
-            case 7: // Evade Upgrade
-
-                break;
-
-            case 8: // Evade Upgrade
-
-                break;
-
-            case 9: // Evade Upgrade
-
-                break;
-
-            case 10: // Evade Upgrade
-
-                break;
-
-            default:
-
-                break;
-        }
     }
 
-    private void uniqueEffectsSelector(float positionOfEffectToChange)
+    private void RemoveXP()
     {
-        // Need to add an onClick selector that choose which effect wants to be rolled for a new one
-        switch ((int) positionOfEffectToChange)
-        {
-            case 1: // Pool 1
-               
-                break;
 
-            case 2: // Pool 2
-               
-                break;
-
-            case 3: // Pool 3
-
-                break;
-
-            case 4: // Pool 4
-
-                break;
-
-            case 5: // Pool 5
-
-                break;
-
-            case 6: // Pool 6
-
-                break;
-
-            case 7: // Pool 7
-
-                break;
-
-            case 8: // Pool 8
-
-                break;
-
-            case 9: // Pool 9
-
-                break;
-
-            case 10: // Pool 10
-
-                break;
-
-            default: // Random one?
-                positionOfEffectToChange = Random.value * 10;
-                uniqueEffectsSelector(positionOfEffectToChange);
-                break;
-        }
     }
+
+    private void CalculateNextLevelXP()
+    {
+
+    }
+
+    private float CheckIfLevelUp()      //Before adding gainedXP into currentXP, check if it makes the character level up
+    {
+
+        return 1;
+    }
+
 
 
 
