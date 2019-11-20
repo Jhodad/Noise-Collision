@@ -54,7 +54,11 @@ public class PlayerController : MonoBehaviour
         // ==================================== //
         // ======       Attacks         ====== //
         // ================================== //
-        
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            stats.AddXP(150);
+        }
 
         if (Input.GetKeyDown(KeyCode.Y) && !player.anim.GetBool("isPlayingAttack")) //!stopInput)
         {
