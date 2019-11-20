@@ -108,7 +108,8 @@ public class Stats : MonoBehaviour {
 
         // Checks
         CheckHealth(); // Checks if player isAlive
-
+        Debug.Log("Current XP: " + currentXP);
+        Debug.Log("Needed XP: " + needXP);
     }
 
     // ====================================================================================================================== ||
@@ -148,7 +149,7 @@ public class Stats : MonoBehaviour {
 
         currentXP = 0;
         leftoverXP = 0;
-        needXP = CheckIfLevelUp();
+        needXP = 100;
         currentLevel = 1;
 
     }
@@ -178,9 +179,20 @@ public class Stats : MonoBehaviour {
     // =========================================================== ||
     // =========================================================== ||
 
-    private void AddXP()
+    public void AddXP(float XP)
     {
-
+        gainedXP = XP;
+        if (CheckIfLevelUp())
+        {
+            currentXP = currentXP + XP;
+            currentXP = currentXP - needXP;
+            LevelUp();
+            
+        }
+        else
+        {
+            currentXP = currentXP + XP;
+        }
     }
 
     private void RemoveXP()
@@ -190,15 +202,28 @@ public class Stats : MonoBehaviour {
 
     private void CalculateNextLevelXP()
     {
-
+        needXP+=100;
     }
 
-    private float CheckIfLevelUp()      //Before adding gainedXP into currentXP, check if it makes the character level up
+    private bool CheckIfLevelUp()      //Before adding gainedXP into currentXP, check if it makes the character level up
     {
-
-        return 1;
+        if (currentXP + gainedXP >= needXP)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+         
     }
 
+    private void LevelUp() 
+    {
+        Debug.Log("Subi de nivel: " + currentLevel);
+        currentLevel =currentLevel + 1; //Agregar efectos despues de la suma
+        CalculateNextLevelXP();
+    }
 
 
 
