@@ -152,6 +152,9 @@ public class Player : MonoBehaviour
 
                 }
             }
+
+            //rb.MovePosition(horiz);
+            //rb.MovePosition(verti);
             transform.Translate(horiz, Space.World);
             transform.Translate(verti, Space.World);
         }

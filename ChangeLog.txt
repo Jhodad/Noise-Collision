@@ -140,3 +140,29 @@ Fixed:
 Bugs:
 
 Missing: 
+
+
+=====================
+== Version Dev_1.1 ==
+=====================
+Added:
+- New not bone bound set of eyes
+- Objects and Scripts ro rotate those eyes
+- EyeLookAt.cs can track objects withing a radius to rotate the eyes towards that object
+
+Removed:
+- 
+
+
+Fixed:
+- Some animations were colliding with the new eyes
+- Run animation got an update, hopefully final
+
+Bugs:
+- (STILL) RayCast collision, offset y doesn't automatically update distance between origin and end
+
+Missing: 
+- Back(left/right) sprites for when axis Z < 0
+- Making camera not follow over Axis Y, so it's not clunky
+- EyeLookAt.cs needs a way to recognize Observable objects without Tags
+- Fin tune Radius and Speed for the eyes' auto-tracking

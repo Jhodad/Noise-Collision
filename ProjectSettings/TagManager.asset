@@ -12,6 +12,7 @@ TagManager:
   - NPC
   - isDamageMarker
   - Ground
+  - Look
   layers:
   - Default
   - TransparentFX
