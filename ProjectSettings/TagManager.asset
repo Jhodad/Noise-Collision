@@ -13,6 +13,7 @@ TagManager:
   - isDamageMarker
   - Ground
   - Look
+  - Observable
   layers:
   - Default
   - TransparentFX

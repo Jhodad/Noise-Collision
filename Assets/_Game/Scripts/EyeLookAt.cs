@@ -8,7 +8,7 @@ public class EyeLookAt : MonoBehaviour
     public GameObject rightEye;
     public GameObject leftEye;
 
-    public GameObject target;
+    private GameObject target;
 
     public Transform rightPupil;
     public Transform leftPupil;
@@ -26,19 +26,41 @@ public class EyeLookAt : MonoBehaviour
 
     public float origSpeed;
     private float speed;
+
+    public List<GameObject> touchingObjects;
+    private bool hasObservable;
+
     // Start is called before the first frame update
     void Start()
     {
+        touchingObjects = new List<GameObject>();
         centerL = leftPupil.position;
         centerR = rightPupil.position;
-
+        hasObservable = false;
         EyeDistanceFromCenter(distanceR, distanceL);
+
+        Debug.Log(touchingObjects.Capacity);
     }
 
     // Update is called once per frame
     void Update()
     {
-        EyeRotator();
+        if (hasObservable)
+        {
+            EyeRotator();
+        }
+        else
+        {
+            Debug.Log("There are no observables");
+        }
+        Debug.Log("Cpacidad: " + touchingObjects.Capacity);
+        
+    }
+
+    bool CheckOnRange()
+    {
+
+        return true;
     }
 
     public void EyeDistanceFromCenter(float distanceR, float distanceL)
@@ -143,17 +165,33 @@ public class EyeLookAt : MonoBehaviour
     }
 
 
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Looking at: ");
-        if (collision.tag == "")
+        
+        if (!touchingObjects.Contains(collision.gameObject) && collision.tag == "Observable")
         {
-
+            touchingObjects.Add(collision.gameObject);
+            Debug.Log(collision.name + "got added to the list");
         }
+            
+         
+            
         
     }
 
 
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (touchingObjects.Contains(collision.gameObject))
+        {
+            //Debug.Log("Capacity before " + touchingObjects.Capacity);
+            //touchingObjects.Remove(collision.gameObject);
+            //Debug.Log("Capacity after " + touchingObjects.Capacity);
+        }
+        
+    }
 
 
 

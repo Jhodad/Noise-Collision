@@ -7875,12 +7875,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightEye: {fileID: 1876648536}
   leftEye: {fileID: 797741694}
-  target: {fileID: 1550550680}
   rightPupil: {fileID: 1074113961}
   leftPupil: {fileID: 1398135190}
   distanceR: 0.4
   distanceL: 0.4
   origSpeed: 2
+  touchingObjects: []
 --- !u!58 &899634634
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7896,7 +7896,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 100
+  m_Radius: 30
 --- !u!1 &899789377
 GameObject:
   m_ObjectHideFlags: 0
@@ -10277,7 +10277,7 @@ GameObject:
   - component: {fileID: 1550550685}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Observable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10362,7 +10362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550550680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.551, y: 1.57, z: 0.44}
+  m_LocalPosition: {x: 19.59, y: 1.57, z: 0.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
