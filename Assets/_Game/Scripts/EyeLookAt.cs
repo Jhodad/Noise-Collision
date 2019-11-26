@@ -8,7 +8,6 @@ public class EyeLookAt : MonoBehaviour
     public GameObject rightEye;
     public GameObject leftEye;
 
-    private GameObject target;
 
     public Transform rightPupil;
     public Transform leftPupil;
@@ -29,17 +28,21 @@ public class EyeLookAt : MonoBehaviour
 
     public List<GameObject> touchingObjects;
     private bool hasObservable;
+    private GameObject observableTarget;
+
+    public List<int> test;
+
 
     // Start is called before the first frame update
     void Start()
     {
         touchingObjects = new List<GameObject>();
+        observableTarget = new GameObject();
+        observableTarget = null;
         centerL = leftPupil.position;
         centerR = rightPupil.position;
         hasObservable = false;
         EyeDistanceFromCenter(distanceR, distanceL);
-
-        Debug.Log(touchingObjects.Capacity);
     }
 
     // Update is called once per frame
@@ -54,14 +57,9 @@ public class EyeLookAt : MonoBehaviour
             Debug.Log("There are no observables");
         }
         Debug.Log("Cpacidad: " + touchingObjects.Capacity);
-        
+
     }
 
-    bool CheckOnRange()
-    {
-
-        return true;
-    }
 
     public void EyeDistanceFromCenter(float distanceR, float distanceL)
     {
@@ -98,9 +96,9 @@ public class EyeLookAt : MonoBehaviour
 
 
         //Right
-        Vector2 targetDirR = target.transform.position - rightEye.transform.position;
+        Vector2 targetDirR = observableTarget.transform.position - rightEye.transform.position;
         //Left
-        Vector2 targetDirL = target.transform.position - leftEye.transform.position;
+        Vector2 targetDirL = observableTarget.transform.position - leftEye.transform.position;
 
         /*if ((Mathf.Abs(rightEye.transform.localRotation.x) <= 0.05 || Mathf.Abs(leftEye.transform.localRotation.x) <= 0.05) 
             && (Mathf.Abs(target.transform.position.x - rightEye.transform.position.x) <= 2 || Mathf.Abs(target.transform.position.x - leftEye.transform.position.x) <= 2))
@@ -126,7 +124,7 @@ public class EyeLookAt : MonoBehaviour
 
         //Vector2 targetDir = Vector2.Lerp(targetDirR, targetDirL, 0.5f);
 
-        if (Vector2.Distance(target.transform.position, rightEye.transform.position) <= 1.5 || Vector2.Distance(target.transform.position, leftEye.transform.position) <= 1.5)
+        if (Vector2.Distance(observableTarget.transform.position, rightEye.transform.position) <= 1.5 || Vector2.Distance(observableTarget.transform.position, leftEye.transform.position) <= 1.5)
         //&& (Vector2.Distance(target.transform.position, rightEye.transform.position) >= 0.5 || Vector2.Distance(target.transform.position, leftEye.transform.position) <= 0.5))
         {
             //Debug.Log("THEY ARE TOO CLOSE");
@@ -164,33 +162,94 @@ public class EyeLookAt : MonoBehaviour
         }
     }
 
+    // List Handler
+    private void ListAdd(GameObject objectToAdd)
+    {
+        if (!touchingObjects.Contains(objectToAdd))
+        {
+            touchingObjects.Add(objectToAdd);
+            Debug.Log(objectToAdd.name + " was added");
+            //observableTarget = touchingObjects.Find(objectToAdd => objectToAdd.CompareTag("Observable"));
+            hasObservable = true;
+            Debug.Log("Called Search Assign: " + objectToAdd);
+            SearchAssign(objectToAdd);
 
+        }
+        else
+        {
+            Debug.Log("LIST: OBJECT WAS ALREADY ADDED");
+        }
+    }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void ListRemove(GameObject objectToRemove)
+    {
+        if (touchingObjects.Contains(objectToRemove))
+        {
+            touchingObjects.Remove(objectToRemove);
+            Debug.Log(objectToRemove.name + " was removed");
+
+        }
+
+        SearchAssignNext();
+    }
+
+    private void SearchAssign(GameObject objectToFind) //Assigns when added
+    {
+        int pos = 0;
+        while (pos < touchingObjects.Count)
+        {
+            Debug.Log("Entre a search");
+            if (touchingObjects[pos].name == objectToFind.name)
+            {
+                Debug.Log("Que segun si");
+                observableTarget = touchingObjects[pos];
+                pos = touchingObjects.Count;
+            }
+            else
+            {
+                Debug.Log("Que segun no, ent: pos = " + pos);
+                pos++;
+            }
+        }
+    }
+
+    private void SearchAssignNext() //Adds the first target in list
+    {
+        if (touchingObjects.Count == 0)
+        {
+            Debug.Log("List is empty!");
+            hasObservable = false;
+            tt
+        }
+        else
+        {
+            observableTarget = touchingObjects[0];
+
+        }
+    }
+
+public void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (!touchingObjects.Contains(collision.gameObject) && collision.tag == "Observable")
+        if (collision.gameObject.tag == "Observable")
         {
-            touchingObjects.Add(collision.gameObject);
-            Debug.Log(collision.name + "got added to the list");
-        }
+            ListAdd(collision.gameObject); // Adds to list and assigns added item
             
-         
-            
-        
+        }   
     }
 
 
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (touchingObjects.Contains(collision.gameObject))
+        if (collision.gameObject.tag == "Observable")
         {
+            ListRemove(collision.gameObject);
+
             //Debug.Log("Capacity before " + touchingObjects.Capacity);
             //touchingObjects.Remove(collision.gameObject);
             //Debug.Log("Capacity after " + touchingObjects.Capacity);
         }
-        
     }
 
 
