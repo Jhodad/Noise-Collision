@@ -8,7 +8,6 @@ public class EyeLookAt : MonoBehaviour
     public GameObject rightEye;
     public GameObject leftEye;
 
-
     public Transform rightPupil;
     public Transform leftPupil;
 
@@ -20,34 +19,46 @@ public class EyeLookAt : MonoBehaviour
     Vector2 centerL;
     Vector2 centerR;
 
-    Vector3 directionL;
-    Vector3 directionLR;
-
     public float origSpeed;
-    private float speed;
 
     public List<GameObject> touchingObjects;
     private bool hasObservable;
     private GameObject observableTarget;
+    public GameObject defaultTarget;
 
-    public List<int> test;
+    public Animator anim;
+    private int blinkRandomizer;
+    private int blinkCount;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //origRotation = rightEye.transform.rotation.;
+
+
+        anim = GetComponent<Animator>();
+
         touchingObjects = new List<GameObject>();
+        
         observableTarget = new GameObject();
         observableTarget = null;
+        
         centerL = leftPupil.position;
         centerR = rightPupil.position;
         hasObservable = false;
+        
         EyeDistanceFromCenter(distanceR, distanceL);
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        BlinkRandomizer();
+
         if (hasObservable)
         {
             EyeRotator();
@@ -55,6 +66,8 @@ public class EyeLookAt : MonoBehaviour
         else
         {
             Debug.Log("There are no observables");
+            EyeDefaultRotator();
+
         }
         Debug.Log("Cpacidad: " + touchingObjects.Capacity);
 
@@ -143,6 +156,7 @@ public class EyeLookAt : MonoBehaviour
             Debug.DrawRay(leftEye.transform.position, newDirL, Color.red);
             // Move our position a step closer to the target.
             leftEye.transform.rotation = Quaternion.LookRotation(newDirL);
+
         }
         else
         {
@@ -159,6 +173,121 @@ public class EyeLookAt : MonoBehaviour
             Debug.DrawRay(leftEye.transform.position, newDirL, Color.red);
             // Move our position a step closer to the target.
             leftEye.transform.rotation = Quaternion.LookRotation(newDirL);
+        }
+    }
+
+
+    public void EyeDefaultRotator()
+    {
+        float step = origSpeed * Time.deltaTime * 10;
+
+
+        //Right
+        Vector2 targetDirR = defaultTarget.transform.position - rightEye.transform.position;
+        //Left
+        Vector2 targetDirL = defaultTarget.transform.position - leftEye.transform.position;
+
+       
+
+        if (Vector2.Distance(defaultTarget.transform.position, rightEye.transform.position) <= 1.5 || Vector2.Distance(defaultTarget.transform.position, leftEye.transform.position) <= 1.5)
+        {
+            
+            Vector2 targetDir = Vector2.Lerp(targetDirR, targetDirL, 0.5f);
+
+            //Debug.Log("Distance: " + Vector2.Distance(target.transform.position, rightEye.transform.position));
+            Vector3 newDirR = Vector3.RotateTowards(rightEye.transform.forward, targetDir, step, 0.0f);
+            Debug.DrawRay(rightEye.transform.position, newDirR, Color.red);
+            // Move our position a step closer to the target.
+            rightEye.transform.rotation = Quaternion.LookRotation(newDirR);
+
+            Vector3 newDirL = Vector3.RotateTowards(leftEye.transform.forward, targetDir, step, 0.0f);
+            Debug.DrawRay(leftEye.transform.position, newDirL, Color.red);
+            // Move our position a step closer to the target.
+            leftEye.transform.rotation = Quaternion.LookRotation(newDirL);
+
+        }
+        else
+        {
+            //Debug.Log("Distance: " + Vector2.Distance(target.transform.position, rightEye.transform.position));
+            Vector3 newDirR = Vector3.RotateTowards(rightEye.transform.forward, targetDirR, step, 0.0f);
+            Debug.DrawRay(rightEye.transform.position, newDirR, Color.red);
+            // Move our position a step closer to the target.
+            rightEye.transform.rotation = Quaternion.LookRotation(newDirR);
+
+            Vector3 newDirL = Vector3.RotateTowards(leftEye.transform.forward, targetDirL, step, 0.0f);
+            Debug.DrawRay(leftEye.transform.position, newDirL, Color.red);
+            // Move our position a step closer to the target.
+            leftEye.transform.rotation = Quaternion.LookRotation(newDirL);
+        }
+    }
+
+    private void BlinkRandomizer()
+    {
+        blinkRandomizer = Random.Range(0, 10);
+        if (blinkCount >= 2)
+        {
+            blinkRandomizer = 9;
+            blinkCount = 0;
+        }
+        else
+        {
+            blinkCount += 1;
+        }
+
+
+        switch (blinkRandomizer)
+        {
+            case 0:
+                anim.SetBool("isBlinking",true);
+                break;
+
+            case 5:
+                anim.SetBool("isBlinking", true);
+                break;
+
+            case 10:
+                anim.SetBool("isBlinking", true);
+                break;
+
+
+
+            case 1:
+                anim.SetBool("isBlinking", true);
+                break;
+
+            case 2:
+                anim.SetBool("isBlinking", true);
+                break;
+
+            case 3:
+                anim.SetBool("isBlinking", true);
+                break;
+
+            case 4:
+                anim.SetBool("isBlinking", false);
+                break;
+
+            case 6:
+                anim.SetBool("isBlinking", false);
+                break;
+
+            case 7:
+                anim.SetBool("isBlinking", false);
+                break;
+
+            case 8:
+                anim.SetBool("isBlinking", false);
+                break;
+
+            case 9:
+                anim.SetBool("isBlinking", false);
+                break;
+
+
+
+            default:
+                anim.SetBool("isBlinking", false);
+                break;
         }
     }
 
@@ -219,7 +348,25 @@ public class EyeLookAt : MonoBehaviour
         {
             Debug.Log("List is empty!");
             hasObservable = false;
-            tt
+            EyeDefaultRotator();
+            Debug.Log("Aqui hace la rotacion");
+
+           /* //rightEye.transform.rotation.Set(0,0,90,1);
+             
+            float step = origSpeed * Time.deltaTime;
+            //Right
+            Vector2 targetDirR = new Vector2(rightEye.transform.position.x + 10, rightEye.transform.position.y);
+            //Left
+            Vector2 targetDirL = new Vector2(leftEye.transform.position.x + 10, leftEye.transform.position.y);
+
+            Vector3 newDirR = Vector3.RotateTowards(rightEye.transform.forward, targetDirR, step*100, 0.0f);
+            rightEye.transform.rotation = Quaternion.LookRotation(newDirR);
+
+            Vector3 newDirL = Vector3.RotateTowards(leftEye.transform.forward, targetDirL, step*100, 0.0f);            
+            leftEye.transform.rotation = Quaternion.LookRotation(newDirL);
+        */
+
+
         }
         else
         {

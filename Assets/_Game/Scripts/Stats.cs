@@ -10,6 +10,7 @@ public class Stats : MonoBehaviour {
     public bool isAlive;
     public bool isGrounded;
     public bool isGroundedSlope;
+    public bool isFalling;
 
     // ====================================================================================================================== ||
 

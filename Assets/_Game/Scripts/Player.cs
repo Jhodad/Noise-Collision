@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         stats = GetComponent<Stats>();
 

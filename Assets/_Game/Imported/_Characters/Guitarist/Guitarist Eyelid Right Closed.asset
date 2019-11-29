@@ -1,0 +1,253 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!43 &-1502126363030371678
+Mesh:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: _Guitarist4096_withEyeLids_17
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 39
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 17
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 1.58, y: 1.575, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 0200010000000000010003000100040003000300040005000400060005000500060007000600080007000700080009000a00090008000d000c000b000c000e000b000b000e000f0010000f000e00
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 17
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 24
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 1
+      offset: 0
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 2
+      offset: 0
+      format: 0
+      dimension: 4
+    - stream: 2
+      offset: 16
+      format: 10
+      dimension: 4
+    m_DataSize: 1376
+    _typelessdata: 3333b33f3333a33f000000000000000000000000000080bf0000803f737720b400000000000080bf713dca3f1f854bbf000000000000000000000000000080bf0000803fec3782b200000000000080bf713dca3f7b14ee3e000000000000000000000000000080bf0000803f8261983400000000000080bf9a99593f9a99c93f000000000000000000000000000080bf0000803fd7859ab200000000000080bf85eb513f9a99c9bf000000000000000000000000000080bf0000803f330a03b100000000000080bf5c8fc2be9a99c93f000000000000000000000000000080bf0000803f560a9d3100000000000080bfb81e45bf9a99c9bf000000000000000000000000000080bf0000803f3f4f30b200000000000080bf0ad783bf1f85bb3f000000000000000000000000000080bf0000803fcb5e763200000000000080bf48e1babf7b144ebf000000000000000000000000000080bf0000803f19e09cb300000000000080bfa470bdbfb81e253f000000000000000000000000000080bf0000803f8f09583400000000000080bfa470bdbfae4741bf000000000000000000000000000080bf0000803fc26d2bb500000000000080bf14aec7bf3333533f000000000000000000000000000080bf0000803f78e9b33300000000000080bfb81ec5bf0ad7433f000000000000000000000000000080bf0000803fbe992eb400000000000080bfb81ec5bf7b144e3f000000000000000000000000000080bf0000803f0c00c83500000000000080bfc3f5c8bfae47413f000000000000000000000000000080bf0000803feaf8c5b300000000000080bf713dcabf3333533f000000000000000000000000000080bf0000803f812c2e3300000000000080bf713dcabf0ad7433f000000000000000000000000000080bf0000803f0000000000000000000080bf000000000000000000c0993e00c08e3e00009c3e00c0693e00009c3e00a0843e00e0923e0080923e0080923e0040563e0080833e0080923e00407d3e0040563e00c0763e0020913e00006c3e0080693e00806b3e00e0863e00806b3e00c06a3e0080693e0020893e00006a3e0060883e00006a3e00e0883e0040693e0040883e0000693e0020893e0000693e0060883e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 1.58, y: 1.575, z: 0}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    offset: 0
+    size: 0
+    path: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10c0be6d28fe4d539c4a39822fe301c, type: 3}
+  m_Name: Guitarist Eyelid Right Closed
+  m_EditorClassIdentifier: 
+  m_ApiVersion: 4
+  m_Sprite: {fileID: 9048259632841889805, guid: 7d957d15f8ad9b447869f060ac1b6c73,
+    type: 3}
+  m_SharedMesh: {fileID: -1502126363030371678}
+  m_SharedMaterials: []
+--- !u!114 &7005280064386736813
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e715ea371f114f4a8d2584ad476634d, type: 3}
+  m_Name: _Guitarist4096_withEyeLids_17_Data
+  m_EditorClassIdentifier: 
+  m_PivotPoint: {x: 1090, y: 1014.5}
+  m_Vertices:
+  - {x: 1230, y: 1142}
+  - {x: 1248, y: 935}
+  - {x: 1248, y: 1061}
+  - {x: 1175, y: 1172}
+  - {x: 1172, y: 857}
+  - {x: 1052, y: 1172}
+  - {x: 1013, y: 857}
+  - {x: 987, y: 1161}
+  - {x: 944, y: 934}
+  - {x: 942, y: 1079}
+  - {x: 942, y: 939}
+  - {x: 934, y: 1097}
+  - {x: 936, y: 1091}
+  - {x: 936, y: 1095}
+  - {x: 933, y: 1090}
+  - {x: 932, y: 1097}
+  - {x: 932, y: 1091}
+  m_BoneWeights: []
+  m_Edges:
+  - index1: 16
+    index2: 15
+  - index1: 11
+    index2: 15
+  - index1: 16
+    index2: 14
+  - index1: 13
+    index2: 11
+  - index1: 12
+    index2: 14
+  - index1: 13
+    index2: 12
+  - index1: 10
+    index2: 9
+  - index1: 7
+    index2: 9
+  - index1: 10
+    index2: 8
+  - index1: 5
+    index2: 7
+  - index1: 6
+    index2: 8
+  - index1: 3
+    index2: 5
+  - index1: 4
+    index2: 6
+  - index1: 0
+    index2: 3
+  - index1: 1
+    index2: 4
+  - index1: 2
+    index2: 0
+  - index1: 2
+    index2: 1
+  m_Holes: []
+  m_Indices: 100000000f0000000e0000000b0000000e0000000f0000000c0000000e0000000b0000000d0000000c0000000b0000000a0000000900000008000000070000000800000009000000060000000800000007000000050000000600000007000000040000000600000005000000030000000400000005000000010000000400000003000000000000000100000003000000020000000100000000000000
+  m_BindPoses: []
+  m_Blendshapes: []
