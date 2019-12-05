@@ -28,8 +28,9 @@ public class EyeLookAt : MonoBehaviour
 
     public Animator anim;
     private int blinkRandomizer;
+    
     private int blinkCount;
-
+    private int secondsWithoutBlink = 0;
 
 
     // Start is called before the first frame update
@@ -51,13 +52,13 @@ public class EyeLookAt : MonoBehaviour
         
         EyeDistanceFromCenter(distanceR, distanceL);
 
-        
+        StartCoroutine(WaitSeconds());
     }
 
     // Update is called once per frame
     void Update()
     {
-        BlinkRandomizer();
+        
 
         if (hasObservable)
         {
@@ -137,7 +138,7 @@ public class EyeLookAt : MonoBehaviour
 
         //Vector2 targetDir = Vector2.Lerp(targetDirR, targetDirL, 0.5f);
 
-        if (Vector2.Distance(observableTarget.transform.position, rightEye.transform.position) <= 1.5 || Vector2.Distance(observableTarget.transform.position, leftEye.transform.position) <= 1.5)
+        if (true) //Vector2.Distance(observableTarget.transform.position, rightEye.transform.position) <= 1.5 || Vector2.Distance(observableTarget.transform.position, leftEye.transform.position) <= 1.5
         //&& (Vector2.Distance(target.transform.position, rightEye.transform.position) >= 0.5 || Vector2.Distance(target.transform.position, leftEye.transform.position) <= 0.5))
         {
             //Debug.Log("THEY ARE TOO CLOSE");
@@ -221,19 +222,29 @@ public class EyeLookAt : MonoBehaviour
         }
     }
 
+    IEnumerator WaitSeconds()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            secondsWithoutBlink++;
+            BlinkRandomizer();
+        }
+    }
     private void BlinkRandomizer()
     {
         blinkRandomizer = Random.Range(0, 10);
-        if (blinkCount >= 2)
-        {
-            blinkRandomizer = 9;
-            blinkCount = 0;
-        }
-        else
-        {
-            blinkCount += 1;
-        }
+        
 
+
+        if (blinkRandomizer <= 5)
+        {
+            blinkRandomizer = 1;
+        }
+        else 
+        {
+            blinkRandomizer = 0;
+        }
 
         switch (blinkRandomizer)
         {
@@ -241,53 +252,30 @@ public class EyeLookAt : MonoBehaviour
                 anim.SetBool("isBlinking",true);
                 break;
 
-            case 5:
-                anim.SetBool("isBlinking", true);
-                break;
-
-            case 10:
-                anim.SetBool("isBlinking", true);
-                break;
-
-
-
             case 1:
-                anim.SetBool("isBlinking", true);
-                break;
-
-            case 2:
-                anim.SetBool("isBlinking", true);
-                break;
-
-            case 3:
-                anim.SetBool("isBlinking", true);
-                break;
-
-            case 4:
                 anim.SetBool("isBlinking", false);
                 break;
-
-            case 6:
-                anim.SetBool("isBlinking", false);
-                break;
-
-            case 7:
-                anim.SetBool("isBlinking", false);
-                break;
-
-            case 8:
-                anim.SetBool("isBlinking", false);
-                break;
-
-            case 9:
-                anim.SetBool("isBlinking", false);
-                break;
-
-
 
             default:
                 anim.SetBool("isBlinking", false);
                 break;
+        }
+
+        if (secondsWithoutBlink > 5)
+        {
+            secondsWithoutBlink = 0;
+            anim.SetBool("isBlinking", true);
+        }
+
+        Debug.Log("BLINK: " + blinkCount);
+        if (blinkCount > 3)
+        {
+            anim.SetBool("isBlinking", false);
+            blinkCount = 0;
+        }
+        else
+        {
+            blinkCount++;
         }
     }
 

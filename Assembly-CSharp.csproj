@@ -81,6 +81,7 @@
     <Compile Include="Assets\_Game\Scripts\Slot.cs" />
     <Compile Include="Assets\_Game\Scripts\SmoothCamera2D.cs" />
     <Compile Include="Assets\_Game\Scripts\Stats.cs" />
+    <Compile Include="Assets\Anim_EyeBlink.cs" />
     <Compile Include="Assets\Anima2D\Examples\Scripts\CharacterMotion.cs" />
     <Compile Include="Assets\Anima2D\Examples\Scripts\Follow.cs" />
     <Compile Include="Assets\Anima2D\Examples\Scripts\SkinnedMeshCombiner.cs" />
