@@ -14,6 +14,13 @@ public class Stats : MonoBehaviour {
 
     // ====================================================================================================================== ||
 
+
+    // MAX Capactiy Stats
+    [Header("MAX Stats")]
+    public float maxHealth;
+    public float maxBattery;
+
+
     // Default Stats - Base
     [Header("Default - Base")]
     public float defaultHealth;
@@ -126,6 +133,9 @@ public class Stats : MonoBehaviour {
     // =========================================================== ||
     private void InitializeBaseStats()
     {
+        maxHealth = defaultHealth;
+        maxBattery = defaultBattery;
+
         currentHealth = defaultHealth;
         currentBattery = defaultBattery;
 
@@ -161,6 +171,15 @@ public class Stats : MonoBehaviour {
     // =========================================================== ||
     // =========================================================== ||
         
+    public float CurrentHealthPercent()
+    {
+        float result;
+        result = currentHealth / maxHealth;
+        return result;
+    }
+
+
+    // UPDATE TO USE PERCENT!!!!!!!!!!!!
     private bool CheckHealth()
     {
         if (currentHealth > 0)
@@ -173,6 +192,21 @@ public class Stats : MonoBehaviour {
         }
         return isAlive;
     }
+
+
+    // =========================================================== ||
+    // =========================================================== ||
+    // == Energy
+    // =========================================================== ||
+    // =========================================================== ||
+
+    public float CurrentEnergyPercent()
+    {
+        float result;
+        result = currentBattery / maxBattery;
+        return result;
+    }
+
 
     // =========================================================== ||
     // =========================================================== ||
