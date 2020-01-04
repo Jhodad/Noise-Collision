@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD_HealthBar : MonoBehaviour
 {
 
     public RawImage barRawImageEffect;
+    public RawImage barRawImageEdge;
 
     public RawImage barRawImage;
     private Color barColor;
-
 
     private float barMaskWidth;
     public RectTransform barMaskRectTransform;
@@ -19,6 +20,13 @@ public class HUD_HealthBar : MonoBehaviour
     public Stats stats;
 
     private float healthPercent;
+
+    [Header("Display Texts")]
+    public TextMeshProUGUI capacityMaxNumbers;
+    public TextMeshProUGUI capacityCurrentNumbers;
+
+    public TextMeshProUGUI capacityMaxPercent;
+    public TextMeshProUGUI capacityCurrentPercent;
 
     private void Start()
     {
@@ -36,6 +44,12 @@ public class HUD_HealthBar : MonoBehaviour
         uvRect.x -= 0.2f * Time.deltaTime;
         barRawImageEffect.uvRect = uvRect;
 
+        //Edge Effect
+        Rect uvRectB = barRawImageEdge.uvRect;
+        //uvRectB.x += 1f * Time.deltaTime;
+        uvRectB.y -= 1f * Time.deltaTime;
+        barRawImageEdge.uvRect = uvRectB;
+
         healthPercent = CheckCurrentHealthPercent();
 
         Vector2 barMaskSizeDelta = barMaskRectTransform.sizeDelta;
@@ -44,7 +58,12 @@ public class HUD_HealthBar : MonoBehaviour
 
         edgeRectTransform.anchoredPosition = new Vector2(barMaskWidth * healthPercent,0);
 
-        
+        // Updates text, could be only when there are changes
+        capacityCurrentNumbers.text = stats.currentHealth.ToString();
+        capacityMaxNumbers.text = "/ " + stats.maxHealth.ToString();
+
+        capacityCurrentPercent.text = (stats.CurrentHealthPercent() * 100).ToString() + " %";
+        capacityMaxPercent.text = "/ 100 %";
     }
 
     private float CheckCurrentHealthPercent()

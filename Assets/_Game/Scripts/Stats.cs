@@ -19,12 +19,13 @@ public class Stats : MonoBehaviour {
     [Header("MAX Stats")]
     public float maxHealth;
     public float maxBattery;
-
+    public float maxInstMeter;
 
     // Default Stats - Base
     [Header("Default - Base")]
     public float defaultHealth;
     public float defaultBattery;
+    public float defaultInstMeter;
     public float defaultAtk;
     public float defaultDef;
     public float defaultSpeed;
@@ -36,6 +37,7 @@ public class Stats : MonoBehaviour {
     [Header("Default - Modifiers")]
     public float defaultModifierHealth;
     public float defaultModifierBattery;
+    public float defaultModifierInstMeter;
     public float defaultModifierAtk;
     public float defaultModifierDef;
     public float defaultModifierSpeed;
@@ -50,6 +52,7 @@ public class Stats : MonoBehaviour {
     // Current Stats - Base
     public float currentHealth;
     public float currentBattery;
+    public float currentInstMeter;
     public float currentAtk;
     public float currentDef;
     public float currentSpeed;
@@ -61,6 +64,7 @@ public class Stats : MonoBehaviour {
     [Header("Current - Modifiers")]
     public float currentModifierHealth;
     public float currentModifierBattery;
+    public float currentModifiereInstMeter;
     public float currentModifierAtk;
     public float currentModifierDef;
     public float currentModifierSpeed;
@@ -84,7 +88,7 @@ public class Stats : MonoBehaviour {
     private float needXP;       //XP Needed for next Level up
     private float gainedXP;     //XP earned but not registered
 
-    private float currentLevel; 
+    private float currentLevel;
 
     // ====================================================================================================================== ||
 
@@ -99,7 +103,9 @@ public class Stats : MonoBehaviour {
     // =========================================================== ||
     // =========================================================== ||
 
-
+    bool goingDownh;
+    bool goingDowne;
+    bool goingDowni;
 
     // Use this for initialization
     void Start () {
@@ -113,6 +119,61 @@ public class Stats : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (CurrentHealthPercent() >= 1)
+        {
+            goingDownh = true;
+        }
+        else if (CurrentHealthPercent() == .1f)
+        {
+            goingDownh = false;
+        }
+
+        if (goingDownh)
+        {
+            currentHealth -= 0.5f;
+        }
+        else
+        {
+            currentHealth += 0.5f;            
+        }
+
+        // 2
+        if (CurrentBatteryPercent() >= 1)
+        {
+            goingDowne = true;
+        }
+        else if (CurrentBatteryPercent() == .1f)
+        {
+            goingDowne = false;
+        }
+
+        if (goingDowne)
+        {
+            currentBattery -= 0.5f;
+        }
+        else
+        {
+            currentBattery += 0.5f;
+        }
+
+        //3 
+        if (CurrentInstrumentMeterPercent() >= 1)
+        {
+            goingDowni = true;
+        }
+        else if (CurrentInstrumentMeterPercent() == .1f)
+        {
+            goingDowni = false;
+        }
+
+        if (goingDowni)
+        {
+            currentInstMeter -= 0.5f;
+        }
+        else
+        {
+            currentInstMeter += 0.5f;
+        }
 
         // Checks
         CheckHealth(); // Checks if player isAlive
@@ -135,12 +196,15 @@ public class Stats : MonoBehaviour {
     {
         maxHealth = defaultHealth;
         maxBattery = defaultBattery;
+        maxInstMeter = defaultInstMeter;
 
         currentHealth = defaultHealth;
         currentBattery = defaultBattery;
+        currentInstMeter = defaultInstMeter;
 
         currentAtk = defaultAtk;
         currentDef = defaultDef;
+
         currentSpeed = defaultSpeed;
         currentJump = defaultJump;
         currentBlockResist = defaultBlockResist;
@@ -151,6 +215,8 @@ public class Stats : MonoBehaviour {
 
         currentModifierHealth = defaultModifierHealth;
         currentModifierBattery = defaultModifierBattery;
+        currentModifiereInstMeter = defaultModifierInstMeter;
+
         currentModifierAtk = defaultModifierAtk;
         currentModifierDef = defaultModifierDef;
         currentModifierSpeed = defaultModifierSpeed;
@@ -200,10 +266,24 @@ public class Stats : MonoBehaviour {
     // =========================================================== ||
     // =========================================================== ||
 
-    public float CurrentEnergyPercent()
+    public float CurrentBatteryPercent()
     {
         float result;
         result = currentBattery / maxBattery;
+        return result;
+    }
+
+
+    // =========================================================== ||
+    // =========================================================== ||
+    // == Instrument Meter
+    // =========================================================== ||
+    // =========================================================== ||
+
+    public float CurrentInstrumentMeterPercent()
+    {
+        float result;
+        result = currentInstMeter / maxInstMeter;
         return result;
     }
 

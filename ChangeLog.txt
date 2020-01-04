@@ -143,7 +143,7 @@ Missing:
 
 
 =====================
-== Version Dev_1.1 ==
+== Version Dev_1.7.1 ==
 =====================
 Added:
 - New not bone bound set of eyes
@@ -166,3 +166,22 @@ Missing:
 - Making camera not follow over Axis Y, so it's not clunky
 - EyeLookAt.cs needs a way to recognize Observable objects without Tags
 - Fin tune Radius and Speed for the eyes' auto-tracking
+
+=======================================================================================================
+
+=====================
+== Version Dev_1.2 ==
+=====================
+Added:
+- Fully working customizable HUD
+
+Removed:
+
+
+Fixed:
+
+
+Bugs:
+
+
+Missing: 

@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD_InstrumentBar : MonoBehaviour
 {
 
     public RawImage barRawImageEffect;
+    public RawImage barRawImageEdge;
+    public RawImage barRawImageEdge2;
 
     public RawImage barRawImage;
     private Color barColor;
@@ -18,7 +21,7 @@ public class HUD_InstrumentBar : MonoBehaviour
 
     public Stats stats;
 
-    private float healthPercent;
+    private float instMeterPercent;
 
     private void Start()
     {
@@ -31,26 +34,39 @@ public class HUD_InstrumentBar : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Current health is: " + stats.CurrentHealthPercent() * 100 + "%");
+        Debug.Log("Current instrument meter is: " + stats.CurrentHealthPercent() * 100 + "%");
         Rect uvRect = barRawImageEffect.uvRect;
-        uvRect.y -= 0.2f * Time.deltaTime;
+        uvRect.x -= 0.02f * Time.deltaTime;
         barRawImageEffect.uvRect = uvRect;
 
-        healthPercent = CheckCurrentHealthPercent();
+        //Edge Effect
+        Rect uvRectB = barRawImageEdge.uvRect;
+        uvRectB.x -= 1f * Time.deltaTime;
+        //uvRectB.y += 1f * Time.deltaTime;
+        barRawImageEdge.uvRect = uvRectB;
+
+        Rect uvRectB2 = barRawImageEdge2.uvRect;
+        //uvRectB2.x += 1f * Time.deltaTime;
+        uvRectB2.y += 1f * Time.deltaTime;
+        barRawImageEdge2.uvRect = uvRectB2;
+
+        instMeterPercent = CheckCurrentInstrumentMeterPercent();
 
         Vector2 barMaskSizeDelta = barMaskRectTransform.sizeDelta;
-        barMaskSizeDelta.y = barMaskWidth * healthPercent;
+        barMaskSizeDelta.y = barMaskWidth * instMeterPercent;
         barMaskRectTransform.sizeDelta = barMaskSizeDelta;
 
-        edgeRectTransform.anchoredPosition = new Vector2(0, barMaskWidth * healthPercent);
+        edgeRectTransform.anchoredPosition = new Vector2(0, barMaskWidth * instMeterPercent);
+
+       
 
         
     }
 
-    private float CheckCurrentHealthPercent()
+    private float CheckCurrentInstrumentMeterPercent()
     {
 
-        if (stats.CurrentHealthPercent() > 1)
+        if (stats.CurrentInstrumentMeterPercent() > 1)
         {
             Debug.Log("SI ES MAS GRANDE q 1");
             barRawImage.color = Color.red;
@@ -59,17 +75,17 @@ public class HUD_InstrumentBar : MonoBehaviour
             return 1;
 
         }
-        else if (stats.CurrentHealthPercent() == 1)
+        else if (stats.CurrentInstrumentMeterPercent() == 1)
         {
             edgeRectTransform.gameObject.SetActive(false);
-            return stats.CurrentHealthPercent();
+            return stats.CurrentInstrumentMeterPercent();
         }
         else 
         {
             edgeRectTransform.gameObject.SetActive(true);
             Debug.Log("NO ESS MAS GRANDE q 1");
             barRawImage.color = barColor;
-            return stats.CurrentHealthPercent();
+            return stats.CurrentInstrumentMeterPercent();
         }
     }
     
