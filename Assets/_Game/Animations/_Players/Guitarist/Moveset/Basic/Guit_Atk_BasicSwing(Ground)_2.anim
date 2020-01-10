@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Guit_Atk_Ground_Default_Horizontal_2
+  m_Name: Guit_Atk_BasicSwing(Ground)_2
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0

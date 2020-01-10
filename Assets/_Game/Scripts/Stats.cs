@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class Stats : MonoBehaviour {
+public class Stats : MonoBehaviour
+{
 
     [Header("Character")]
     public int characterID;
@@ -26,6 +27,11 @@ public class Stats : MonoBehaviour {
     public float defaultHealth;
     public float defaultBattery;
     public float defaultInstMeter;
+
+    public float defaultRegenHealth;
+    public float defaultRegenBattery;
+    public float defaultRegenInst;
+
     public float defaultAtk;
     public float defaultDef;
     public float defaultSpeed;
@@ -33,26 +39,16 @@ public class Stats : MonoBehaviour {
     public float defaultBlockResist;
     public float defaultEvadeStartup;
 
-    // Default Stats - Modifiers / Multipliers
-    [Header("Default - Modifiers")]
-    public float defaultModifierHealth;
-    public float defaultModifierBattery;
-    public float defaultModifierInstMeter;
-    public float defaultModifierAtk;
-    public float defaultModifierDef;
-    public float defaultModifierSpeed;
-    public float defaultModifierJump;
-    public float defaultModifierBlockResist;
-    public float defaultModifierEvadeStartup;
-    
-    public float defaultModifierAir;
-    public float defaultModifierGround;
-
     [Header("Current - Base")]
     // Current Stats - Base
     public float currentHealth;
     public float currentBattery;
     public float currentInstMeter;
+
+    public float currentRegenHealth;
+    public float currentRegenBattery;
+    public float currentRegenInst;
+
     public float currentAtk;
     public float currentDef;
     public float currentSpeed;
@@ -62,18 +58,28 @@ public class Stats : MonoBehaviour {
 
     // Current Stats - Modifiers / Multipliers
     [Header("Current - Modifiers")]
-    public float currentModifierHealth;
-    public float currentModifierBattery;
-    public float currentModifiereInstMeter;
-    public float currentModifierAtk;
-    public float currentModifierDef;
-    public float currentModifierSpeed;
-    public float currentModifierJump;
-    public float currentModifierBlockResist;
-    public float currentModifierEvadeStartup;
+    public float modifierHealth;
+    public float modifierBattery;
+    public float modifierInstMeter;
 
-    public float currentModifierGround;
-    public float currentModifierAir;
+    public float modifierRegenHealth;
+    public float modifierRegenBattery;
+    public float modifierRegenInst;
+
+    public float modifierAtk;
+    public float modifierDef;
+    public float modifierSpeed;
+    public float modifierJump;
+    public float modifierBlockResist;
+    public float modifierEvadeStartup;
+
+    public float modifierGround;
+    public float modifierAir;
+
+    // For Direction observers
+    float lastValueBattery;
+    float lastValueHealth;
+    float lastValueInst;
 
     // ====================================================================================================================== ||
 
@@ -108,13 +114,14 @@ public class Stats : MonoBehaviour {
     bool goingDowni;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         // IF character is created for the first time
         InitializeBaseStats();
 
         // WHEN character is loaded from a save state        
-	}
+    }
 
     // Update is called once per frame
     void Update()
@@ -134,27 +141,11 @@ public class Stats : MonoBehaviour {
         }
         else
         {
-            currentHealth += 0.5f;            
+            currentHealth += 0.5f;
         }
 
         // 2
-        if (CurrentBatteryPercent() >= 1)
-        {
-            goingDowne = true;
-        }
-        else if (CurrentBatteryPercent() == .1f)
-        {
-            goingDowne = false;
-        }
 
-        if (goingDowne)
-        {
-            currentBattery -= 0.5f;
-        }
-        else
-        {
-            currentBattery += 0.5f;
-        }
 
         //3 
         if (CurrentInstrumentMeterPercent() >= 1)
@@ -177,6 +168,12 @@ public class Stats : MonoBehaviour {
 
         // Checks
         CheckHealth(); // Checks if player isAlive
+        
+        CheckBatteryDirection();
+        Debug.Log("Current battery before: " + currentBattery);
+        RestoreBattery();
+        Debug.Log("Current battery after: " + currentBattery);
+
         Debug.Log("Current XP: " + currentXP);
         Debug.Log("Needed XP: " + needXP);
     }
@@ -192,15 +189,36 @@ public class Stats : MonoBehaviour {
     // ==  Stats on First Creation 
     // =========================================================== ||
     // =========================================================== ||
-    private void InitializeBaseStats()
+    private void InitializeBaseStats() // SHOULD LOAD FROM A SAVE STATE
     {
+        // INITIAL MAX
         maxHealth = defaultHealth;
         maxBattery = defaultBattery;
         maxInstMeter = defaultInstMeter;
 
+        // INITIAL MODIFIER
+        modifierGround = 1;
+        modifierAir = 1;
+
+        modifierHealth = 1;
+        modifierBattery = 1;
+        modifierInstMeter = 1;
+
+        modifierAtk = 1;
+        modifierDef = 1;
+        modifierSpeed = 1;
+        modifierJump = 1;
+        modifierBlockResist = 1;
+        modifierEvadeStartup = 1;
+
+        // INITIAL CURRENTS
         currentHealth = defaultHealth;
         currentBattery = defaultBattery;
         currentInstMeter = defaultInstMeter;
+
+        currentRegenHealth = defaultRegenHealth;
+        currentRegenBattery = defaultRegenBattery;
+        currentRegenInst = defaultRegenInst;
 
         currentAtk = defaultAtk;
         currentDef = defaultDef;
@@ -210,24 +228,16 @@ public class Stats : MonoBehaviour {
         currentBlockResist = defaultBlockResist;
         currentEvadeStartup = defaultEvadeStartup;
 
-        currentModifierGround = defaultModifierGround;
-        currentModifierAir = defaultModifierAir;
-
-        currentModifierHealth = defaultModifierHealth;
-        currentModifierBattery = defaultModifierBattery;
-        currentModifiereInstMeter = defaultModifierInstMeter;
-
-        currentModifierAtk = defaultModifierAtk;
-        currentModifierDef = defaultModifierDef;
-        currentModifierSpeed = defaultModifierSpeed;
-        currentModifierJump = defaultModifierJump;
-        currentModifierBlockResist = defaultModifierBlockResist;
-        currentModifierEvadeStartup = defaultModifierEvadeStartup;
-
+        // XP
         currentXP = 0;
         leftoverXP = 0;
         needXP = 100;
         currentLevel = 1;
+
+        // LAST VALUES for Directions
+        lastValueBattery = maxBattery;
+        lastValueHealth = maxHealth;
+        lastValueInst = maxInstMeter;
 
     }
 
@@ -236,7 +246,7 @@ public class Stats : MonoBehaviour {
     // == Health
     // =========================================================== ||
     // =========================================================== ||
-        
+
     public float CurrentHealthPercent()
     {
         float result;
@@ -273,6 +283,47 @@ public class Stats : MonoBehaviour {
         return result;
     }
 
+    public int CheckBatteryDirection()
+    {
+        int result;
+
+        if (currentBattery < lastValueBattery)
+        { // Battery going down
+            lastValueBattery = currentBattery;
+            Debug.Log("Battery going down");
+            result = -1;
+        }
+        else if (currentBattery > lastValueBattery)
+        { // Battery going up
+            lastValueBattery = currentBattery;
+            Debug.Log("Battery going up");
+            result = 1;
+        }
+        else
+        { // Battery remains same
+            result = 0;
+            Debug.Log("Battery same");
+        }
+        return result;
+    }
+
+    private void RestoreBattery()
+    {
+        if (currentBattery < maxBattery)
+        {
+            if ((currentBattery += currentRegenBattery) < maxBattery)
+            {
+                currentBattery += currentRegenBattery;
+            }
+            else
+            {
+                Debug.Log("I SET TO MAX");
+                currentBattery = maxBattery;
+                
+            }
+        }   
+    }
+
 
     // =========================================================== ||
     // =========================================================== ||
@@ -302,7 +353,7 @@ public class Stats : MonoBehaviour {
             currentXP = currentXP + XP;
             currentXP = currentXP - needXP;
             LevelUp();
-            
+
         }
         else
         {
@@ -317,7 +368,7 @@ public class Stats : MonoBehaviour {
 
     private void CalculateNextLevelXP()
     {
-        needXP+=100;
+        needXP += 100;
     }
 
     private bool CheckIfLevelUp()      //Before adding gainedXP into currentXP, check if it makes the character level up
@@ -330,13 +381,13 @@ public class Stats : MonoBehaviour {
         {
             return false;
         }
-         
+
     }
 
-    private void LevelUp() 
+    private void LevelUp()
     {
         Debug.Log("Subi de nivel: " + currentLevel);
-        currentLevel =currentLevel + 1; //Agregar efectos despues de la suma
+        currentLevel = currentLevel + 1; //Agregar efectos despues de la suma
         CalculateNextLevelXP();
     }
 

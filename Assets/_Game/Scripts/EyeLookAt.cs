@@ -70,7 +70,7 @@ public class EyeLookAt : MonoBehaviour
             EyeDefaultRotator();
 
         }
-        Debug.Log("Cpacidad: " + touchingObjects.Capacity);
+        //Debug.Log("Cpacidad: " + touchingObjects.Capacity);
 
     }
 
@@ -268,7 +268,7 @@ public class EyeLookAt : MonoBehaviour
         }
 
         Debug.Log("BLINK: " + blinkCount);
-        if (blinkCount > 3)
+        if (blinkCount >= 4)
         {
             anim.SetBool("isBlinking", false);
             blinkCount = 0;

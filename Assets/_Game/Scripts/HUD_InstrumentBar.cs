@@ -34,7 +34,7 @@ public class HUD_InstrumentBar : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Current instrument meter is: " + stats.CurrentHealthPercent() * 100 + "%");
+        //Debug.Log("Current instrument meter is: " + stats.CurrentHealthPercent() * 100 + "%");
         Rect uvRect = barRawImageEffect.uvRect;
         uvRect.x -= 0.02f * Time.deltaTime;
         barRawImageEffect.uvRect = uvRect;
@@ -68,7 +68,7 @@ public class HUD_InstrumentBar : MonoBehaviour
 
         if (stats.CurrentInstrumentMeterPercent() > 1)
         {
-            Debug.Log("SI ES MAS GRANDE q 1");
+            //Debug.Log("SI ES MAS GRANDE q 1");
             barRawImage.color = Color.red;
             // pasa algo del overflow
             edgeRectTransform.gameObject.SetActive(false);
@@ -83,7 +83,7 @@ public class HUD_InstrumentBar : MonoBehaviour
         else 
         {
             edgeRectTransform.gameObject.SetActive(true);
-            Debug.Log("NO ESS MAS GRANDE q 1");
+            //Debug.Log("NO ESS MAS GRANDE q 1");
             barRawImage.color = barColor;
             return stats.CurrentInstrumentMeterPercent();
         }

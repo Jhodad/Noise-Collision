@@ -38,7 +38,7 @@ public class HUD_EnergyBar : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Current energy is: " + stats.CurrentBatteryPercent() * 100 + "%");
+        //Debug.Log("Current energy is: " + stats.CurrentBatteryPercent() * 100 + "%");
         Rect uvRect = barRawImageEffect.uvRect;
         uvRect.x -= 0.2f * Time.deltaTime;
         barRawImageEffect.uvRect = uvRect;
@@ -70,7 +70,7 @@ public class HUD_EnergyBar : MonoBehaviour
 
         if (stats.CurrentBatteryPercent() > 1)
         {
-            Debug.Log("SI ES MAS GRANDE q 1");
+            //Debug.Log("SI ES MAS GRANDE q 1");
             barRawImage.color = Color.red;
             // pasa algo del overflow
             edgeRectTransform.gameObject.SetActive(false);
@@ -85,7 +85,7 @@ public class HUD_EnergyBar : MonoBehaviour
         else 
         {
             edgeRectTransform.gameObject.SetActive(true);
-            Debug.Log("NO ESS MAS GRANDE q 1");
+            //Debug.Log("NO ESS MAS GRANDE q 1");
             barRawImage.color = barColor;
             return stats.CurrentBatteryPercent();
         }

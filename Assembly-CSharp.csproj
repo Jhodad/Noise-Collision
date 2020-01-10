@@ -67,8 +67,6 @@
     <Compile Include="Assets\_Game\Scripts\Anim_EyeBlink.cs" />
     <Compile Include="Assets\_Game\Scripts\Anim_PlayingAttack.cs" />
     <Compile Include="Assets\_Game\Scripts\Anim_Recovery.cs" />
-    <Compile Include="Assets\_Game\Scripts\AttackHandler.cs" />
-    <Compile Include="Assets\_Game\Scripts\AttackListGuitar.cs" />
     <Compile Include="Assets\_Game\Scripts\CameraSwitch.cs" />
     <Compile Include="Assets\_Game\Scripts\CollisionHandler.cs" />
     <Compile Include="Assets\_Game\Scripts\DescriptionBar.cs" />
@@ -79,6 +77,8 @@
     <Compile Include="Assets\_Game\Scripts\HUD_SplitterColorer.cs" />
     <Compile Include="Assets\_Game\Scripts\InventoryTabs.cs" />
     <Compile Include="Assets\_Game\Scripts\Item.cs" />
+    <Compile Include="Assets\_Game\Scripts\MovesetHandler.cs" />
+    <Compile Include="Assets\_Game\Scripts\MovesetList_Guitar.cs" />
     <Compile Include="Assets\_Game\Scripts\NPCBehaviour.cs" />
     <Compile Include="Assets\_Game\Scripts\OverlapBox.cs" />
     <Compile Include="Assets\_Game\Scripts\Player.cs" />

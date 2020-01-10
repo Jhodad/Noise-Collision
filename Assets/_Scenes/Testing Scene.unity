@@ -4942,49 +4942,47 @@ MonoBehaviour:
   isGrounded: 0
   isGroundedSlope: 0
   isFalling: 0
-  maxHealth: 0
-  maxBattery: 0
-  maxInstMeter: 0
+  maxHealth: 100
+  maxBattery: 150
+  maxInstMeter: 200
   defaultHealth: 100
-  defaultBattery: 250
-  defaultInstMeter: 300
+  defaultBattery: 150
+  defaultInstMeter: 200
+  defaultRegenHealth: 0.1
+  defaultRegenBattery: 0.1
+  defaultRegenInst: 0.1
   defaultAtk: 50
   defaultDef: 50
-  defaultSpeed: 2
-  defaultJump: 2
+  defaultSpeed: 20
+  defaultJump: 20
   defaultBlockResist: 20
   defaultEvadeStartup: 5
-  defaultModifierHealth: 1
-  defaultModifierBattery: 1
-  defaultModifierInstMeter: 0
-  defaultModifierAtk: 1
-  defaultModifierDef: 1
-  defaultModifierSpeed: 10
-  defaultModifierJump: 5
-  defaultModifierBlockResist: 1
-  defaultModifierEvadeStartup: 1
-  defaultModifierAir: 1
-  defaultModifierGround: 1
   currentHealth: 0
   currentBattery: 0
   currentInstMeter: 0
+  currentRegenHealth: 0
+  currentRegenBattery: 0
+  currentRegenInst: 0
   currentAtk: 0
   currentDef: 0
   currentSpeed: 0
   currentJump: 0
   currentBlockResist: 0
   currentEvadeStartup: 0
-  currentModifierHealth: 0
-  currentModifierBattery: 0
-  currentModifiereInstMeter: 0
-  currentModifierAtk: 0
-  currentModifierDef: 0
-  currentModifierSpeed: 1
-  currentModifierJump: 5
-  currentModifierBlockResist: 0
-  currentModifierEvadeStartup: 0
-  currentModifierGround: 0
-  currentModifierAir: 0
+  modifierHealth: 0
+  modifierBattery: 0
+  modifierInstMeter: 0
+  modifierRegenHealth: 0
+  modifierRegenBattery: 0
+  modifierRegenInst: 0
+  modifierAtk: 0
+  modifierDef: 0
+  modifierSpeed: 0
+  modifierJump: 0
+  modifierBlockResist: 0
+  modifierEvadeStartup: 0
+  modifierGround: 0
+  modifierAir: 0
   baseStatSelector: 0
   secondStatSelector: 0
 --- !u!114 &573076617

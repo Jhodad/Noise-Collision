@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     Player player;
     Stats stats;
     InventoryTabs inventory;
-    AttackHandler attackHandler;
+    MovesetHandler movesetHandler;
     bool stopInput;
 
     // Start is called before the first frame update
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
         
         player = GetComponent<Player>();
         inventory = GetComponent<InventoryTabs>();
-        attackHandler = GetComponent<AttackHandler>();
+        movesetHandler = GetComponent<MovesetHandler>();
         stats = GetComponent<Stats>();
         stopInput = false;
     }
@@ -55,12 +55,18 @@ public class PlayerController : MonoBehaviour
         // ======       Attacks         ====== //
         // ================================== //
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            stats.AddXP(150);
+            movesetHandler.Perform(0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Y) && !player.anim.GetBool("isPlayingAttack")) //!stopInput)
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            movesetHandler.Perform(1);
+        }
+
+        /*
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debug.Log("======================= INICIO HORIZ TODO =======================");
             stopInput = true;
@@ -69,12 +75,31 @@ public class PlayerController : MonoBehaviour
             Debug.Log("======================= FIN HORIZ TODO =======================");
         }
 
-        if (Input.GetKeyDown(KeyCode.U) && !player.anim.GetBool("isPlayingAttack")) //!stopInput)
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Debug.Log("======================= INICIO VERTICAL TODO=======================");
-            stopInput = true;
+            //stopInput = true;
             attackHandler.Attack("Ground Vertical");
             Debug.Log("======================= FIN VERTICAL TODO =======================");
+        }
+
+         */
+
+        // XP TEST
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            stats.AddXP(150);
+        }
+
+        // Battery Recovery Test
+        if (Input.GetKeyDown(KeyCode.Period))
+        {
+            stats.currentBattery = stats.currentBattery - 10;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Comma))
+        {
+            stats.currentBattery = stats.currentBattery + 10;
         }
 
 

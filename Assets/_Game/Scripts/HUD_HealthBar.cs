@@ -39,7 +39,7 @@ public class HUD_HealthBar : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Current health is: " + stats.CurrentHealthPercent() * 100 + "%");
+        //Debug.Log("Current health is: " + stats.CurrentHealthPercent() * 100 + "%");
         Rect uvRect = barRawImageEffect.uvRect;
         uvRect.x -= 0.2f * Time.deltaTime;
         barRawImageEffect.uvRect = uvRect;
@@ -71,7 +71,7 @@ public class HUD_HealthBar : MonoBehaviour
 
         if (stats.CurrentHealthPercent() > 1)
         {
-            Debug.Log("SI ES MAS GRANDE q 1");
+            //Debug.Log("SI ES MAS GRANDE q 1");
             barRawImage.color = Color.red;
             // pasa algo del overflow
             edgeRectTransform.gameObject.SetActive(false);
@@ -86,7 +86,7 @@ public class HUD_HealthBar : MonoBehaviour
         else 
         {
             edgeRectTransform.gameObject.SetActive(true);
-            Debug.Log("NO ESS MAS GRANDE q 1");
+            //Debug.Log("NO ESS MAS GRANDE q 1");
             barRawImage.color = barColor;
             return stats.CurrentHealthPercent();
         }

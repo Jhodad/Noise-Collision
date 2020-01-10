@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -128,8 +127,8 @@ public class Player : MonoBehaviour
 
     public void Movement()
     {
-        x = Input.GetAxis("Horizontal") * Time.deltaTime * stats.currentSpeed * stats.currentModifierSpeed * perspective;
-        z = Input.GetAxis("Vertical") * Time.deltaTime * stats.currentSpeed * stats.currentModifierSpeed * perspective;
+        x = Input.GetAxis("Horizontal") * Time.deltaTime * stats.currentSpeed * stats.modifierSpeed * perspective;
+        z = Input.GetAxis("Vertical") * Time.deltaTime * stats.currentSpeed * stats.modifierSpeed * perspective;
         horiz = new Vector3(x, 0, 0);
         verti = new Vector3(0, 0, z);
 
@@ -172,7 +171,7 @@ public class Player : MonoBehaviour
         if (IsPlayingName("Neutral") || IsPlayingName("Run") || IsPlayingName("Idle"))
         {
             anim.SetTrigger("isJumping");
-            rb.AddForce(Vector3.up * (stats.currentJump * stats.currentModifierJump), ForceMode.Impulse);
+            rb.AddForce(Vector3.up * (stats.currentJump * stats.modifierJump), ForceMode.Impulse);
         }
     }
 

@@ -167,21 +167,62 @@ Missing:
 - EyeLookAt.cs needs a way to recognize Observable objects without Tags
 - Fin tune Radius and Speed for the eyes' auto-tracking
 
+
+
+=======================================================================================================
+ Version Dev_1.8 and 1.9 are HUD related *forgot to add change log
 =======================================================================================================
 
+
+
 =====================
-== Version Dev_1.2 ==
+== Version Dev_2 ==
 =====================
 Added:
 - Fully working customizable HUD
+- Added simple effects, patterns and backgrounds for the bars and HUD
+- Stats.cs got an update in structure and now fits the needs of the HUD bars
+- Created new recovery/regen vars inside Stats.cs
+- Stats.cs now contains watchers and handles regens
 
 Removed:
-
+- Duplicated "modifier" vars
 
 Fixed:
 
 
 Bugs:
+IMPORTANT: EnergyBar regen crosses over its max by decimals, EXAMPLE: Energy MAx is 100, when bar regens from x < 100 it stops at 100.001 thus forcing the "red overbar"
+
+Missing: 
+- Real effects, patterns and backgrounds
+- Recovery/Regens structure is placed but they don't work fully yet
+
+
+=====================
+== Version Dev_2.1 ==
+=====================
+Added:
+- MovesetHandler.cs and MovesetList_Guitar.cs
+- Separated the general "atk" name for all actions inside a Moveset, they're now called Attacks (for attacks) and Actions(for stuff like blocking)
+- Lists inside MovesetHandler to organize the list of all Actions, the one's unlocked/locked and the button/position they're assigned to
+
+Removed:
+- AttackHandler.cs and AttackList.cs, they got replaced with MovesetHandler.cs and MovesetList_Guitar.cs which accurately reflects it's job
+
+Fixed:
+- NOT FINISHED: Started fixing the Moveset/MovesetList calls to work around the moveset choices
+- Attack and Action's list are now organized for quick reading/searching
+- Renamed all animations with their actual names
+- Animations are now categorized by Type of action and state (ground/air)
+
+Bugs:
 
 
 Missing: 
+- Moveset selector and it's menu
+- Some attacks have no animations yet
+- Some actions have no animations yet
+- MovesetHandler.cs is missing a Phases' list for the Action lists
+- MovesetHandler.cs has an structure for the PhaseWatcher but isn't finished yet
+- MovesetList_Guitar.cs' Action Call only has a few working calls
