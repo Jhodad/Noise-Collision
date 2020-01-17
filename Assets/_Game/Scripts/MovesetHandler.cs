@@ -9,13 +9,26 @@ public class MovesetHandler : MonoBehaviour
     private Stats sStats;
     private Player sPlayer;
 
+
+    // LISTS
+    // All Actions
     private List<string> actionNameList;
+    // All actions' is unlocked?
     private List<bool> actionNameList_isUnlocked;
+    // ALL actions' phases
+    private List<int> actionNameList_Phases;
+
+    //Assigned Actions
     private List<string> actionNameList_moveset;
 
     private string actionCalledName;
-    private int actionCalledPhase;
-    private string lastActionCalled;
+    private string lastAtk;
+
+    // for Combat
+    public bool onCombat;
+    private bool canCountCombatCooldown;
+    private bool canCountComboTimeout;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,104 +39,416 @@ public class MovesetHandler : MonoBehaviour
         actionNameList = new List<string>();
         actionNameList_isUnlocked = new List<bool>();
         actionNameList_moveset = new List<string>();
+        actionNameList_Phases = new List<int>();
+
+        lastAtk = "none";
+        canCountCombatCooldown = true;
+        canCountComboTimeout = true;
+
+        PopulateActionLists();
+        AttackSelector();
     }
 
     private void Update()
     {
-
+        LastAtkUpdate();
+        CombatTimeoutWatcher();
     }
 
     // For each Attack Slot open a DropDownList and select the attack to assign IF unlocked true
     public void AttackSelector()
     {
+        // TEMPORARY
+        actionNameList_moveset.Add("PLACEHOLDER");
+        actionNameList_moveset.Add(actionNameList[1]);
+        actionNameList_moveset.Add(actionNameList[2]);
+        actionNameList_moveset.Add(actionNameList[3]);
+
+        actionNameList_moveset.Add(actionNameList[5]);
+        actionNameList_moveset.Add(actionNameList[7]);
+
+        actionNameList_moveset.Add(actionNameList[11]);
+    }
+
+
+    public void Perform(int actionCalledNum)
+    {
+        if (sPlayer.anim.GetBool("canAttack"))
+        {
+
+            switch (actionCalledNum)
+            {
+                // Atk - Basic 1
+                case 1:
+                    actionCalledName = actionNameList_moveset[1];
+                    break;
+
+                // Atk - Basic 2
+                case 2:
+                    actionCalledName = actionNameList_moveset[2];
+                    break;
+
+                // Atk - Special 1
+                case 3:
+                    actionCalledName = actionNameList_moveset[3];
+                    break;
+
+                // Atk - Special 2
+                case 4:
+                    actionCalledName = actionNameList_moveset[4];
+                    break;
+
+                // Atk - Special 3
+                case 5:
+                    actionCalledName = actionNameList_moveset[5];
+                    break;
+
+                // Atk - Special 4
+                case 6:
+                    actionCalledName = actionNameList_moveset[6];
+                    break;
+
+                // Atk - Stance
+                case 7:
+                    actionCalledName = actionNameList_moveset[7];
+                    break;
+
+                // Atk - Stance Music
+                case 8:
+                    actionCalledName = actionNameList_moveset[8];
+                    break;
+
+                // Atk - Solo
+                case 9:
+                    actionCalledName = actionNameList_moveset[9];
+                    break;
+
+                // Atk - Block
+                case 10:
+                    actionCalledName = actionNameList_moveset[10];
+                    break;
+
+                    /*
+                case default:
+                    actionCalledName = "recovery";
+                    break;
+                    */
+            }
+            // NOTE: THIS SHOULD ONLY HAPPEN WHEN ITS AN ATTACK
+            Debug.Log("== ATTACK CALLED: " + actionCalledName);
+            ActionHandler();
+        }
+        else
+        {
+            Debug.Log("CANT ATTACK");
+        }
 
     }
 
-    private void PhaseWatcher(string newAction)
+    /*
+     if (!(sPlayer.anim.GetBool("performingAction")))
     {
-        if (newAction == lastActionCalled)
-        {
-            //Check phases list
-            if () // If the action only has one phase then phase = 1
-            {
-                actionCalledPhase = 1;
-            }
-            else // The action'ss phases are > 1
-            {
-                if () // if there's still a next phase then phase++
-                {
-                    actionCalledPhase++;
-                }
-                else // else, there are no more next phases OVERRIDE WITH BAD RECOVERY 
-                // MAKE A BAD NOTE ANIMATION or something
-                {
+        canAttack = true;
+        //Debug.Log("Im not performing an action");
+    }
+    else if(sPlayer.anim.GetBool("performingAction") & !(sPlayer.anim.GetBool("onCombat")))
+    {
+        canAttack = false;
+        //Debug.Log("Lost combo, is currently on recovery");
+    }
+    else
+    {
+        canAttack = false;
+        //Debug.Log("Performing an action so cant attack");
+    }
+     */
 
+    // Call if an attack is pressed or when the player receives damage
+
+
+    private void ActionHandler()
+    {
+        Debug.Log("======== START ======== ");
+        int maxPhase, i;
+
+        // Get index of the action
+        i = actionNameList.IndexOf(actionCalledName);
+        Debug.Log("== " + actionCalledName + " index is: " + i);
+
+        // Get max phases of the action
+        maxPhase = actionNameList_Phases[i];
+        Debug.Log("== " + actionCalledName + " phases are: " + maxPhase + ", " + " and current phase is: " + sPlayer.anim.GetInteger("atkPhase"));
+        Debug.Log("==== CALLED: " + actionCalledName);
+        Debug.Log("==== LAST: " + lastAtk);
+
+        if (lastAtk == "none")
+        { // First Attack
+            sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
+            //lastAtk = actionCalledName;
+
+        }
+        else if (lastAtk == actionCalledName)
+        { // ON A CHAIN
+
+            if (sPlayer.anim.GetInteger("atkPhase") == 1)
+            { // The chain ended and you're trying to do the same attack again, so no
+                Debug.Log("No puedes repetir este ataque!!!!");
+            }
+            else
+            {
+                // If the current phase is les than the max phases call the attack
+                if (sPlayer.anim.GetInteger("atkPhase") <= maxPhase)
+                {
+                    Debug.Log("There is another phase");
+                    Debug.Log("RIGHT HERE IMA CALL: " + actionCalledName + " - " + sPlayer.anim.GetInteger("atkPhase"));
+                    sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
+                    //lastAtk = actionCalledName;
                 }
+                // else, exceeded phasess so force a combo losss
+                else
+                {
+                    Debug.Log("Made a mistake, combo lost");
+                    sPlayer.anim.SetBool("comboLost", true);
+                    sPlayer.anim.SetInteger("atkPhase", 1);
+                    sPlayer.anim.SetInteger("combatTimeoutCurrentTime", 1);
+                    StartCoroutine(CombatCooldown());
+                }
+            }
+
+        }
+        else // lastAtk =/= actionCalledName so just a new chain
+        {
+            sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
+            //lastAtk = actionCalledName;
+        }
+        Debug.Log("======== END ======== ");
+    }
+
+    private void LastAtkUpdate()
+    {
+        if (sPlayer.anim.GetBool("EnteredAction"))
+        {
+            lastAtk = actionCalledName;
+        }
+
+        if (sPlayer.IsPlayingName("Neutral"))
+        { // Chain ended so lastAtk is none
+            //lastAtk = "none";
+        }
+        else if (sPlayer.anim.GetBool("comboLost"))
+        {
+            sPlayer.anim.SetBool("canAttack", false);
+            lastAtk = "none";
+        }
+    }
+
+
+    IEnumerator CombatCooldown()
+    {
+        canCountCombatCooldown = false;
+        sPlayer.anim.SetBool("canAttack", false);
+
+        while (sPlayer.anim.GetInteger("onRecovery_Elapsed") < sPlayer.anim.GetInteger("onRecovery_Wait"))
+        {
+            Debug.Log("Entered the while");
+            Debug.Log("Begin Waiting...");
+            yield return new WaitForSecondsRealtime(1);
+            sPlayer.anim.SetInteger("onRecovery_Elapsed", (sPlayer.anim.GetInteger("onRecovery_Elapsed") + 1));
+
+            Debug.Log("End Waiting...");
+            Debug.Log("El valor de segundos esperados es: " + sPlayer.anim.GetInteger("onRecovery_Elapsed"));
+
+            // IF STATS.(RECEIVED DAMAGED) then CANCEL RECOVERY
+        }
+        sPlayer.anim.SetBool("comboLost", false);
+        sPlayer.anim.SetBool("canAttack", true);
+        sPlayer.anim.SetInteger("onRecovery_Elapsed", 0);
+        canCountCombatCooldown = true;
+    }
+
+    private void CombatTimeoutWatcher()
+    {
+        if (sPlayer.anim.GetBool("combatTimeout"))
+        {
+            if (canCountComboTimeout)
+            {
+                Debug.Log("SI ENTRE!");
+                StartCoroutine(CombatComboTimeout());
             }
             
         }
     }
 
-    // Receives which Attack Slot was called and calls the previously assigned attack
-    private void Perform(int actionCalledNum)
+    IEnumerator CombatComboTimeout()
     {
-
-        switch (actionCalledNum)
+        canCountComboTimeout = false;
+        while (!(sPlayer.anim.GetInteger("combatTimeoutCurrentTime") == 0))
         {
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 0:
-                actionCalledName = actionNameList_moveset[0];
-                break;
 
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 1:
-                actionCalledName = actionNameList_moveset[1];
-                break;
-
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 2:
-                actionCalledName = actionNameList_moveset[2];
-                break;
-
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 3:
-                actionCalledName = actionNameList_moveset[3];
-                break;
-
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 4:
-                actionCalledName = actionNameList_moveset[4];
-                break;
-
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 5:
-                actionCalledName = actionNameList_moveset[5];
-                break;
-
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 6:
-                actionCalledName = actionNameList_moveset[6];
-                break;
-
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 7:
-                actionCalledName = actionNameList_moveset[7];
-                break;
-
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 8:
-                actionCalledName = actionNameList_moveset[8];
-                break;
-
-            // Attack on pos 0 REPLACE WITH NAMES
-            case 9:
-                actionCalledName = actionNameList_moveset[9];
-                break;
+            yield return new WaitForSecondsRealtime(1);
+            sPlayer.anim.SetInteger("combatTimeoutCurrentTime", (sPlayer.anim.GetInteger("combatTimeoutCurrentTime") - 1));
         }
-        PhaseWatcher(actionCalledName);
-        sMovesetList.ActionCall(actionCalledName, actionCalledPhase);
-
+        // LOSE ALL COMBO BUFFS
+        lastAtk = "none";
+        Debug.Log("COMBAT ENDED, BONUS LOST");
+        canCountComboTimeout = true;
+        sPlayer.anim.SetBool("combatTimeout", false);
     }
 
+
+
+
+    private void PopulateActionLists()
+    {
+        // Position 0 is just a placeholder
+        actionNameList.Add("PLACEHOLDER");
+        actionNameList_isUnlocked.Add(false);
+        actionNameList_Phases.Add(1);
+
+        // Default Actions
+
+        /* [1] */
+        actionNameList.Add("Basic Swing (Ground)");
+        actionNameList_isUnlocked.Add(true);
+        actionNameList_Phases.Add(3);
+
+        /* [2] */
+        actionNameList.Add("Basic Swing Heavy (Ground)");
+        actionNameList_isUnlocked.Add(true);
+        actionNameList_Phases.Add(2);
+
+        /* [3] */
+        actionNameList.Add("Basic Strike (Air)");
+        actionNameList_isUnlocked.Add(true);
+        actionNameList_Phases.Add(1);
+
+        /* [4] */
+        actionNameList.Add("Basic Spin (Air)");
+        actionNameList_isUnlocked.Add(true);
+        actionNameList_Phases.Add(1);
+
+        /* [5] */
+        actionNameList.Add("Power Chord Strum (Ground)");
+        actionNameList_isUnlocked.Add(true);
+        actionNameList_Phases.Add(1);
+
+        /* [6] */
+        actionNameList.Add("Power Chord Strum (Air)");
+        actionNameList_isUnlocked.Add(true);
+        actionNameList_Phases.Add(1);
+
+        /* [7] */
+        actionNameList.Add("Simple Power Stance (Ground)");
+        actionNameList_isUnlocked.Add(true);
+        actionNameList_Phases.Add(1);
+
+        /* [8] */
+        actionNameList.Add("Simple Power Stance (Air)");
+        actionNameList_isUnlocked.Add(true);
+
+        /* [9] */
+        actionNameList.Add("Power Chord Strum Slide");
+        actionNameList_isUnlocked.Add(true);
+
+        /* [10] */
+        actionNameList.Add("Music Super 2"); //
+        actionNameList_isUnlocked.Add(true);
+
+        /* [11] */
+        actionNameList.Add("Power Chord Stinger (Ground)");
+        actionNameList_isUnlocked.Add(true);
+
+        /* [12] */
+        actionNameList.Add("Music Super Air 1"); // 
+        actionNameList_isUnlocked.Add(true);
+
+        /* [13] */
+        actionNameList.Add("Default Launcher"); //
+        actionNameList_isUnlocked.Add(true);
+
+        /* [14] */
+        actionNameList.Add("Default Slammer"); //
+        actionNameList_isUnlocked.Add(true);
+
+        /* [15] */
+        actionNameList.Add("Default Block"); // 
+        actionNameList_isUnlocked.Add(true);
+
+        /* [16] */
+        actionNameList.Add("Default Solo"); //
+        actionNameList_isUnlocked.Add(true);
+
+        // Unlockables
+
+        /* [17] */
+
+        /* [18] */
+
+        /* [19] */
+
+        /* [20] */
+
+        /* [21] */
+
+        /* [22] */
+
+        /* [23] */
+
+        /* [24] */
+
+        /* [25] */
+
+        /* [26] */
+
+        /* [27] */
+
+        /* [28] */
+
+        /* [29] */
+
+        /* [30] */
+
+        /* [31] */
+
+        /* [32] */
+
+        /* [33] */
+
+        /* [34] */
+
+        /* [35] */
+
+        /* [36] */
+
+        /* [37] */
+
+        /* [38] */
+
+        /* [39] */
+
+        /* [40] */
+
+        /* [41] */
+
+        /* [42] */
+
+        /* [43] */
+
+        /* [44] */
+
+        /* [45] */
+
+        /* [46] */
+
+        /* [47] */
+
+        /* [48] */
+
+        /* [49] */
+
+
+
+
+    }
 
 }

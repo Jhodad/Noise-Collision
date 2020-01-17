@@ -63,10 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Game\Scripts\Anim_AttackPhase.cs" />
+    <Compile Include="Assets\_Game\Scripts\Anim_ComboLoss.cs" />
     <Compile Include="Assets\_Game\Scripts\Anim_EyeBlink.cs" />
-    <Compile Include="Assets\_Game\Scripts\Anim_PlayingAttack.cs" />
-    <Compile Include="Assets\_Game\Scripts\Anim_Recovery.cs" />
+    <Compile Include="Assets\_Game\Scripts\Anim_PerformingAction.cs" />
+    <Compile Include="Assets\_Game\Scripts\Anim_Reset.cs" />
     <Compile Include="Assets\_Game\Scripts\CameraSwitch.cs" />
     <Compile Include="Assets\_Game\Scripts\CollisionHandler.cs" />
     <Compile Include="Assets\_Game\Scripts\DescriptionBar.cs" />

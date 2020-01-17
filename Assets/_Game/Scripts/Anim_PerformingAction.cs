@@ -2,35 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Anim_Recovery : StateMachineBehaviour
+public class Anim_PerformingAction : StateMachineBehaviour
 {
-
-    Player player;
+    float percentage = 0;
 
     public override void OnStateEnter(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        foreach (AnimatorControllerParameter parameter in animator.parameters)
-        {
-            if (parameter.type == AnimatorControllerParameterType.Bool)
-                animator.SetBool(parameter.name, false);
-        }
-
-        foreach (AnimatorControllerParameter parameter in animator.parameters)
-        {
-            if (parameter.type == AnimatorControllerParameterType.Trigger)
-                animator.ResetTrigger(parameter.name);
-        }
-
-        animator.SetBool("isAttackRecovering", true);
-        //animator.SetBool("isAttacking", false);
+        animator.SetInteger("combatTimeoutCurrentTime", animator.GetInteger("combatTimeoutTime"));
+        animator.SetInteger("atkPhase", animator.GetInteger("atkPhase") + 1 );
+        //Debug.Log("============= inicia : " + animatorStateInfo);
+        animator.SetBool("EnteredAction", true);
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        animator.SetBool("isAttackRecovering", false);
+        animator.SetBool("EnteredAction", false);
+        animator.SetBool("combatTimeout", true);
+        //Debug.Log("I finished with: " + percentage);
+
+        //animator.ResetTrigger("Guit_Atk_BasicSwing(Ground)_1");
+        //animator.ResetTrigger("Guit_Atk_BasicSwing(Ground)_2");
+        //animator.ResetTrigger("Guit_Atk_BasicSwing(Ground)_3");
+        //animator.ResetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_1");
+        //animator.ResetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_2");
 
     }
 
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
+    {
+
+       // Debug.Log("========MAX : " + animatorStateInfo.length);
+        //Debug.Log("=======CURRENT : " + animatorStateInfo.normalizedTime);
+
+        //get percent
+        percentage = (animatorStateInfo.normalizedTime / animatorStateInfo.length ) *100;
+       // Debug.Log("=======CURRENT PERCENT: " + percentage + "%");
+
+
+      
+        
+    }
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{

@@ -66,7 +66,7 @@ public class EyeLookAt : MonoBehaviour
         }
         else
         {
-            Debug.Log("There are no observables");
+           // Debug.Log("There are no observables");
             EyeDefaultRotator();
 
         }
@@ -267,7 +267,7 @@ public class EyeLookAt : MonoBehaviour
             anim.SetBool("isBlinking", true);
         }
 
-        Debug.Log("BLINK: " + blinkCount);
+        //Debug.Log("BLINK: " + blinkCount);
         if (blinkCount >= 4)
         {
             anim.SetBool("isBlinking", false);

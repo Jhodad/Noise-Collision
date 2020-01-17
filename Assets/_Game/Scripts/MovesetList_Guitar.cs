@@ -4,12 +4,15 @@ using UnityEngine;
 public class MovesetList_Guitar : MonoBehaviour
 {
     private Stats stats;
-    [SerializeField] private Animator anim;
+    private Animator anim;
+    private Player player;
 
     // Use this for initialization
     void Start()
     {
-     
+        anim = GetComponent<Animator>();
+        stats = GetComponent<Stats>();
+        player = GetComponent<Player>();
     }
 
     void Update()
@@ -21,6 +24,8 @@ public class MovesetList_Guitar : MonoBehaviour
 
     public void ActionCall(string actionCalled,int phaseToCall)
     {
+        Debug.Log("Performing: " + actionCalled + ", with phase: " + phaseToCall);
+        
         switch (actionCalled)
         {
             // ==================================================== //
@@ -167,11 +172,17 @@ public class MovesetList_Guitar : MonoBehaviour
                     break;
 
                 case 2:
-                    anim.SetTrigger("Guit_Atk_BasicSwing(Ground)_2");
+                    if (player.IsPlayingName("Guit_Atk_BasicSwing(Ground)_1"))
+                    {
+                        anim.SetTrigger("Guit_Atk_BasicSwing(Ground)_2");
+                    }
                     break;
 
                 case 3:
-                    anim.SetTrigger("Guit_Atk_BasicSwing(Ground)_3");
+                    if (player.IsPlayingName("Guit_Atk_BasicSwing(Ground)_2"))
+                    {
+                        anim.SetTrigger("Guit_Atk_BasicSwing(Ground)_3");
+                    }
                     break;
             }
         }
@@ -191,7 +202,11 @@ public class MovesetList_Guitar : MonoBehaviour
                     break;
 
                 case 2:
-                    anim.SetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_2");
+                    if (player.IsPlayingName("Guit_Atk_BasicSwingHeavy(Ground)_1"))
+                    {
+                        anim.SetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_2");
+                    }
+                    
                     break;
             }
         }

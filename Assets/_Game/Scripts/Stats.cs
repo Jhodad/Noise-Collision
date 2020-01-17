@@ -170,12 +170,12 @@ public class Stats : MonoBehaviour
         CheckHealth(); // Checks if player isAlive
         
         CheckBatteryDirection();
-        Debug.Log("Current battery before: " + currentBattery);
+       // Debug.Log("Current battery before: " + currentBattery);
         RestoreBattery();
-        Debug.Log("Current battery after: " + currentBattery);
+       // Debug.Log("Current battery after: " + currentBattery);
 
-        Debug.Log("Current XP: " + currentXP);
-        Debug.Log("Needed XP: " + needXP);
+       // Debug.Log("Current XP: " + currentXP);
+       // Debug.Log("Needed XP: " + needXP);
     }
 
     // ====================================================================================================================== ||
@@ -302,7 +302,7 @@ public class Stats : MonoBehaviour
         else
         { // Battery remains same
             result = 0;
-            Debug.Log("Battery same");
+           // Debug.Log("Battery same");
         }
         return result;
     }

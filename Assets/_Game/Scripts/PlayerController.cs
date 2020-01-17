@@ -9,7 +9,11 @@ public class PlayerController : MonoBehaviour
     Stats stats;
     InventoryTabs inventory;
     MovesetHandler movesetHandler;
+    
     bool stopInput;
+
+    // for combat recovery
+    bool canCountCombatPhase;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +24,7 @@ public class PlayerController : MonoBehaviour
         movesetHandler = GetComponent<MovesetHandler>();
         stats = GetComponent<Stats>();
         stopInput = false;
+        canCountCombatPhase = true;
     }
 
 
@@ -32,15 +37,16 @@ public class PlayerController : MonoBehaviour
             // List of constant actions
             actionHandler();
 
-            // FIX/CHANGE action
-            if (player.IsPlayingName("AttackPhase"))
+            /*
+            if (movesetHandler.stateCombat & !(movesetHandler.statePerformingAttack))
             {
-                stopInput = false;
+                if (canCountCombatPhase)
+                {
+                    StartCoroutine(OnCombatDuration());
+                }
+                
             }
-            else
-            {
-                stopInput = true;
-            }
+            */
         }
     }
     
@@ -57,14 +63,28 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            movesetHandler.Perform(0);
+            movesetHandler.Perform(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            movesetHandler.Perform(1);
+            movesetHandler.Perform(2);
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            movesetHandler.Perform(3);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            movesetHandler.Perform(4);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            movesetHandler.Perform(5);
+        }
         /*
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -84,6 +104,9 @@ public class PlayerController : MonoBehaviour
         }
 
          */
+
+
+        
 
         // XP TEST
         if (Input.GetKeyDown(KeyCode.Z))
@@ -137,6 +160,39 @@ public class PlayerController : MonoBehaviour
         
 
     }
-    
 
+    /* IEnumerator OnCombatDuration()
+    {
+        // onRecovery_Wait = Seconds to wait onCombat before onRecovery
+
+        canCountCombatPhase = false;
+
+        while (player.anim.GetInteger("onRecovery_Elapsed") < player.anim.GetInteger("onRecovery_Wait"))
+        {
+            Debug.Log("Entered the while");
+            Debug.Log("Begin Waiting...");
+            yield return new WaitForSecondsRealtime(1);
+            player.anim.SetInteger("onRecovery_Elapsed", (player.anim.GetInteger("onRecovery_Elapsed") + 1));
+
+            Debug.Log("End Waiting...");
+            Debug.Log("El valor de segundos esperados es: " + player.anim.GetInteger("onRecovery_Elapsed"));
+
+            if (player.anim.GetBool("performingAction"))
+            {
+                Debug.Log("LEFT IDLE combat, so dont count anynmore");
+                player.anim.SetInteger("onRecovery_Elapsed",(player.anim.GetInteger("onRecovery_Wait") + 1));
+            }
+
+            if (player.anim.GetInteger("onRecovery_Elapsed") == player.anim.GetInteger("onRecovery_Wait"))
+            {
+                Debug.Log("OnCombat idle timeout, so recovery");
+                movesetHandler.StateRecovery(true);
+                Debug.Log("Se acaba la combat phase, entra recovery");
+            }
+            
+        }
+        player.anim.SetInteger("onRecovery_Elapsed", 0);
+        canCountCombatPhase = true;
+    }
+    */
 }

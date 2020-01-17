@@ -59,13 +59,13 @@ public class CollisionHandler : MonoBehaviour
         // Right RayCast
         if (Physics.Raycast(originRight, Vector3.down, out objectHit, maxRayDistance, obstacleLayer))
         {
-            Debug.Log("Right hit object: " + objectHit.collider.name);
+           // Debug.Log("Right hit object: " + objectHit.collider.name);
             isGroundedRight = true;
             rightColor = Color.green;
         }
         else
         {
-            Debug.Log("Right didnt hit anything");
+           // Debug.Log("Right didnt hit anything");
             isGroundedRight = false;
             rightColor = Color.blue;
         }
@@ -73,13 +73,13 @@ public class CollisionHandler : MonoBehaviour
         // Left RayCast
         if (Physics.Raycast(originLeft, Vector3.down, out objectHit, maxRayDistance, obstacleLayer))
         { 
-            Debug.Log("Left hit object: " + objectHit.collider.name);
+            //Debug.Log("Left hit object: " + objectHit.collider.name);
             isGroundedLeft = true;
             leftColor = Color.green;
         }
         else
         {
-            Debug.Log("Left didnt hit anything");
+            //Debug.Log("Left didnt hit anything");
             isGroundedLeft = false;
             leftColor = Color.red;
         }
