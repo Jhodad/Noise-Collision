@@ -5031,9 +5031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bcad53c468fcb4eacca7cb5020aba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  atkName: 
-  atkDamage: 0
 --- !u!65 &573076620
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5059,7 +5056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fec64418667764f89edf498a3528d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAttack: 0
+  onCombat: 0
 --- !u!95 &573076622
 Animator:
   serializedVersion: 3
@@ -7700,7 +7697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &922722469
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16791,7 +16788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2130239173
 RectTransform:
   m_ObjectHideFlags: 0

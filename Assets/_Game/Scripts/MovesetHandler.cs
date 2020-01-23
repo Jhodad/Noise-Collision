@@ -63,11 +63,8 @@ public class MovesetHandler : MonoBehaviour
         actionNameList_moveset.Add(actionNameList[1]);
         actionNameList_moveset.Add(actionNameList[2]);
         actionNameList_moveset.Add(actionNameList[3]);
-
+        actionNameList_moveset.Add(actionNameList[4]);
         actionNameList_moveset.Add(actionNameList[5]);
-        actionNameList_moveset.Add(actionNameList[7]);
-
-        actionNameList_moveset.Add(actionNameList[11]);
     }
 
 
@@ -308,55 +305,52 @@ public class MovesetHandler : MonoBehaviour
         // Default Actions
 
         /* [1] */
-        actionNameList.Add("Basic Swing (Ground)");
+        actionNameList.Add("Basic Swing");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(3);
 
         /* [2] */
-        actionNameList.Add("Basic Swing Heavy (Ground)");
+        actionNameList.Add("Basic Swing Heavy");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(2);
 
         /* [3] */
-        actionNameList.Add("Basic Strike (Air)");
+        actionNameList.Add("Power Chord Strum");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(1);
 
         /* [4] */
-        actionNameList.Add("Basic Spin (Air)");
+        actionNameList.Add("Power Chord Stinger");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(1);
 
         /* [5] */
-        actionNameList.Add("Power Chord Strum (Ground)");
+        actionNameList.Add("Simple Power Stance");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(1);
 
         /* [6] */
-        actionNameList.Add("Power Chord Strum (Air)");
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(1);
 
         /* [7] */
-        actionNameList.Add("Simple Power Stance (Ground)");
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(1);
 
         /* [8] */
-        actionNameList.Add("Simple Power Stance (Air)");
+        actionNameList.Add("Basic Strike");
         actionNameList_isUnlocked.Add(true);
+        
 
         /* [9] */
+        actionNameList.Add("Basic Spin");
+        actionNameList_isUnlocked.Add(true);
+        
+
+        /* [10] */
         actionNameList.Add("Power Chord Strum Slide");
         actionNameList_isUnlocked.Add(true);
 
-        /* [10] */
+        /* [11] */
         actionNameList.Add("Music Super 2"); //
         actionNameList_isUnlocked.Add(true);
-
-        /* [11] */
-        actionNameList.Add("Power Chord Stinger (Ground)");
-        actionNameList_isUnlocked.Add(true);
+        
 
         /* [12] */
         actionNameList.Add("Music Super Air 1"); // 

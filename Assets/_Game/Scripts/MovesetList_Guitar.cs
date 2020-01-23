@@ -7,22 +7,33 @@ public class MovesetList_Guitar : MonoBehaviour
     private Animator anim;
     private Player player;
 
+    private bool isGrounded;
+
     // Use this for initialization
     void Start()
     {
         anim = GetComponent<Animator>();
         stats = GetComponent<Stats>();
         player = GetComponent<Player>();
+
+        isGrounded = true;
     }
 
     void Update()
     {
-     
+        if (stats.isGrounded)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 
     
 
-    public void ActionCall(string actionCalled,int phaseToCall)
+    public void ActionCall(string actionCalled, int phaseToCall)
     {
         Debug.Log("Performing: " + actionCalled + ", with phase: " + phaseToCall);
         
@@ -30,20 +41,20 @@ public class MovesetList_Guitar : MonoBehaviour
         {
             // ==================================================== //
             // Basic
-            case "Basic Swing (Ground)":
-                BasicSwing(phaseToCall, true);
+            case "Basic Swing":
+                BasicSwing(phaseToCall, isGrounded);
                 break;
 
-            case "Basic Swing Heavy (Ground)":
-                BasicSwingHeavy(phaseToCall, true);
+            case "Basic Swing Heavy":
+                BasicSwingHeavy(phaseToCall, isGrounded);
                 break;
             
-            case "Basic Strike (Air)":
-                BasicStrike(phaseToCall, false);
+            case "Basic Strike":
+                BasicStrike(phaseToCall, isGrounded);
                 break;
 
-            case "Basic Spin (Air)":
-                BasicSpin(phaseToCall, false);
+            case "Basic Spin":
+                BasicSpin(phaseToCall, isGrounded);
                 break;
             // Basic
             // ==================================================== //
@@ -53,12 +64,8 @@ public class MovesetList_Guitar : MonoBehaviour
 
             // ==================================================== //
             // Music
-            case "Power Chord Strum (Ground)":
-                PowerChordStrum(phaseToCall, true);
-                break;
-
-            case "Power Chord Strum (Air)":
-                PowerChordStrum(phaseToCall, false);
+            case "Power Chord Strum":
+                PowerChordStrum(phaseToCall, isGrounded);
                 break;
             // Music
             // ==================================================== //
@@ -68,12 +75,8 @@ public class MovesetList_Guitar : MonoBehaviour
 
             // ==================================================== //
             // Stance
-            case "Simple Power Stance (Ground)":
-                SimplePowerStance(phaseToCall, true);
-                break;
-
-            case "Simple Power Stance (Air)":
-                SimplePowerStance(phaseToCall, false);
+            case "Simple Power Stance":
+                SimplePowerStance(phaseToCall, isGrounded);
                 break;
             // Stance
             // ==================================================== //
@@ -84,14 +87,14 @@ public class MovesetList_Guitar : MonoBehaviour
             // ==================================================== //
             // Music Super
             case "Power Chord Strum Slide":
-                PowerChordStrumSlide(phaseToCall, true);
+                PowerChordStrumSlide(phaseToCall, isGrounded);
                 break;
 
             case "Music Super 2":
                 break;
            
-            case "Power Chord Stinger (Ground)":
-                PowerChordStinger(phaseToCall, true);
+            case "Power Chord Stinger":
+                PowerChordStinger(phaseToCall, isGrounded);
                 break;
            
             case "Music Super Air 1":
@@ -188,6 +191,7 @@ public class MovesetList_Guitar : MonoBehaviour
         }
         else    // Air
         {
+            Debug.Log("Thiss attack doesnt have air anims");
         }
     }
 
