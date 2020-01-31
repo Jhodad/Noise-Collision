@@ -17,6 +17,8 @@ public class MovesetHandler : MonoBehaviour
     private List<bool> actionNameList_isUnlocked;
     // ALL actions' phases
     private List<int> actionNameList_Phases;
+    // ALL actions' type
+    private List<int> actionNameList_Type;
 
     //Assigned Actions
     private List<string> actionNameList_moveset;
@@ -40,6 +42,7 @@ public class MovesetHandler : MonoBehaviour
         actionNameList_isUnlocked = new List<bool>();
         actionNameList_moveset = new List<string>();
         actionNameList_Phases = new List<int>();
+        actionNameList_Type = new List<int>();
 
         lastAtk = "none";
         canCountCombatCooldown = true;
@@ -53,6 +56,7 @@ public class MovesetHandler : MonoBehaviour
     {
         LastAtkUpdate();
         CombatTimeoutWatcher();
+        Debug.Log(" LAST ACITON: " + lastAtk);
     }
 
     // For each Attack Slot open a DropDownList and select the attack to assign IF unlocked true
@@ -301,6 +305,7 @@ public class MovesetHandler : MonoBehaviour
         actionNameList.Add("PLACEHOLDER");
         actionNameList_isUnlocked.Add(false);
         actionNameList_Phases.Add(1);
+        actionNameList_Type.Add(0);
 
         // Default Actions
 
@@ -308,26 +313,31 @@ public class MovesetHandler : MonoBehaviour
         actionNameList.Add("Basic Swing");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(3);
+        actionNameList_Type.Add(0);
 
         /* [2] */
         actionNameList.Add("Basic Swing Heavy");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(2);
+        actionNameList_Type.Add(0);
 
         /* [3] */
         actionNameList.Add("Power Chord Strum");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(1);
+        actionNameList_Type.Add(1);
 
         /* [4] */
         actionNameList.Add("Power Chord Stinger");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(1);
+        actionNameList_Type.Add(1);
 
         /* [5] */
         actionNameList.Add("Simple Power Stance");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(1);
+        actionNameList_Type.Add(1);
 
         /* [6] */
 
