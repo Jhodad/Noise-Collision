@@ -226,3 +226,20 @@ Missing:
 - MovesetHandler.cs is missing a Phases' list for the Action lists
 - MovesetHandler.cs has an structure for the PhaseWatcher but isn't finished yet
 - MovesetList_Guitar.cs' Action Call only has a few working calls
+
+
+=====================
+== Version Dev_3.3 ==
+=====================
+Added:
+
+Removed:
+
+
+Fixed:
+
+
+Bugs:
+
+
+Missing: 
