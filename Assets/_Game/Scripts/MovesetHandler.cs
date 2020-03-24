@@ -56,7 +56,7 @@ public class MovesetHandler : MonoBehaviour
     {
         LastAtkUpdate();
         CombatTimeoutWatcher();
-        Debug.Log(" LAST ACITON: " + lastAtk);
+        //Debug.Log(" LAST ACITON: " + lastAtk);
     }
 
     // For each Attack Slot open a DropDownList and select the attack to assign IF unlocked true
@@ -185,42 +185,77 @@ public class MovesetHandler : MonoBehaviour
         if (lastAtk == "none")
         { // First Attack
             sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
-            //lastAtk = actionCalledName;
+            lastAtk = actionCalledName;
 
         }
         else if (lastAtk == actionCalledName)
         { // ON A CHAIN
 
             if (sPlayer.anim.GetInteger("atkPhase") == 1)
-            { // The chain ended and you're trying to do the same attack again, so no
-                Debug.Log("No puedes repetir este ataque!!!!");
+            { // Initial attack
+                //Debug.Log("No puedes repetir este ataque!!!!");
+                sMovesetList.ActionCall(actionCalledName, 1);
             }
             else
             {
-                // If the current phase is les than the max phases call the attack
+                // If the current phase is less than the max phases call the attack
                 if (sPlayer.anim.GetInteger("atkPhase") <= maxPhase)
                 {
                     Debug.Log("There is another phase");
                     Debug.Log("RIGHT HERE IMA CALL: " + actionCalledName + " - " + sPlayer.anim.GetInteger("atkPhase"));
                     sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
-                    //lastAtk = actionCalledName;
+                    lastAtk = actionCalledName;
                 }
                 // else, exceeded phasess so force a combo losss
                 else
                 {
-                    Debug.Log("Made a mistake, combo lost");
-                    sPlayer.anim.SetBool("comboLost", true);
-                    sPlayer.anim.SetInteger("atkPhase", 1);
-                    sPlayer.anim.SetInteger("combatTimeoutCurrentTime", 1);
-                    StartCoroutine(CombatCooldown());
+                    int test;
+                    test = actionNameList.IndexOf(lastAtk);
+                    Debug.Log(" ------------ " + lastAtk + "pos in index is: " + test);
+                    Debug.Log(" ------------ with type: " + actionNameList_Type[test]);
+                    if (actionNameList_Type[test] == 0 && actionNameList_Type[i] == 0)
+                    { // If its a music type, then its spammable
+                        sPlayer.anim.SetInteger("atkPhase", 1);
+                        sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
+                        lastAtk = actionCalledName;
+                    }
+                    else
+                    {
+                        Debug.Log("Made a mistake, combo lost");
+                        sPlayer.anim.SetBool("comboLost", true);
+                        sPlayer.anim.SetInteger("atkPhase", 1);
+                        sPlayer.anim.SetInteger("combatTimeoutCurrentTime", 1);
+                        StartCoroutine(CombatCooldown());
+                    }
+                    
                 }
             }
 
         }
         else // lastAtk =/= actionCalledName so just a new chain
         {
-            sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
-            //lastAtk = actionCalledName;
+            int test;
+            test = actionNameList.IndexOf(lastAtk);
+            Debug.Log(" ------------ " + lastAtk + "pos in index is: " + test);
+            Debug.Log(" ------------ with type: " + actionNameList_Type[test]);
+
+            if (actionNameList_Type[test] == 0 && actionNameList_Type[i] == 0) // it's a basic and the last one was a basic
+            {
+                Debug.Log("Combo loss, cant cycle through basics");
+                sPlayer.anim.SetBool("comboLost", true);
+                sPlayer.anim.SetInteger("atkPhase", 1);
+                sPlayer.anim.SetInteger("combatTimeoutCurrentTime", 1);
+                //sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
+                //lastAtk = actionCalledName;
+                StartCoroutine(CombatCooldown());
+            }
+            else
+            {
+                sPlayer.anim.SetInteger("atkPhase", 1);
+                sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
+                lastAtk = actionCalledName;
+            }
+            
         }
         Debug.Log("======== END ======== ");
     }

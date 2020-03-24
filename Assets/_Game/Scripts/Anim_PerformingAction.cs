@@ -20,11 +20,11 @@ public class Anim_PerformingAction : StateMachineBehaviour
         animator.SetBool("combatTimeout", true);
         //Debug.Log("I finished with: " + percentage);
 
-        //animator.ResetTrigger("Guit_Atk_BasicSwing(Ground)_1");
-        //animator.ResetTrigger("Guit_Atk_BasicSwing(Ground)_2");
-        //animator.ResetTrigger("Guit_Atk_BasicSwing(Ground)_3");
-        //animator.ResetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_1");
-        //animator.ResetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_2");
+        animator.ResetTrigger("Guit_Atk_BasicSwing(Ground)_1");
+        animator.ResetTrigger("Guit_Atk_BasicSwing(Ground)_2");
+        animator.ResetTrigger("Guit_Atk_BasicSwing(Ground)_3");
+        animator.ResetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_1");
+        animator.ResetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_2");
 
     }
 
