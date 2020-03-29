@@ -27,9 +27,10 @@ public class MovesetHandler : MonoBehaviour
     private string lastAtk;
 
     // for Combat
-    public bool onCombat;
+    //public bool onCombat;
     private bool canCountCombatCooldown;
     private bool canCountComboTimeout;
+    public bool isAttacking;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,8 @@ public class MovesetHandler : MonoBehaviour
         canCountCombatCooldown = true;
         canCountComboTimeout = true;
 
+        isAttacking = false;
+
         PopulateActionLists();
         AttackSelector();
     }
@@ -56,6 +59,7 @@ public class MovesetHandler : MonoBehaviour
     {
         LastAtkUpdate();
         CombatTimeoutWatcher();
+        InAttackWatcher();
         //Debug.Log(" LAST ACITON: " + lastAtk);
     }
 
@@ -213,7 +217,7 @@ public class MovesetHandler : MonoBehaviour
                     test = actionNameList.IndexOf(lastAtk);
                     Debug.Log(" ------------ " + lastAtk + "pos in index is: " + test);
                     Debug.Log(" ------------ with type: " + actionNameList_Type[test]);
-                    if (actionNameList_Type[test] == 0 && actionNameList_Type[i] == 0)
+                    if (actionNameList_Type[test] == 1 && actionNameList_Type[i] == 1)
                     { // If its a music type, then its spammable
                         sPlayer.anim.SetInteger("atkPhase", 1);
                         sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
@@ -312,6 +316,18 @@ public class MovesetHandler : MonoBehaviour
                 StartCoroutine(CombatComboTimeout());
             }
             
+        }
+    }
+
+    private void InAttackWatcher()
+    {
+        if (sPlayer.anim.GetInteger("combatTimeoutCurrentTime") > 0)
+        { // IF there is a timeout for combat, then we're on atk
+            isAttacking = true;
+        }
+        else
+        {
+            isAttacking = false;
         }
     }
 
