@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
     public Rigidbody rb;
     public Stats stats;
 
-
-
     // Booleans
     public bool orientacionU = false;
     public bool onRangeForTrade;
@@ -31,6 +29,11 @@ public class Player : MonoBehaviour
     public bool flag;
     int seconds = 0;
 
+    // Attacks
+    public MovesetHandler mh;
+
+    // About Stats
+    private bool groundedEnum;
 
     // ========================================================================================================= //
 
@@ -40,10 +43,12 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         stats = GetComponent<Stats>();
+        mh = GetComponent<MovesetHandler>();
 
         perspective = 1f;
 
         anim.SetTrigger("isNeutral");
+        groundedEnum = false;
     }
 
     // Fixed for rigid body stuff
@@ -52,20 +57,18 @@ public class Player : MonoBehaviour
     {
         CheckLanding();
         CheckFalling();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
-
         perspective = gameObject.GetComponent<CameraSwitch>().perspectiveValue;
-
-
-
         //Debug.Log("Normal" + IsPlaying("AttackPhase"));
         //Debug.Log("Name" + IsPlayingName("AttackPhase"));
+        
+        CheckAttacking();
+        StartCoroutine(CheckGrounded());
 
         if (Input.anyKey)
         {
@@ -132,7 +135,7 @@ public class Player : MonoBehaviour
         horiz = new Vector3(x, 0, 0);
         verti = new Vector3(0, 0, z);
 
-        if ((x != 0 || z != 0) && (IsPlayingName("Neutral") || IsPlayingName("Run")) || IsPlayingName("Idle") || IsPlayingName("Landing") || IsPlayingName("Jump") || IsPlayingName("Falling"))
+        if ((x != 0 || z != 0))
         {
             anim.SetBool("isRunning", true);
 
@@ -192,6 +195,33 @@ public class Player : MonoBehaviour
         }
     }
 
+    IEnumerator CheckGrounded()
+    {
+        if (!groundedEnum) {
+            Debug.Log("----- ENTEREDE ENUM");
+            groundedEnum = true;
+            if (stats.isGrounded && !mh.isAttacking)
+            {
+                stats.modifierSpeed = stats.defaultModifierSpeed;
+                Debug.Log("----- ENTEREDE IF");
+            }
+            else // on air, no attacks
+            {
+                Debug.Log("----- ENTEREDE ELSE");
+                //stats.modifierSpeed = stats.modifierAir;
+
+                while (stats.modifierSpeed > 0 && !stats.isGrounded)
+                {
+                    Debug.Log("------- ENTERED CYCLE");
+                    stats.modifierSpeed = stats.modifierSpeed - (.4f * stats.modifierSpeed);
+                    yield return new WaitForSecondsRealtime(1);
+                }
+            }
+            groundedEnum = false;
+        
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
     }
@@ -228,6 +258,23 @@ public class Player : MonoBehaviour
 
         }
         */
+
+    private void CheckAttacking()
+    {
+        if (stats.isGrounded)
+        {
+            if (mh.isAttacking)
+            {
+                stats.modifierSpeed = .2f * stats.defaultModifierSpeed;
+            }
+            else
+            {
+                stats.modifierSpeed = stats.defaultModifierSpeed;
+            }
+        }
+        
+    }
+
     public bool IsPlaying(string stateName)
     {
         if (anim.GetCurrentAnimatorStateInfo(0).IsName(stateName) &&

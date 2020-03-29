@@ -56,6 +56,12 @@ public class Stats : MonoBehaviour
     public float currentBlockResist;
     public float currentEvadeStartup;
 
+    // Base Stats - Modifiers / Multipliers
+    [Header("Base - Modifiers")]
+    public float defaultModifierSpeed;
+    public float defaultModifierAir;
+
+
     // Current Stats - Modifiers / Multipliers
     [Header("Current - Modifiers")]
     public float modifierHealth;
@@ -75,6 +81,8 @@ public class Stats : MonoBehaviour
 
     public float modifierGround;
     public float modifierAir;
+
+    
 
     // For Direction observers
     float lastValueBattery;
@@ -197,8 +205,12 @@ public class Stats : MonoBehaviour
         maxInstMeter = defaultInstMeter;
 
         // INITIAL MODIFIER
-        modifierGround = 1;
-        modifierAir = 1;
+        defaultModifierSpeed = 1;
+        defaultModifierAir = 1;
+
+        // ---
+        modifierGround = 1; //For other effects, not movement
+        modifierAir = defaultModifierAir;
 
         modifierHealth = 1;
         modifierBattery = 1;
@@ -206,7 +218,7 @@ public class Stats : MonoBehaviour
 
         modifierAtk = 1;
         modifierDef = 1;
-        modifierSpeed = 1;
+        modifierSpeed = defaultModifierSpeed;
         modifierJump = 1;
         modifierBlockResist = 1;
         modifierEvadeStartup = 1;
