@@ -228,18 +228,45 @@ Missing:
 - MovesetList_Guitar.cs' Action Call only has a few working calls
 
 
+
+
+
+
+==========================================================================
+Change log was lost in time but it's back!
+
 =====================
-== Version Dev_3.3 ==
+== Version Dev_4   ==
+=====================
+This is and update from the lost change log versions.
+Full log starts on Dev_4.1
+
+- Updated all Atk animations
+- Combat now works with no hiccups
+- Combat timeout and Combat combo loss code now work correctly
+- ChangeLog is back!
+
+==========================================================================
+
+=====================
+== Version Dev_4.1 ==
 =====================
 Added:
+- Simple background sprites for social web material.
+- Added StrapSpin Atk anim (previously Roulette).
+- Added HammerOn Atk anim. (Placeholder)
+- Added PullOff Atk anim. (Placeholder)
+- Added Block anim.
 
 Removed:
-
+- Nothing, I think.
 
 Fixed:
-
+- Renamed Roulette anim to StrapSpin (Roulette will be an enhanced version)
+- All combat hiccup bugs
 
 Bugs:
-
+- Animations dont work well with RigidBody's vertical velocity (jumping/falling)
 
 Missing: 
+- Fix your damn bugs.
