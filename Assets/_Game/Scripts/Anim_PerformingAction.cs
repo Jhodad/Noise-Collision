@@ -30,8 +30,8 @@ public class Anim_PerformingAction : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-
-       // Debug.Log("========MAX : " + animatorStateInfo.length);
+        animator.SetBool("EnteredAction", true);
+        // Debug.Log("========MAX : " + animatorStateInfo.length);
         //Debug.Log("=======CURRENT : " + animatorStateInfo.normalizedTime);
 
         //get percent

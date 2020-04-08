@@ -27,7 +27,7 @@ public class MovesetHandler : MonoBehaviour
     private string lastAtk;
 
     // for Combat
-    //public bool onCombat;
+    public bool isOnCombat;
     private bool canCountCombatCooldown;
     private bool canCountComboTimeout;
     public bool isAttacking;
@@ -323,12 +323,21 @@ public class MovesetHandler : MonoBehaviour
     {
         if (sPlayer.anim.GetInteger("combatTimeoutCurrentTime") > 0)
         { // IF there is a timeout for combat, then we're on atk
-            isAttacking = true;
+            isOnCombat = true;
+            if (sPlayer.anim.GetBool("EnteredAction"))
+            {
+                isAttacking = true;
+            }
+            else
+            {
+                isAttacking = false;
+            }
         }
         else
         {
-            isAttacking = false;
+            isOnCombat = false;
         }
+
     }
 
     IEnumerator CombatComboTimeout()

@@ -270,3 +270,28 @@ Bugs:
 
 Missing: 
 - Fix your damn bugs.
+
+
+
+==========================================================================
+
+=====================
+== Version Dev_4.2 ==
+=====================
+Added:
+- SpeedModifiers and handlers for isOnCombat, isAttacking and "normal"
+- Added a good SmoothCamera.cs with modifiers
+- Added unfinished canvas to display the handlers mentioned above.
+
+Removed:
+- Old copy pasta SmoothCamera.cs
+
+Fixed:
+- Speed now changes depending on IF: onCombat, onAttack, none of those
+- Jump looks fluent now, maybe?
+
+Bugs:
+- Animations dont work well with RigidBody's vertical velocity (jumping/falling)
+
+Missing: 
+- Check the jump up and down velocity, make it more believable

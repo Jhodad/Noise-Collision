@@ -60,6 +60,7 @@ public class Stats : MonoBehaviour
     [Header("Base - Modifiers")]
     public float defaultModifierSpeed;
     public float defaultModifierAir;
+    public float defaultModifierSpeedCombat;
 
 
     // Current Stats - Modifiers / Multipliers
@@ -81,6 +82,7 @@ public class Stats : MonoBehaviour
 
     public float modifierGround;
     public float modifierAir;
+    public float modifierSpeedCombat;
 
     
 
@@ -205,8 +207,9 @@ public class Stats : MonoBehaviour
         maxInstMeter = defaultInstMeter;
 
         // INITIAL MODIFIER
-        defaultModifierSpeed = 1;
-        defaultModifierAir = 1;
+        //defaultModifierSpeed = 1;
+        //defaultModifierAir = 1;
+
 
         // ---
         modifierGround = 1; //For other effects, not movement
@@ -219,7 +222,8 @@ public class Stats : MonoBehaviour
         modifierAtk = 1;
         modifierDef = 1;
         modifierSpeed = defaultModifierSpeed;
-        modifierJump = 1;
+        modifierSpeedCombat = defaultModifierSpeedCombat;
+        //modifierJump = 1;
         modifierBlockResist = 1;
         modifierEvadeStartup = 1;
 

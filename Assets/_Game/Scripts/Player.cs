@@ -174,7 +174,7 @@ public class Player : MonoBehaviour
         if (IsPlayingName("Neutral") || IsPlayingName("Run") || IsPlayingName("Idle"))
         {
             anim.SetTrigger("isJumping");
-            rb.AddForce(Vector3.up * (stats.currentJump * stats.modifierJump), ForceMode.Impulse);
+            rb.AddForce(Vector3.up * (stats.currentJump * stats.modifierJump), ForceMode.Acceleration);
         }
     }
 
@@ -200,7 +200,7 @@ public class Player : MonoBehaviour
         if (!groundedEnum) {
             Debug.Log("----- ENTEREDE ENUM");
             groundedEnum = true;
-            if (stats.isGrounded && !mh.isAttacking)
+            if (stats.isGrounded && !mh.isOnCombat && !mh.isAttacking)
             {
                 stats.modifierSpeed = stats.defaultModifierSpeed;
                 Debug.Log("----- ENTEREDE IF");
@@ -263,14 +263,21 @@ public class Player : MonoBehaviour
     {
         if (stats.isGrounded)
         {
-            if (mh.isAttacking)
+            if (mh.isOnCombat)
             {
-                stats.modifierSpeed = .2f * stats.defaultModifierSpeed;
+                stats.modifierSpeed = stats.modifierSpeedCombat * stats.defaultModifierSpeed;
+                if (mh.isAttacking)
+                {
+                    stats.modifierSpeed = 0f;
+                }
             }
             else
             {
                 stats.modifierSpeed = stats.defaultModifierSpeed;
             }
+            
+            
+            
         }
         
     }
