@@ -99,6 +99,18 @@ public class MovesetList_Guitar : MonoBehaviour
            
             case "Music Super Air 1":
                 break;
+
+            case "HammerOn":
+                HammerOn(phaseToCall, isGrounded);
+                break;
+
+            case "PullOff":
+                PullOff(phaseToCall, isGrounded);
+                break;
+
+            case "Default Block":
+                Block(phaseToCall, isGrounded);
+                break;
             // Music Super
             // ==================================================== //
 
@@ -126,7 +138,7 @@ public class MovesetList_Guitar : MonoBehaviour
 
             // ==================================================== //
             // Block
-            case "Default Block":
+            case "Default Block1":
                 break;
             // Block
             // ==================================================== //
@@ -233,13 +245,13 @@ public class MovesetList_Guitar : MonoBehaviour
     
     public void BasicSpin(int phaseToPlay, bool state)
     {
-        if (state)
+        if (state) // Ground
         {
-
+            anim.SetTrigger("Guit_Atk_StrapSpin(Ground)");
         }
-        else
+        else    // Air
         {
-            //call anim
+         
         }
     }
     // ==================================================== //
@@ -307,6 +319,30 @@ public class MovesetList_Guitar : MonoBehaviour
         }
     }
 
+    public void PullOff(int phaseToPlay, bool state)
+    {
+        if (state) // Ground
+        {
+            anim.SetTrigger("Guit_Atk_PullOff(Ground)");
+        }
+        else    // Air
+        {
+
+        }
+    }
+
+    public void HammerOn(int phaseToPlay, bool state)
+    {
+        if (state) // Ground
+        {
+            anim.SetTrigger("Guit_Atk_HammerOn(Ground)");
+        }
+        else    // Air
+        {
+
+        }
+    }
+
     public void PowerChordStrumSlide(int phaseToPlay, bool state)
     {
         if (state) // Ground
@@ -350,7 +386,17 @@ public class MovesetList_Guitar : MonoBehaviour
     // ==================================================== //
     // Block
     // ==================================================== //
+    public void Block(int phaseToPlay, bool state)
+    {
+        if (state) // Ground
+        {
+            anim.SetTrigger("Guit_Atk_Block(Ground)");
+        }
+        else    // Air
+        {
 
+        }
+    }
 
 
 
@@ -363,7 +409,7 @@ public class MovesetList_Guitar : MonoBehaviour
 
 
 
- 
+
 
 }
 

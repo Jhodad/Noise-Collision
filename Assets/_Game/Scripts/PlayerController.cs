@@ -83,8 +83,25 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            movesetHandler.Perform(5);
+            movesetHandler.Perform(6);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            movesetHandler.Perform(7);
+        }
+
+        if (Input.GetKey(KeyCode.Alpha7))
+        {
+            movesetHandler.Perform(8);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            movesetHandler.Perform(9);
+        }
+
+        
         /*
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -106,7 +123,7 @@ public class PlayerController : MonoBehaviour
          */
 
 
-        
+
 
         // XP TEST
         if (Input.GetKeyDown(KeyCode.Z))

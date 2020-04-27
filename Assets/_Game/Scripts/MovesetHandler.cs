@@ -73,6 +73,11 @@ public class MovesetHandler : MonoBehaviour
         actionNameList_moveset.Add(actionNameList[3]);
         actionNameList_moveset.Add(actionNameList[4]);
         actionNameList_moveset.Add(actionNameList[5]);
+        actionNameList_moveset.Add(actionNameList[6]);
+        actionNameList_moveset.Add(actionNameList[7]);
+        actionNameList_moveset.Add(actionNameList[8]);
+        actionNameList_moveset.Add(actionNameList[9]);
+
     }
 
 
@@ -400,18 +405,29 @@ public class MovesetHandler : MonoBehaviour
         actionNameList_Type.Add(1);
 
         /* [6] */
+        actionNameList.Add("HammerOn");
+        actionNameList_isUnlocked.Add(true);
+        actionNameList_Phases.Add(1);
+        actionNameList_Type.Add(1);
 
         /* [7] */
+        actionNameList.Add("PullOff");
+        actionNameList_isUnlocked.Add(true);
+        actionNameList_Phases.Add(1);
+        actionNameList_Type.Add(1);
 
         /* [8] */
-        actionNameList.Add("Basic Strike");
+        actionNameList.Add("Default Block"); // 
         actionNameList_isUnlocked.Add(true);
-        
+        actionNameList_Phases.Add(1);
+        actionNameList_Type.Add(1);
 
         /* [9] */
         actionNameList.Add("Basic Spin");
         actionNameList_isUnlocked.Add(true);
-        
+        actionNameList_Phases.Add(1);
+        actionNameList_Type.Add(1);
+
 
         /* [10] */
         actionNameList.Add("Power Chord Strum Slide");
@@ -435,8 +451,7 @@ public class MovesetHandler : MonoBehaviour
         actionNameList_isUnlocked.Add(true);
 
         /* [15] */
-        actionNameList.Add("Default Block"); // 
-        actionNameList_isUnlocked.Add(true);
+        
 
         /* [16] */
         actionNameList.Add("Default Solo"); //

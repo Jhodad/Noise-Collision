@@ -263,7 +263,7 @@ Removed:
 
 Fixed:
 - Renamed Roulette anim to StrapSpin (Roulette will be an enhanced version)
-- All combat hiccup bugs
+- All combat hiccup bugss
 
 Bugs:
 - Animations dont work well with RigidBody's vertical velocity (jumping/falling)
@@ -295,3 +295,34 @@ Bugs:
 
 Missing: 
 - Check the jump up and down velocity, make it more believable
+
+
+==========================================================================
+
+=====================
+== Version Dev_4.3 ==
+=====================
+Added:
+- Added script to match variables on combat handlers with their canvas
+- Added Meshes and Bones for EADGBe Strings inside the guitar container
+- Updated Block Anim to use the new string system
+- Filled HammerOn Anim
+- Filled PullOff Anim
+- Finished Display Canvas
+- Added Scene objects for stream purposes
+- Added test sound effects for atks and other sfx
+- Added script functionss for all new atks 
+
+Removed:
+
+
+Fixed:
+- Polished camera follow-up movement and angles
+
+Bugs:
+- Animations dont work well with RigidBody's vertical velocity (jumping/falling)
+
+Missing: 
+- Check the jump up and down velocity, make it more believable
+
+
