@@ -331,6 +331,7 @@ Missing:
 =====================
 == Version Dev_4.4 ==
 =====================
+NOTE: Now named Dev_2.0.0
 
 - Updated Unity to 2019.3.15f1
 
@@ -351,3 +352,37 @@ Bugs:
 Missing: 
 - Check the jump up and down velocity, make it more believable
 
+
+
+
+==================================================================================
+==================================================================================
+==	Library folder and metadata is now ignored									==
+==	Naming convention will change to reflect detailed changes					==
+==	Versioning now follows: type_x.y.z 											==
+==	type 	= dev, test, release, etc. 											==
+==	x		= version (big changes. New Animations and Combat scripts) 			==
+==	y 		= changes (small changes, bug fixes. Edit the Anims and scripts) 	==
+==  z 		= complement (very small variable changes, number tests, etc)		==
+==================================================================================
+==================================================================================
+
+
+== This update serves only as a test for formatting and to reflect Library folder changes == 
+== Version Dev_2.0.0 follows after the previously named Dev_4.4 and now Dev_2.0.0		  ==
+=====================
+== Dev_1.0.0 ==
+=====================
+
+Added:
+
+Removed:
+- Library and metadata folders (First run after deleting this might take a while to reload all files)
+
+Fixed:
+
+Bugs:
+
+Missing: 
+
+==========================================================================

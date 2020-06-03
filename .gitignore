@@ -5,15 +5,6 @@ Temp/
 /[Ll]ibrary/
 [Ll]ibrary/
 Library/
-/Library
-Library/PackageCache
-Library/metadata/
-Library/ShaderCache/
-Library/shadorecompiler/
-Library/StateCache/
-
-
-
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -40,20 +31,3 @@ obj/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-
-*.meta
-*.log
-*.md
-*.meta
-Library/CurrentLayout-default.dwlt
-Library/LastSceneManagerSetup.txt
-Library/SceneVisibilityState.asset
-Library/shadercompiler-UnityShaderCompiler.exe0.log
-Library/shadercompiler-UnityShaderCompiler.exe1.log
-Library/shadercompiler-UnityShaderCompiler.exe2.log
-Library/shadercompiler-UnityShaderCompiler.exe3.log
-Library/shadercompiler-UnityShaderCompiler.exe4.log
-Library/shadercompiler-UnityShaderCompiler.exe5.log
-Library/shadercompiler-UnityShaderCompiler.exe6.log
-Library/shadercompiler-UnityShaderCompiler.exe7.log
