@@ -368,11 +368,14 @@ Missing:
 ==================================================================================
 
 
+==========================================================================
+
+
 == This update serves only as a test for formatting and to reflect Library folder changes == 
 == Version Dev_2.0.0 follows after the previously named Dev_4.4 and now Dev_2.0.0		  ==
-=====================
-== Dev_1.0.0 ==
-=====================
+==================
+== Dev_1.0.0 	==
+==================
 
 Added:
 
@@ -384,5 +387,28 @@ Fixed:
 Bugs:
 
 Missing: 
+
+
+==========================================================================
+
+
+=====================
+== Dev_2.0.1 ==
+=====================
+Note: Just a test
+
+Added
+- Empty function UseBattery
+
+Removed:
+
+Fixed:
+
+Bugs:
+- Animations dont work well with RigidBody's vertical velocity (jumping/falling)
+
+Missing: 
+- Check the jump up and down velocity, make it more believable
+
 
 ==========================================================================
