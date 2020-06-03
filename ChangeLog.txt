@@ -311,7 +311,7 @@ Added:
 - Finished Display Canvas
 - Added Scene objects for stream purposes
 - Added test sound effects for atks and other sfx
-- Added script functionss for all new atks 
+- Added script functions for all new atks 
 
 Removed:
 
@@ -326,3 +326,27 @@ Missing:
 - Check the jump up and down velocity, make it more believable
 
 
+==========================================================================
+
+=====================
+== Version Dev_4.4 ==
+=====================
+
+- Updated Unity to 2019.3.15f1
+
+Added
+- Added separate scripts with effects and control for each attack
+- Added Script Execution Order for MovesetHandlers
+- Overall Improvements and cleanup
+
+Removed:
+
+
+Fixed:
+- Moveset and Attack handlers now call correct instances of attacks
+
+Bugs:
+- Animations dont work well with RigidBody's vertical velocity (jumping/falling)
+
+Missing: 
+- Check the jump up and down velocity, make it more believable

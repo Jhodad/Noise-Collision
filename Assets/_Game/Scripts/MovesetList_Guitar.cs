@@ -1,13 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MovesetList_Guitar : MonoBehaviour
 {
-    private Stats stats;
+    public Stats stats;
     private Animator anim;
     private Player player;
 
+    public string test;
+
     private bool isGrounded;
+
+    // Attacks
+    public Atk_Gtr_BasicSwing basicSwing;
+    public Atk_Gtr_BasicSwingHeavy basicSwingHeavy;
+    public Atk_Gtr_PowerChordStrum powerChordStrum;
+    public Atk_Gtr_PowerChordStinger powerChordStinger;
+    public Atk_Gtr_HammerOn hammerOn;
+    public Atk_Gtr_PullOff pullOff;
+    public Atk_Gtr_Block block;
 
     // Use this for initialization
     void Start()
@@ -16,11 +28,24 @@ public class MovesetList_Guitar : MonoBehaviour
         stats = GetComponent<Stats>();
         player = GetComponent<Player>();
 
+        // Attacks
+        basicSwing = GetComponent<Atk_Gtr_BasicSwing>();
+        Debug.Log("En Movesetlist: " + basicSwing.atkName);
+        basicSwingHeavy = GetComponent<Atk_Gtr_BasicSwingHeavy>();
+        powerChordStrum = GetComponent<Atk_Gtr_PowerChordStrum>();
+        powerChordStinger = GetComponent<Atk_Gtr_PowerChordStinger>();
+        hammerOn = GetComponent<Atk_Gtr_HammerOn>();
+        pullOff = GetComponent<Atk_Gtr_PullOff>();
+        block = GetComponent<Atk_Gtr_Block>();
+
         isGrounded = true;
+
+        test = "haha";
     }
 
     void Update()
     {
+        Debug.Log("En MOVESETLIST UPDATE: " + basicSwing.atkName);
         if (stats.isGrounded)
         {
             isGrounded = true;
@@ -42,11 +67,11 @@ public class MovesetList_Guitar : MonoBehaviour
             // ==================================================== //
             // Basic
             case "Basic Swing":
-                BasicSwing(phaseToCall, isGrounded);
+                basicSwing.Perform(phaseToCall, isGrounded);
                 break;
 
             case "Basic Swing Heavy":
-                BasicSwingHeavy(phaseToCall, isGrounded);
+                basicSwingHeavy.Perform(phaseToCall, isGrounded);
                 break;
             
             case "Basic Strike":
@@ -56,36 +81,15 @@ public class MovesetList_Guitar : MonoBehaviour
             case "Basic Spin":
                 BasicSpin(phaseToCall, isGrounded);
                 break;
-            // Basic
-            // ==================================================== //
-
-
-
-
-            // ==================================================== //
-            // Music
-            case "Power Chord Strum":
-                PowerChordStrum(phaseToCall, isGrounded);
-                break;
-            // Music
-            // ==================================================== //
-
             
-
-
-            // ==================================================== //
-            // Stance
+            case "Power Chord Strum":
+                powerChordStrum.Perform(phaseToCall, isGrounded);
+                break;
+            
             case "Simple Power Stance":
                 SimplePowerStance(phaseToCall, isGrounded);
                 break;
-            // Stance
-            // ==================================================== //
-
-
-
-
-            // ==================================================== //
-            // Music Super
+            
             case "Power Chord Strum Slide":
                 PowerChordStrumSlide(phaseToCall, isGrounded);
                 break;
@@ -94,71 +98,35 @@ public class MovesetList_Guitar : MonoBehaviour
                 break;
            
             case "Power Chord Stinger":
-                PowerChordStinger(phaseToCall, isGrounded);
+                powerChordStinger.Perform(phaseToCall, isGrounded);
                 break;
            
             case "Music Super Air 1":
                 break;
 
-            case "HammerOn":
-                HammerOn(phaseToCall, isGrounded);
+            case "Hammer On":
+                hammerOn.Perform(phaseToCall, isGrounded);
                 break;
 
-            case "PullOff":
-                PullOff(phaseToCall, isGrounded);
+            case "Pull Off":
+                pullOff.Perform(phaseToCall, isGrounded);
                 break;
 
-            case "Default Block":
-                Block(phaseToCall, isGrounded);
+            case "Block":
+                block.Perform(phaseToCall, isGrounded);
                 break;
-            // Music Super
-            // ==================================================== //
-
-
-
-
-            // ==================================================== //
-            // Launcher
+            
             case "Default Launcher":
                 break;
-            // Launcher
-            // ==================================================== //
-
-
-
-
-            // ==================================================== //
-            // Slammer
+            
             case "Default Slammer":
                 break;
-            // Slammer
-            // ==================================================== //
-
-
-
-            // ==================================================== //
-            // Block
+            
             case "Default Block1":
                 break;
-            // Block
-            // ==================================================== //
-
-
-
-
-            // ==================================================== //
-            // Solo
+            
             case "Default Solo":
                 break;
-            // Solo
-            // ==================================================== //
-
-
-
-
-
-
-
         }
     }
 
@@ -176,60 +144,9 @@ public class MovesetList_Guitar : MonoBehaviour
     // ==================================================== //
     // Basic
     // ==================================================== //
-    public void BasicSwing(int phaseToPlay, bool state)
-    {
-        if (state) // Ground
-        {
-            switch (phaseToPlay)
-            {
-                case 1:
-                    anim.SetTrigger("Guit_Atk_BasicSwing(Ground)_1");
-                    break;
+    
 
-                case 2:
-                    if (player.IsPlayingName("Guit_Atk_BasicSwing(Ground)_1"))
-                    {
-                        anim.SetTrigger("Guit_Atk_BasicSwing(Ground)_2");
-                    }
-                    break;
-
-                case 3:
-                    if (player.IsPlayingName("Guit_Atk_BasicSwing(Ground)_2"))
-                    {
-                        anim.SetTrigger("Guit_Atk_BasicSwing(Ground)_3");
-                    }
-                    break;
-            }
-        }
-        else    // Air
-        {
-            Debug.Log("Thiss attack doesnt have air anims");
-        }
-    }
-
-    public void BasicSwingHeavy(int phaseToPlay, bool state)
-    {
-        if (state) // Ground
-        {
-            switch (phaseToPlay)
-            {
-                case 1:
-                    anim.SetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_1");
-                    break;
-
-                case 2:
-                    if (player.IsPlayingName("Guit_Atk_BasicSwingHeavy(Ground)_1"))
-                    {
-                        anim.SetTrigger("Guit_Atk_BasicSwingHeavy(Ground)_2");
-                    }
-                    
-                    break;
-            }
-        }
-        else    // Air
-        {
-        }
-    }
+    
 
     public void BasicStrike(int phaseToPlay, bool state)
     {
@@ -264,17 +181,7 @@ public class MovesetList_Guitar : MonoBehaviour
     // ==================================================== //
     // Music
     // ==================================================== //
-    public void PowerChordStrum(int phaseToPlay, bool state)
-    {
-        if (state) // Ground
-        {
-            anim.SetTrigger("Guit_Atk_PowerChordStrum(Ground)");
-        }
-        else    // Air
-        {
-            anim.SetTrigger("Guit_Atk_PowerChordStrum(Air)");
-        }
-    }
+
 
     // ==================================================== //
     // Music
@@ -307,41 +214,11 @@ public class MovesetList_Guitar : MonoBehaviour
     // ==================================================== //
     // Music Super
     // ==================================================== //
-    public void PowerChordStinger(int phaseToPlay, bool state)
-    {
-        if (state) // Ground
-        {
-            anim.SetTrigger("Guit_Atk_PowerChordStinger(Ground)");
-        }
-        else    // Air
-        {
 
-        }
-    }
 
-    public void PullOff(int phaseToPlay, bool state)
-    {
-        if (state) // Ground
-        {
-            anim.SetTrigger("Guit_Atk_PullOff(Ground)");
-        }
-        else    // Air
-        {
 
-        }
-    }
 
-    public void HammerOn(int phaseToPlay, bool state)
-    {
-        if (state) // Ground
-        {
-            anim.SetTrigger("Guit_Atk_HammerOn(Ground)");
-        }
-        else    // Air
-        {
 
-        }
-    }
 
     public void PowerChordStrumSlide(int phaseToPlay, bool state)
     {
@@ -386,17 +263,7 @@ public class MovesetList_Guitar : MonoBehaviour
     // ==================================================== //
     // Block
     // ==================================================== //
-    public void Block(int phaseToPlay, bool state)
-    {
-        if (state) // Ground
-        {
-            anim.SetTrigger("Guit_Atk_Block(Ground)");
-        }
-        else    // Air
-        {
 
-        }
-    }
 
 
 

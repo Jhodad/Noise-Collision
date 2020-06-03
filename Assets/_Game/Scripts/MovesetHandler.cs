@@ -8,6 +8,7 @@ public class MovesetHandler : MonoBehaviour
     private MovesetList_Guitar sMovesetList;
     private Stats sStats;
     private Player sPlayer;
+    
 
 
     // LISTS
@@ -39,11 +40,17 @@ public class MovesetHandler : MonoBehaviour
         sMovesetList = GetComponent<MovesetList_Guitar>();
         sStats = GetComponent<Stats>();
 
+        Debug.Log("START ANTES DE LISTAS: " + sMovesetList.basicSwing.atkName);
+        Debug.Log("START ANTES DE LISTAS DE MOVESET: " + sMovesetList.test);
+        Debug.Log("SSTATS: " + sMovesetList.stats.maxBattery);
+
         actionNameList = new List<string>();
         actionNameList_isUnlocked = new List<bool>();
         actionNameList_moveset = new List<string>();
         actionNameList_Phases = new List<int>();
         actionNameList_Type = new List<int>();
+
+        Debug.Log("START DESSPUES DE LISTAS: " + sMovesetList.basicSwing.atkName);
 
         lastAtk = "none";
         canCountCombatCooldown = true;
@@ -52,15 +59,21 @@ public class MovesetHandler : MonoBehaviour
         isAttacking = false;
 
         PopulateActionLists();
+        
         AttackSelector();
+        Debug.Log("DESPUES ATKSELECT: " + sMovesetList.basicSwing.atkName);
     }
 
     private void Update()
     {
+        Debug.Log("En MOVESETHANDLER UPDATE ANTES: " + sMovesetList.basicSwing.atkName);
         LastAtkUpdate();
         CombatTimeoutWatcher();
         InAttackWatcher();
-        //Debug.Log(" LAST ACITON: " + lastAtk);
+        Debug.Log("En MOVESETHANDLER UPDATE DESPUES: " + sMovesetList.basicSwing.atkName);
+        //Debug.Log(" LAST ACITON: " + lastAtk);       
+        Debug.Log("3pull: " + sMovesetList.stats.maxBattery);
+
     }
 
     // For each Attack Slot open a DropDownList and select the attack to assign IF unlocked true
@@ -366,6 +379,8 @@ public class MovesetHandler : MonoBehaviour
 
     private void PopulateActionLists()
     {
+
+        Debug.Log("EMPEZANDO PPOPULATE: " + sMovesetList.basicSwing.atkName);
         // Position 0 is just a placeholder
         actionNameList.Add("PLACEHOLDER");
         actionNameList_isUnlocked.Add(false);
@@ -374,55 +389,56 @@ public class MovesetHandler : MonoBehaviour
 
         // Default Actions
 
-        /* [1] */
-        actionNameList.Add("Basic Swing");
+        /* [1] */ // Basic Swing
+        Debug.Log("smoveset list: " + sMovesetList.basicSwing.atkName);
+        actionNameList.Add(sMovesetList.basicSwing.atkName);
         actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(3);
-        actionNameList_Type.Add(0);
+        actionNameList_Phases.Add(sMovesetList.basicSwing.phases);
+        actionNameList_Type.Add(sMovesetList.basicSwing.type);
 
-        /* [2] */
-        actionNameList.Add("Basic Swing Heavy");
+        /* [2] */ // Basic Swing Heavy
+        actionNameList.Add(sMovesetList.basicSwingHeavy.atkName);
         actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(2);
-        actionNameList_Type.Add(0);
+        actionNameList_Phases.Add(sMovesetList.basicSwingHeavy.phases);
+        actionNameList_Type.Add(sMovesetList.basicSwingHeavy.type);
 
-        /* [3] */
-        actionNameList.Add("Power Chord Strum");
+        /* [3] */ // Power Chord Strum
+        actionNameList.Add(sMovesetList.powerChordStrum.atkName);
         actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(1);
-        actionNameList_Type.Add(1);
+        actionNameList_Phases.Add(sMovesetList.powerChordStrum.phases);
+        actionNameList_Type.Add(sMovesetList.powerChordStrum.type);
 
-        /* [4] */
-        actionNameList.Add("Power Chord Stinger");
+        /* [4] */ // Power Chord Stinger
+        actionNameList.Add(sMovesetList.powerChordStinger.atkName);
         actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(1);
-        actionNameList_Type.Add(1);
+        actionNameList_Phases.Add(sMovesetList.powerChordStinger.phases);
+        actionNameList_Type.Add(sMovesetList.powerChordStinger.type);
 
-        /* [5] */
+        /* [5] */ // Power Stance
         actionNameList.Add("Simple Power Stance");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(1);
         actionNameList_Type.Add(1);
 
-        /* [6] */
-        actionNameList.Add("HammerOn");
+        /* [6] */ // Hammer On
+        actionNameList.Add(sMovesetList.hammerOn.atkName);
         actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(1);
-        actionNameList_Type.Add(1);
+        actionNameList_Phases.Add(sMovesetList.hammerOn.phases);
+        actionNameList_Type.Add(sMovesetList.hammerOn.type);
 
-        /* [7] */
-        actionNameList.Add("PullOff");
+        /* [7] */ // Pull Off
+        actionNameList.Add(sMovesetList.pullOff.atkName);
         actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(1);
-        actionNameList_Type.Add(1);
+        actionNameList_Phases.Add(sMovesetList.pullOff.phases);
+        actionNameList_Type.Add(sMovesetList.pullOff.type);
 
-        /* [8] */
-        actionNameList.Add("Default Block"); // 
+        /* [8] */ // Block
+        actionNameList.Add(sMovesetList.block.atkName); // 
         actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(1);
-        actionNameList_Type.Add(1);
+        actionNameList_Phases.Add(sMovesetList.block.phases);
+        actionNameList_Type.Add(sMovesetList.block.type);
 
-        /* [9] */
+        /* [9] */ 
         actionNameList.Add("Basic Spin");
         actionNameList_isUnlocked.Add(true);
         actionNameList_Phases.Add(1);

@@ -323,6 +323,16 @@ public class Stats : MonoBehaviour
         return result;
     }
 
+    private void UseBattery(float cost)
+    {
+
+    }
+
+    private void UseBatteryThenDamage(float cost)
+    {
+
+    }
+
     private void RestoreBattery()
     {
         if (currentBattery < maxBattery)
