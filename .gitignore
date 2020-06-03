@@ -2,7 +2,16 @@
 # Unity generated #
 # =============== #
 Temp/
+/[Ll]ibrary/
+[Ll]ibrary/
 Library/
+/Library
+Library/PackageCache
+Library/metadata/
+Library/ShaderCache/
+Library/shadorecompiler/
+Library/StateCache/
+
 
 
 
@@ -33,3 +42,7 @@ ehthumbs.db
 Thumbs.db
 
 
+*.meta
+*.log
+*.md
+*.meta
