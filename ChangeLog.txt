@@ -412,3 +412,35 @@ Missing:
 
 
 ==========================================================================
+
+
+=====================
+== Dev_2.1.0 ==
+=====================
+
+Added
+- Current Atks now send Battery Cost to Stats to perform UseBattery
+- Updated soime Anims speed
+- Updated StrapSpin anim to make the flip at the end seem intentional
+- Updated on basic and heavy swings to end into neutral anim
+
+
+Removed:
+
+Fixed:
+- Another update on Heavy Basic's anims.
+- Truncates on HUD's Health and Energy number display
+- Fixed overall anim's beginning and ending transitions
+
+Bugs:
+- Animations dont work well with RigidBody's vertical velocity (jumping/falling)
+- You can fakely perform a Music attack without having Battery, thus making Basic > Music > Basic loopable with no Battery and without actually performing Battery
+Note: LastAtk registers the non-performed Music attack even if there is no Battery to cast it.
+- FIX THE DAMN SPRITES ALREADY (Turning left makes a mirror image instead of correctly switching the character to look to the right)
+
+Missing: 
+- Check the jump up and down velocity, make it more believable
+
+
+
+==========================================================================

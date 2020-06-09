@@ -146,8 +146,8 @@ public class AudioPlayer : MonoBehaviour
     public void PlayRandomHammerOn()
     {
         audioSrc.Stop();
-
-        int clip = Random.Range(1, 5);
+        int clip = Random.Range(4, 5);
+        //int clip = Random.Range(1, 5);
         switch (clip)
         {
             case 1:

@@ -13,16 +13,20 @@ public class MovesetHandler : MonoBehaviour
 
     // LISTS
     // All Actions
-    private List<string> actionNameList;
+    private List<string> actionList_Name;
     // All actions' is unlocked?
-    private List<bool> actionNameList_isUnlocked;
+    private List<bool> actionList_isUnlocked;
     // ALL actions' phases
-    private List<int> actionNameList_Phases;
+    private List<int> actionList_Phases;
     // ALL actions' type
-    private List<int> actionNameList_Type;
+    private List<int> actionList_Type;
+    // ALL action' cost
+    private List<float> actionList_Cost;
+    // ALL action' damage
+    private List<float> actionList_Damage;
 
     //Assigned Actions
-    private List<string> actionNameList_moveset;
+    private List<string> actionList_Moveset;
 
     private string actionCalledName;
     private string lastAtk;
@@ -44,11 +48,13 @@ public class MovesetHandler : MonoBehaviour
         Debug.Log("START ANTES DE LISTAS DE MOVESET: " + sMovesetList.test);
         Debug.Log("SSTATS: " + sMovesetList.stats.maxBattery);
 
-        actionNameList = new List<string>();
-        actionNameList_isUnlocked = new List<bool>();
-        actionNameList_moveset = new List<string>();
-        actionNameList_Phases = new List<int>();
-        actionNameList_Type = new List<int>();
+        actionList_Name = new List<string>();
+        actionList_isUnlocked = new List<bool>();
+        actionList_Moveset = new List<string>();
+        actionList_Phases = new List<int>();
+        actionList_Type = new List<int>();
+        actionList_Cost = new List<float>();
+        actionList_Damage = new List<float>();
 
         Debug.Log("START DESSPUES DE LISTAS: " + sMovesetList.basicSwing.atkName);
 
@@ -80,16 +86,16 @@ public class MovesetHandler : MonoBehaviour
     public void AttackSelector()
     {
         // TEMPORARY
-        actionNameList_moveset.Add("PLACEHOLDER");
-        actionNameList_moveset.Add(actionNameList[1]);
-        actionNameList_moveset.Add(actionNameList[2]);
-        actionNameList_moveset.Add(actionNameList[3]);
-        actionNameList_moveset.Add(actionNameList[4]);
-        actionNameList_moveset.Add(actionNameList[5]);
-        actionNameList_moveset.Add(actionNameList[6]);
-        actionNameList_moveset.Add(actionNameList[7]);
-        actionNameList_moveset.Add(actionNameList[8]);
-        actionNameList_moveset.Add(actionNameList[9]);
+        actionList_Moveset.Add("PLACEHOLDER");
+        actionList_Moveset.Add(actionList_Name[1]);
+        actionList_Moveset.Add(actionList_Name[2]);
+        actionList_Moveset.Add(actionList_Name[3]);
+        actionList_Moveset.Add(actionList_Name[4]);
+        actionList_Moveset.Add(actionList_Name[5]);
+        actionList_Moveset.Add(actionList_Name[6]);
+        actionList_Moveset.Add(actionList_Name[7]);
+        actionList_Moveset.Add(actionList_Name[8]);
+        actionList_Moveset.Add(actionList_Name[9]);
 
     }
 
@@ -103,52 +109,52 @@ public class MovesetHandler : MonoBehaviour
             {
                 // Atk - Basic 1
                 case 1:
-                    actionCalledName = actionNameList_moveset[1];
+                    actionCalledName = actionList_Moveset[1];
                     break;
 
                 // Atk - Basic 2
                 case 2:
-                    actionCalledName = actionNameList_moveset[2];
+                    actionCalledName = actionList_Moveset[2];
                     break;
 
                 // Atk - Special 1
                 case 3:
-                    actionCalledName = actionNameList_moveset[3];
+                    actionCalledName = actionList_Moveset[3];
                     break;
 
                 // Atk - Special 2
                 case 4:
-                    actionCalledName = actionNameList_moveset[4];
+                    actionCalledName = actionList_Moveset[4];
                     break;
 
                 // Atk - Special 3
                 case 5:
-                    actionCalledName = actionNameList_moveset[5];
+                    actionCalledName = actionList_Moveset[5];
                     break;
 
                 // Atk - Special 4
                 case 6:
-                    actionCalledName = actionNameList_moveset[6];
+                    actionCalledName = actionList_Moveset[6];
                     break;
 
                 // Atk - Stance
                 case 7:
-                    actionCalledName = actionNameList_moveset[7];
+                    actionCalledName = actionList_Moveset[7];
                     break;
 
                 // Atk - Stance Music
                 case 8:
-                    actionCalledName = actionNameList_moveset[8];
+                    actionCalledName = actionList_Moveset[8];
                     break;
 
                 // Atk - Solo
                 case 9:
-                    actionCalledName = actionNameList_moveset[9];
+                    actionCalledName = actionList_Moveset[9];
                     break;
 
                 // Atk - Block
                 case 10:
-                    actionCalledName = actionNameList_moveset[10];
+                    actionCalledName = actionList_Moveset[10];
                     break;
 
                     /*
@@ -158,6 +164,7 @@ public class MovesetHandler : MonoBehaviour
                     */
             }
             // NOTE: THIS SHOULD ONLY HAPPEN WHEN ITS AN ATTACK
+
             Debug.Log("== ATTACK CALLED: " + actionCalledName);
             ActionHandler();
         }
@@ -195,11 +202,11 @@ public class MovesetHandler : MonoBehaviour
         int maxPhase, i;
 
         // Get index of the action
-        i = actionNameList.IndexOf(actionCalledName);
+        i = actionList_Name.IndexOf(actionCalledName);
         Debug.Log("== " + actionCalledName + " index is: " + i);
 
         // Get max phases of the action
-        maxPhase = actionNameList_Phases[i];
+        maxPhase = actionList_Phases[i];
         Debug.Log("== " + actionCalledName + " phases are: " + maxPhase + ", " + " and current phase is: " + sPlayer.anim.GetInteger("atkPhase"));
         Debug.Log("==== CALLED: " + actionCalledName);
         Debug.Log("==== LAST: " + lastAtk);
@@ -232,10 +239,10 @@ public class MovesetHandler : MonoBehaviour
                 else
                 {
                     int test;
-                    test = actionNameList.IndexOf(lastAtk);
+                    test = actionList_Name.IndexOf(lastAtk);
                     Debug.Log(" ------------ " + lastAtk + "pos in index is: " + test);
-                    Debug.Log(" ------------ with type: " + actionNameList_Type[test]);
-                    if (actionNameList_Type[test] == 1 && actionNameList_Type[i] == 1)
+                    Debug.Log(" ------------ with type: " + actionList_Type[test]);
+                    if (actionList_Type[test] == 1 && actionList_Type[i] == 1)
                     { // If its a music type, then its spammable
                         sPlayer.anim.SetInteger("atkPhase", 1);
                         sMovesetList.ActionCall(actionCalledName, sPlayer.anim.GetInteger("atkPhase"));
@@ -257,11 +264,11 @@ public class MovesetHandler : MonoBehaviour
         else // lastAtk =/= actionCalledName so just a new chain
         {
             int test;
-            test = actionNameList.IndexOf(lastAtk);
+            test = actionList_Name.IndexOf(lastAtk);
             Debug.Log(" ------------ " + lastAtk + "pos in index is: " + test);
-            Debug.Log(" ------------ with type: " + actionNameList_Type[test]);
+            Debug.Log(" ------------ with type: " + actionList_Type[test]);
 
-            if (actionNameList_Type[test] == 0 && actionNameList_Type[i] == 0) // it's a basic and the last one was a basic
+            if (actionList_Type[test] == 0 && actionList_Type[i] == 0) // it's a basic and the last one was a basic
             {
                 Debug.Log("Combo loss, cant cycle through basics");
                 sPlayer.anim.SetBool("comboLost", true);
@@ -382,96 +389,100 @@ public class MovesetHandler : MonoBehaviour
 
         Debug.Log("EMPEZANDO PPOPULATE: " + sMovesetList.basicSwing.atkName);
         // Position 0 is just a placeholder
-        actionNameList.Add("PLACEHOLDER");
-        actionNameList_isUnlocked.Add(false);
-        actionNameList_Phases.Add(1);
-        actionNameList_Type.Add(0);
+        actionList_Name.Add("PLACEHOLDER");
+        actionList_isUnlocked.Add(false);
+        actionList_Phases.Add(1);
+        actionList_Type.Add(0);
+        actionList_Cost.Add(sMovesetList.powerChordStrum.cost);
 
         // Default Actions
 
         /* [1] */ // Basic Swing
         Debug.Log("smoveset list: " + sMovesetList.basicSwing.atkName);
-        actionNameList.Add(sMovesetList.basicSwing.atkName);
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(sMovesetList.basicSwing.phases);
-        actionNameList_Type.Add(sMovesetList.basicSwing.type);
+        actionList_Name.Add(sMovesetList.basicSwing.atkName);
+        actionList_isUnlocked.Add(true);
+        actionList_Phases.Add(sMovesetList.basicSwing.phases);
+        actionList_Type.Add(sMovesetList.basicSwing.type);
+        actionList_Cost.Add(sMovesetList.powerChordStrum.cost);
 
         /* [2] */ // Basic Swing Heavy
-        actionNameList.Add(sMovesetList.basicSwingHeavy.atkName);
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(sMovesetList.basicSwingHeavy.phases);
-        actionNameList_Type.Add(sMovesetList.basicSwingHeavy.type);
+        actionList_Name.Add(sMovesetList.basicSwingHeavy.atkName);
+        actionList_isUnlocked.Add(true);
+        actionList_Phases.Add(sMovesetList.basicSwingHeavy.phases);
+        actionList_Type.Add(sMovesetList.basicSwingHeavy.type);
+        actionList_Cost.Add(sMovesetList.powerChordStrum.cost);
 
         /* [3] */ // Power Chord Strum
-        actionNameList.Add(sMovesetList.powerChordStrum.atkName);
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(sMovesetList.powerChordStrum.phases);
-        actionNameList_Type.Add(sMovesetList.powerChordStrum.type);
+        actionList_Name.Add(sMovesetList.powerChordStrum.atkName);
+        actionList_isUnlocked.Add(true);
+        actionList_Phases.Add(sMovesetList.powerChordStrum.phases);
+        actionList_Type.Add(sMovesetList.powerChordStrum.type);
+        actionList_Cost.Add(sMovesetList.powerChordStrum.cost);
 
         /* [4] */ // Power Chord Stinger
-        actionNameList.Add(sMovesetList.powerChordStinger.atkName);
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(sMovesetList.powerChordStinger.phases);
-        actionNameList_Type.Add(sMovesetList.powerChordStinger.type);
+        actionList_Name.Add(sMovesetList.powerChordStinger.atkName);
+        actionList_isUnlocked.Add(true);
+        actionList_Phases.Add(sMovesetList.powerChordStinger.phases);
+        actionList_Type.Add(sMovesetList.powerChordStinger.type);
 
         /* [5] */ // Power Stance
-        actionNameList.Add("Simple Power Stance");
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(1);
-        actionNameList_Type.Add(1);
+        actionList_Name.Add("Simple Power Stance");
+        actionList_isUnlocked.Add(true);
+        actionList_Phases.Add(1);
+        actionList_Type.Add(1);
 
         /* [6] */ // Hammer On
-        actionNameList.Add(sMovesetList.hammerOn.atkName);
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(sMovesetList.hammerOn.phases);
-        actionNameList_Type.Add(sMovesetList.hammerOn.type);
+        actionList_Name.Add(sMovesetList.hammerOn.atkName);
+        actionList_isUnlocked.Add(true);
+        actionList_Phases.Add(sMovesetList.hammerOn.phases);
+        actionList_Type.Add(sMovesetList.hammerOn.type);
 
         /* [7] */ // Pull Off
-        actionNameList.Add(sMovesetList.pullOff.atkName);
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(sMovesetList.pullOff.phases);
-        actionNameList_Type.Add(sMovesetList.pullOff.type);
+        actionList_Name.Add(sMovesetList.pullOff.atkName);
+        actionList_isUnlocked.Add(true);
+        actionList_Phases.Add(sMovesetList.pullOff.phases);
+        actionList_Type.Add(sMovesetList.pullOff.type);
 
         /* [8] */ // Block
-        actionNameList.Add(sMovesetList.block.atkName); // 
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(sMovesetList.block.phases);
-        actionNameList_Type.Add(sMovesetList.block.type);
+        actionList_Name.Add(sMovesetList.block.atkName); // 
+        actionList_isUnlocked.Add(true);
+        actionList_Phases.Add(sMovesetList.block.phases);
+        actionList_Type.Add(sMovesetList.block.type);
 
         /* [9] */ 
-        actionNameList.Add("Basic Spin");
-        actionNameList_isUnlocked.Add(true);
-        actionNameList_Phases.Add(1);
-        actionNameList_Type.Add(1);
+        actionList_Name.Add("Basic Spin");
+        actionList_isUnlocked.Add(true);
+        actionList_Phases.Add(1);
+        actionList_Type.Add(1);
 
 
         /* [10] */
-        actionNameList.Add("Power Chord Strum Slide");
-        actionNameList_isUnlocked.Add(true);
+        actionList_Name.Add("Power Chord Strum Slide");
+        actionList_isUnlocked.Add(true);
 
         /* [11] */
-        actionNameList.Add("Music Super 2"); //
-        actionNameList_isUnlocked.Add(true);
+        actionList_Name.Add("Music Super 2"); //
+        actionList_isUnlocked.Add(true);
         
 
         /* [12] */
-        actionNameList.Add("Music Super Air 1"); // 
-        actionNameList_isUnlocked.Add(true);
+        actionList_Name.Add("Music Super Air 1"); // 
+        actionList_isUnlocked.Add(true);
 
         /* [13] */
-        actionNameList.Add("Default Launcher"); //
-        actionNameList_isUnlocked.Add(true);
+        actionList_Name.Add("Default Launcher"); //
+        actionList_isUnlocked.Add(true);
 
         /* [14] */
-        actionNameList.Add("Default Slammer"); //
-        actionNameList_isUnlocked.Add(true);
+        actionList_Name.Add("Default Slammer"); //
+        actionList_isUnlocked.Add(true);
 
         /* [15] */
         
 
         /* [16] */
-        actionNameList.Add("Default Solo"); //
-        actionNameList_isUnlocked.Add(true);
+        actionList_Name.Add("Default Solo"); //
+        actionList_isUnlocked.Add(true);
 
         // Unlockables
 

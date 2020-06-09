@@ -58,17 +58,17 @@ public class HUD_EnergyBar : MonoBehaviour
         edgeRectTransform.anchoredPosition = new Vector2(barMaskWidth * energyPercent, 0);
 
         // Updates text, could be only when there are changes
-        capacityCurrentNumbers.text = stats.currentBattery.ToString();
+        capacityCurrentNumbers.text = Mathf.Round(stats.currentBattery).ToString();
         capacityMaxNumbers.text = "/ " + stats.maxBattery.ToString();
 
-        capacityCurrentPercent.text = (stats.CurrentBatteryPercent() * 100).ToString() + " %";
+        capacityCurrentPercent.text = (Mathf.Round(stats.CurrentBatteryPercent() * 100)).ToString() + " %";
         capacityMaxPercent.text = "/ 100 %";
     }
 
     private float CheckCurrentEnergyPercent()
     {
 
-        if (stats.CurrentBatteryPercent() > 1)
+        if (stats.CurrentBatteryPercent() > 1.01)
         {
             //Debug.Log("SI ES MAS GRANDE q 1");
             barRawImage.color = Color.red;

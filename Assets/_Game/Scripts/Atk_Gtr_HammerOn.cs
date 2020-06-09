@@ -7,8 +7,8 @@ public class Atk_Gtr_HammerOn : MonoBehaviour
     [HideInInspector] public string atkName;
     [HideInInspector] public int phases;
     [HideInInspector] public int type;
-    float damage;
-    float cost;
+    public float damage;
+    public float cost;
 
 
     private Player player;
@@ -20,6 +20,7 @@ public class Atk_Gtr_HammerOn : MonoBehaviour
         atkName = "Hammer On";
         phases = 1;
         type = 1;
+        cost = 80;
 
         player = GetComponent<Player>();
         anim = GetComponent<Animator>();
@@ -34,7 +35,16 @@ public class Atk_Gtr_HammerOn : MonoBehaviour
     {
         if (state) // Ground
         {
-            anim.SetTrigger("Guit_Atk_HammerOn(Ground)");
+            if (player.stats.CanUseBattery(cost))
+            {
+                player.stats.UseBattery(cost);
+                anim.SetTrigger("Guit_Atk_HammerOn(Ground)");
+            }
+            else
+            {
+                Debug.Log("No more battery");
+            }
+            
         }
         else    // Air
         {

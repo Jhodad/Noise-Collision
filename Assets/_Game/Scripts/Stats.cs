@@ -136,6 +136,7 @@ public class Stats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /* Test regen health 
         if (CurrentHealthPercent() >= 1)
         {
             goingDownh = true;
@@ -153,7 +154,7 @@ public class Stats : MonoBehaviour
         {
             currentHealth += 0.5f;
         }
-
+        */
         // 2
 
 
@@ -181,11 +182,16 @@ public class Stats : MonoBehaviour
         
         CheckBatteryDirection();
        // Debug.Log("Current battery before: " + currentBattery);
-        RestoreBattery();
+        
        // Debug.Log("Current battery after: " + currentBattery);
 
        // Debug.Log("Current XP: " + currentXP);
        // Debug.Log("Needed XP: " + needXP);
+    }
+
+    private void FixedUpdate()
+    {
+        RestoreBattery();
     }
 
     // ====================================================================================================================== ||
@@ -323,9 +329,22 @@ public class Stats : MonoBehaviour
         return result;
     }
 
-    private void UseBattery(float cost)
+    public bool CanUseBattery(float cost)
     {
+        if (currentBattery > cost)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
+    public void UseBattery(float cost)
+    {
+            currentBattery = currentBattery - cost;
+            Debug.Log("---- BATTERY REDUCED BY: " + cost);
     }
 
     private void UseBatteryThenDamage(float cost)
@@ -345,7 +364,7 @@ public class Stats : MonoBehaviour
             {
                 Debug.Log("I SET TO MAX");
                 currentBattery = maxBattery;
-                
+
             }
         }   
     }

@@ -66,7 +66,7 @@ public class HUD_InstrumentBar : MonoBehaviour
     private float CheckCurrentInstrumentMeterPercent()
     {
 
-        if (stats.CurrentInstrumentMeterPercent() > 1)
+        if (stats.CurrentInstrumentMeterPercent() > 1.01)
         {
             //Debug.Log("SI ES MAS GRANDE q 1");
             barRawImage.color = Color.red;

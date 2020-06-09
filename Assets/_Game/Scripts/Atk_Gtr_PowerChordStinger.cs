@@ -7,7 +7,8 @@ public class Atk_Gtr_PowerChordStinger : MonoBehaviour
     [HideInInspector] public string atkName;
     [HideInInspector] public int phases;
     [HideInInspector] public int type;
-
+    public float damage;
+    public float cost;
 
     private Player player;
     private Animator anim;
@@ -18,6 +19,7 @@ public class Atk_Gtr_PowerChordStinger : MonoBehaviour
         atkName = "Power Chord Stinger";
         phases = 1;
         type = 1;
+        cost = 40;
 
         player = GetComponent<Player>();
         anim = GetComponent<Animator>();
@@ -32,7 +34,16 @@ public class Atk_Gtr_PowerChordStinger : MonoBehaviour
     {
         if (state) // Ground
         {
-            anim.SetTrigger("Guit_Atk_PowerChordStinger(Ground)");
+            if (player.stats.CanUseBattery(cost))
+            {
+                player.stats.UseBattery(cost);
+                anim.SetTrigger("Guit_Atk_PowerChordStinger(Ground)");
+            }
+            else
+            {
+                Debug.Log("No more battery");
+            }
+            
         }
         else    // Air
         {

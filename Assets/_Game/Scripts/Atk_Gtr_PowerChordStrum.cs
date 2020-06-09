@@ -7,6 +7,8 @@ public class Atk_Gtr_PowerChordStrum : MonoBehaviour
     [HideInInspector] public string atkName;
     [HideInInspector] public int phases;
     [HideInInspector] public int type;
+    public float damage;
+    public float cost;
 
 
     private Player player;
@@ -18,6 +20,7 @@ public class Atk_Gtr_PowerChordStrum : MonoBehaviour
         atkName = "Power Chord Strum";
         phases = 1;
         type = 1;
+        cost = 30;
 
         player = GetComponent<Player>();
         anim = GetComponent<Animator>();
@@ -33,7 +36,15 @@ public class Atk_Gtr_PowerChordStrum : MonoBehaviour
     {
         if (state) // Ground
         {
-            anim.SetTrigger("Guit_Atk_PowerChordStrum(Ground)");
+            if (player.stats.CanUseBattery(cost))
+            {
+                player.stats.UseBattery(cost);
+                anim.SetTrigger("Guit_Atk_PowerChordStrum(Ground)");
+            }
+            else
+            {
+                Debug.Log("No more battery");
+            }  
         }
         else    // Air
         {

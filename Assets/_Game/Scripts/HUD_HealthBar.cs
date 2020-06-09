@@ -59,17 +59,17 @@ public class HUD_HealthBar : MonoBehaviour
         edgeRectTransform.anchoredPosition = new Vector2(barMaskWidth * healthPercent,0);
 
         // Updates text, could be only when there are changes
-        capacityCurrentNumbers.text = stats.currentHealth.ToString();
+        capacityCurrentNumbers.text = Mathf.Round(stats.currentHealth).ToString();
         capacityMaxNumbers.text = "/ " + stats.maxHealth.ToString();
 
-        capacityCurrentPercent.text = (stats.CurrentHealthPercent() * 100).ToString() + " %";
+        capacityCurrentPercent.text =  (Mathf.Round(stats.CurrentHealthPercent() * 100)).ToString() + " %";
         capacityMaxPercent.text = "/ 100 %";
     }
 
     private float CheckCurrentHealthPercent()
     {
 
-        if (stats.CurrentHealthPercent() > 1)
+        if (stats.CurrentHealthPercent() > 1.01)
         {
             //Debug.Log("SI ES MAS GRANDE q 1");
             barRawImage.color = Color.red;

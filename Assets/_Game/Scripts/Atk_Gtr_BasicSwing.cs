@@ -7,6 +7,8 @@ public class Atk_Gtr_BasicSwing : MonoBehaviour
     [HideInInspector] public string atkName;
     [HideInInspector] public int phases;
     [HideInInspector] public int type;
+    public float cost;
+    public float damage;
 
     private Player player;
     private Animator anim;
@@ -17,6 +19,7 @@ public class Atk_Gtr_BasicSwing : MonoBehaviour
         atkName = "Basic Swing";
         phases = 3;
         type = 0;
+        cost = 0;
 
         player = GetComponent<Player>();
         anim = GetComponent<Animator>();

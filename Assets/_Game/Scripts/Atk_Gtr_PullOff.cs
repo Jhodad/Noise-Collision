@@ -7,10 +7,12 @@ public class Atk_Gtr_PullOff : MonoBehaviour
     [HideInInspector] public string atkName;
     [HideInInspector] public int phases;
     [HideInInspector] public int type;
-
+    public float cost;
+    public float damage;
 
     private Player player;
     private Animator anim;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,7 @@ public class Atk_Gtr_PullOff : MonoBehaviour
         atkName = "Pull Off";
         phases = 1;
         type = 1;
+        cost = 60;
 
         player = GetComponent<Player>();
         anim = GetComponent<Animator>();
@@ -33,7 +36,16 @@ public class Atk_Gtr_PullOff : MonoBehaviour
     {
         if (state) // Ground
         {
-            anim.SetTrigger("Guit_Atk_PullOff(Ground)");
+            if (player.stats.CanUseBattery(cost))
+            {
+                player.stats.UseBattery(cost);
+                anim.SetTrigger("Guit_Atk_PullOff(Ground)");
+            }
+            else
+            {
+                Debug.Log("No more battery");
+            }
+            
         }
         else    // Air
         {
